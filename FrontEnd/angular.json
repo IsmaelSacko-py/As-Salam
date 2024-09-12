@@ -31,15 +31,40 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
+              "src/favicon.ico",
+              "src/app/client/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/app/client/assets/css/bootstrap.min.css",
+              "src/app/client/assets/css/all-fontawesome.min.css",
+              "src/app/client/assets/css/animate.min.css",
+              "src/app/client/assets/css/magnific-popup.min.css",
+              "src/app/client/assets/css/owl.carousel.min.css",
+              "src/app/client/assets/css/jquery-ui.min.css",
+              "src/app/client/assets/css/nice-select.min.css",
+              "src/app/client/assets/css/flex-slider.min.css",
+              "src/app/client/assets/css/style.css"
+
             ],
-            "scripts": []
+            "scripts": [
+              "src/app/client/assets/js/jquery-3.6.0.min.js",
+              "src/app/client/assets/js/modernizr.min.js",
+              "src/app/client/assets/js/bootstrap.bundle.min.js",
+              "src/app/client/assets/js/imagesloaded.pkgd.min.js",
+              "src/app/client/assets/js/jquery.magnific-popup.min.js",
+              "src/app/client/assets/js/isotope.pkgd.min.js",
+              "src/app/client/assets/js/jquery.appear.min.js",
+              "src/app/client/assets/js/jquery.easing.min.js",
+              "src/app/client/assets/js/owl.carousel.min.js",
+              "src/app/client/assets/js/counter-up.js",
+              "src/app/client/assets/js/jquery-ui.min.js",
+              "src/app/client/assets/js/jquery.nice-select.min.js",
+              "src/app/client/assets/js/countdown.min.js",
+              "src/app/client/assets/js/wow.min.js",
+              "src/app/client/assets/js/flex-slider.js",
+              "src/app/client/assets/js/main.js"
+
+            ]
           },
           "configurations": {
             "production": {
@@ -89,10 +114,8 @@
             ],
             "tsConfig": "tsconfig.spec.json",
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
+              "src/favicon.ico",
+              "src/app/client/assets"
             ],
             "styles": [
               "src/styles.css"
