@@ -62,6 +62,8 @@
               "src/app/client/assets/js/countdown.min.js",
               "src/app/client/assets/js/wow.min.js",
               "src/app/client/assets/js/flex-slider.js",
+              "src/app/client/assets/js/apexcharts.min.js",
+              "src/app/client/assets/js/apexchart-custom.js",
               "src/app/client/assets/js/main.js"
 
             ]

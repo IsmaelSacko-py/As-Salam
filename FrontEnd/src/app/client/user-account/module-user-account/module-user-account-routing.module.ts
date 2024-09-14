@@ -1,23 +1,38 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {UserProfileComponent} from "../user-profile/user-profile.component";
+import {UserDashboardComponent} from "../user-dashboard/user-dashboard.component";
+import {VendorDashboardComponent} from "../user-dashboard/vendor-dashboard/vendor-dashboard.component";
+import {UserMessageComponent} from "../user-message/user-message.component";
+import {UserAddressComponent} from "../user-address/user-address.component";
+import {UserNotificationComponent} from "../user-notification/user-notification.component";
+import {UserOrderComponent} from "../user-order/user-order.component";
+import {UserPaymentMethodComponent} from "../user-payment-method/user-payment-method.component";
+import {UserPayoutComponent} from "../user-payout/user-payout.component";
+import {UserProductComponent} from "../user-product/user-product.component";
+import {UserSettingComponent} from "../user-setting/user-setting.component";
+import {UserSupportTicketComponent} from "../user-support-ticket/user-support-ticket.component";
+import {UserTrackOrderComponent} from "../user-track-order/user-track-order.component";
+import {UserTransactionComponent} from "../user-transaction/user-transaction.component";
+import {UserWishlistComponent} from "../user-wishlist/user-wishlist.component";
+import {ClientDashboardComponent} from "../user-dashboard/client-dashboard/client-dashboard.component";
 
 const routes: Routes = [
-  {path: '', component: UserProfileComponent},
-  {path: 'user-dashboard', component: UserProfileComponent},
+  {path: 'user-dashboard', component: ClientDashboardComponent},
+  {path: 'vendor-dashboard', component: VendorDashboardComponent},
   {path: 'user-profile', component: UserProfileComponent},
-  {path: 'user-message', component: UserProfileComponent},
-  {path: 'user-address', component: UserProfileComponent},
-  {path: 'user-notification', component: UserProfileComponent},
-  {path: 'user-order', component: UserProfileComponent},
-  {path: 'user-payment-method', component: UserProfileComponent},
-  {path: 'user-payout', component: UserProfileComponent},
-  {path: 'user-product', component: UserProfileComponent},
-  {path: 'user-setting', component: UserProfileComponent},
-  {path: 'user-support-ticket', component: UserProfileComponent},
-  {path: 'user-track-order', component: UserProfileComponent},
-  {path: 'user-transaction', component: UserProfileComponent},
-  {path: 'user-wishlist', component: UserProfileComponent},
+  {path: 'user-message', component: UserMessageComponent},
+  {path: 'user-address', component: UserAddressComponent},
+  {path: 'user-notification', component: UserNotificationComponent},
+  {path: 'user-order', component: UserOrderComponent},
+  {path: 'user-payment-method', component: UserPaymentMethodComponent},
+  {path: 'user-payout', component: UserPayoutComponent},
+  {path: 'user-product', component: UserProductComponent},
+  {path: 'user-setting', component: UserSettingComponent},
+  {path: 'user-support-ticket', component: UserSupportTicketComponent},
+  {path: 'user-track-order', component: UserTrackOrderComponent},
+  {path: 'user-transaction', component: UserTransactionComponent},
+  {path: 'user-wishlist', component: UserWishlistComponent},
 ];
 
 @NgModule({

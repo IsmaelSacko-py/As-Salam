@@ -25,6 +25,10 @@ import { UserAccountSidebarComponent } from './client/user-account/user-account-
 import { UserAddressComponent } from './client/user-account/user-address/user-address.component';
 import { UserWishlistComponent } from './client/user-account/user-wishlist/user-wishlist.component';
 import {CoreModule} from "./client/core/core.module";
+import {SharedModule} from "./client/shared/shared.module";
+import { UserAccountSidebarItemComponent } from './client/user-account/user-account-sidebar/user-account-sidebar-item/user-account-sidebar-item.component';
+import { CartComponent } from './client/cart/cart.component';
+import { CheckoutComponent } from './client/checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -49,13 +53,17 @@ import {CoreModule} from "./client/core/core.module";
     UserTransactionComponent,
     UserAccountSidebarComponent,
     UserAddressComponent,
-    UserWishlistComponent
+    UserWishlistComponent,
+    UserAccountSidebarItemComponent,
+    CartComponent,
+    CheckoutComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    CoreModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        CoreModule,
+        SharedModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

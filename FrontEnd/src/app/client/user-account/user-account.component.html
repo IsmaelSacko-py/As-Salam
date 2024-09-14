@@ -1,1 +1,35 @@
-<p>user-account works!</p>
+<main class="main">
+  <div class="site-breadcrumb">
+    <div
+      class="site-breadcrumb-bg"
+      style="background: url(app/client/assets/img/breadcrumb/01.jpg)"
+    ></div>
+    <div class="container">
+      <div class="site-breadcrumb-wrap">
+        <h4 class="breadcrumb-title">My Profile</h4>
+        <ul class="breadcrumb-menu">
+          <li>
+            <a href="index.html"><i class="far fa-home"></i> Home</a>
+          </li>
+          <li class="active">My Profile</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="user-area bg py-100">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3">
+          <app-user-account-sidebar *ngIf="sideBarType === 'client'" [clientSidebarList]="sideBar"></app-user-account-sidebar>
+          <app-user-account-sidebar *ngIf="sideBarType === 'vendor'" [vendorSidebarList]="sideBar"></app-user-account-sidebar>
+        </div>
+        <div class="col-lg-9">
+          <router-outlet/>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<a href="#" id="scroll-top"><i class="far fa-arrow-up-from-arc"></i></a>
+

@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './client-dashboard.component.css'
 })
 export class ClientDashboardComponent {
-
+  sideBarType = 'client'
 }

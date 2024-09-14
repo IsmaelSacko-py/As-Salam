@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 
 @Component({
   selector: 'app-product-details',
@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './product-details.component.css'
 })
 export class ProductDetailsComponent {
-  hideCategory = 'hide-category'
+  hideCategoryDropDown = 'hide-category'
 }

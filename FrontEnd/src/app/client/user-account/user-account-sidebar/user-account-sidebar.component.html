@@ -1,1 +1,26 @@
-<p>user-account-sidebar works!</p>
+<div class="sidebar">
+  <div class="sidebar-top">
+    <div class="sidebar-profile-img">
+      <img src="app/client/assets/img/account/user.jpg" alt />
+      <button type="button" class="profile-img-btn">
+        <i class="far fa-camera"></i>
+      </button>
+      <input type="file" class="profile-img-file" />
+    </div>
+    <h5>Antoni Jonson</h5>
+    <p>
+      <a
+        href="https://live.themewild.com/cdn-cgi/l/email-protection"
+        class="__cf_email__"
+        data-cfemail="24454a504b4a4d64415c45495448410a474b49"
+      >[email&#160;protected]</a
+      >
+    </p>
+  </div>
+  <ul class="sidebar-list">
+    <li *ngFor="let item of sideBar; let i = index">
+      <app-user-account-sidebar-item [item]="item"></app-user-account-sidebar-item>
+<!--      <app-user-account-sidebar-item [item]="item" [isActive]="activeIndex === i" (select)="setActive(i)"></app-user-account-sidebar-item>-->
+    </li>
+  </ul>
+</div>

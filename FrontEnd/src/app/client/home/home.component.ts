@@ -7,5 +7,5 @@ import {CoreModule} from "../core/core.module";
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  hideCategory = ''
+  hideCategoryDropDown = ''
 }
