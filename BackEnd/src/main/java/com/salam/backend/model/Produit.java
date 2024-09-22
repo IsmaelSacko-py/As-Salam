@@ -28,6 +28,8 @@ public class Produit {
     @Column(nullable = false)
     private double prix;
 
+    private double remise;
+
     @NotBlank(message = "quantité requise")
     @Column(nullable = false)
     private double quantite;
