@@ -30,4 +30,6 @@ public class MessageChatBot implements Serializable {
     @Column(nullable = false)
     private boolean isChatBot;
 
+    private boolean lu = false;
+
 }
