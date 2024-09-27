@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -35,10 +36,10 @@ public class Produit {
 
     @NotBlank(message = "quantité requise")
     @Column(nullable = false)
-    private double quantite;
+    private int quantite;
 
     @Column(nullable = false)
-    private double dateAjout;
+    private LocalDateTime dateAjout;
 
     @Column(nullable = false)
     private boolean disponible = true;

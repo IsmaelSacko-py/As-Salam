@@ -1,21 +1,21 @@
 package com.salam.backend.service.impl;
 
-import com.salam.backend.dto.FactureDTO;
-import com.salam.backend.service.FactureService;
+import com.salam.backend.dto.RecuDTO;
+import com.salam.backend.service.RecuService;
 
-public class FactureServiceImpl implements FactureService {
+public class FactureServiceImpl implements RecuService {
     @Override
-    public void generareFacture(FactureDTO factureDTO) {
-
+    public RecuDTO generareRecu(RecuDTO factureDTO) {
+        return null;
     }
 
     @Override
-    public int envoyerFacture(FactureDTO factureDTO) {
-        return 0;
+    public RecuDTO envoyerRecu(RecuDTO factureDTO) {
+        return null;
     }
 
     @Override
-    public double calculerontantTotal(FactureDTO factureDTO) {
+    public double calculerontantTotal(RecuDTO factureDTO) {
         return 0;
     }
 }

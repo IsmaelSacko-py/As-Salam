@@ -21,7 +21,7 @@ public class DetailPanier implements Serializable {
     private int quantite;
 
     @Column(nullable = false)
-    private int montant;
+    private double montant;
 
     @ManyToOne
     @JoinColumn(name = "panier_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_detailspanier_panier"))

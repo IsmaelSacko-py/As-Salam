@@ -1,9 +1,7 @@
 package com.salam.backend.service;
 
 import com.salam.backend.dto.DetailPanierDTO;
+import com.salam.backend.model.DetailPanier;
 
-public interface DetailPanierService {
-    double calculerPrixTotal(DetailPanierDTO detailPanierDTO);
-    void mettreAJourQuantite(DetailPanierDTO detailPanierDTO, int quantite);
-    void appliquerRemise(DetailPanierDTO detailPanierDTO, double remise);
+public interface DetailPanierService extends CentralRepositoryService<DetailPanier> {
 }

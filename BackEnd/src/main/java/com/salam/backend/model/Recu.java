@@ -16,16 +16,16 @@ public class Recu implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected int id;
+    private int id;
 
     @Column(nullable = false, length = 100, unique = true)
-    protected String numero;
+    private String numero;
 
     @Column(nullable = false, length = 50)
-    protected LocalDateTime date;
+    private LocalDateTime date;
 
     @Column(nullable = false)
-    protected double montant;
+    private double montant;
 
     @OneToOne
     @JoinColumn(name = "paiement_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_recu_paiement"))
