@@ -1,9 +1,9 @@
 package com.salam.backend.repository;
 
-import com.salam.backend.model.Facture;
+import com.salam.backend.model.Recu;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ImageRepository extends JpaRepository<Facture, Integer> {
+public interface ImageRepository extends JpaRepository<Recu, Integer> {
 }

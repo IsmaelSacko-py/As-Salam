@@ -9,8 +9,9 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-@Entity
 @Data
+@Entity
+@Table(name = "messages_chatbot")
 public class MessageChatBot implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
@@ -31,5 +32,9 @@ public class MessageChatBot implements Serializable {
     private boolean isChatBot;
 
     private boolean lu = false;
+
+    @ManyToOne
+    @JoinColumn(name = "conversationchatbot_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_messagechatbot_conversationchatbot"))
+    private ConversationChatBot conversationChatBot;
 
 }

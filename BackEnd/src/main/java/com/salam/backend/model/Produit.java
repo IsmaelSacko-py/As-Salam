@@ -5,8 +5,11 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
-@Entity
+import java.util.List;
+
 @Data
+@Entity
+@Table(name = "produits")
 public class Produit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,4 +42,23 @@ public class Produit {
 
     @Column(nullable = false)
     private boolean disponible = true;
+
+    @Column(nullable = false)
+    private boolean bloque = true;
+
+//    @ManyToMany(mappedBy = "produits")
+//    private List<Commande> commandes;
+
+    @OneToMany(mappedBy = "produit")
+    private List<DetailCommande> detailsCommande;
+
+    @OneToMany(mappedBy = "produit")
+    private List<DetailPanier> detailsPanier;
+
+    @OneToMany(mappedBy = "produit")
+    private List<Image> images;
+
+    @ManyToOne
+    @JoinColumn(name = "categorie_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_produit_categorie"))
+    private Categorie categorie;
 }

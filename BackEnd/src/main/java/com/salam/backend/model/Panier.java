@@ -5,9 +5,11 @@ import lombok.Data;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.List;
 
-@Entity
 @Data
+@Entity
+@Table(name = "paniers")
 public class Panier implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
@@ -18,4 +20,10 @@ public class Panier implements Serializable {
 
     @Column(nullable = false)
     private double totalPrix;
+
+    @OneToMany(mappedBy = "panier")
+    private List<DetailPanier> detailsPanier;
+
+    @OneToOne(mappedBy = "panier")
+    private Membre membre;
 }

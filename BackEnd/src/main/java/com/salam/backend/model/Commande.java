@@ -7,9 +7,11 @@ import lombok.Data;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
-@Entity
 @Data
+@Entity
+@Table(name = "commandes")
 public class Commande implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
@@ -18,7 +20,7 @@ public class Commande implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(nullable = false, length = 100, unique = true)
+    @Column(nullable = false, length = 50, unique = true)
     private String numero;
 
     @Column(nullable = false, length = 50)
@@ -29,4 +31,22 @@ public class Commande implements Serializable {
 
     @Column(nullable = false)
     private double totalPrix;
+
+    @ManyToOne
+    @JoinColumn(name = "membre_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_commande_membre"))
+    private Membre membre;
+
+//    @ManyToMany
+//    @JoinTable(
+//            name = "detailsCommande",
+//            joinColumns = @JoinColumn(name = "produit_id"),
+//            inverseJoinColumns = @JoinColumn(name = "commande_id")
+//    )
+//    private List<Produit> produits;
+
+    @OneToMany(mappedBy = "commande")
+    private List<DetailCommande> detailsCommande;
+
+    @OneToOne(mappedBy = "commande")
+    private Paiement paiement;
 }

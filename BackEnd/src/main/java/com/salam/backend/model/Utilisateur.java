@@ -9,10 +9,10 @@ import lombok.Data;
 import java.io.Serial;
 import java.io.Serializable;
 
-@Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Data
-
+@Entity
+@Table(name = "utilisateurs")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Utilisateur implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
@@ -46,4 +46,8 @@ public class Utilisateur implements Serializable {
     @Size(min = 1, max = 50, message = "doit contenir au maximum 50 caractères")
     @Column(nullable = false, length = 50)
     protected String motDePasse;
+
+    @ManyToOne
+    @JoinColumn(name = "profil_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_user_profil"))
+    protected Profil profil;
 }

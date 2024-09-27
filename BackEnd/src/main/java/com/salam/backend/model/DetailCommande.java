@@ -5,9 +5,11 @@ import lombok.Data;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.List;
 
-@Entity
 @Data
+@Entity
+@Table(name = "details_commande")
 public class DetailCommande implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
@@ -20,5 +22,15 @@ public class DetailCommande implements Serializable {
     private int quantite;
 
     @Column(nullable = false)
-    private double prixTotal;
+    private double montant;
+
+    @ManyToOne
+    @JoinColumn(name = "produit_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_produit_detailscommande"))
+    private Produit produit;
+
+    @ManyToOne
+    @JoinColumn(name = "commande_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_commande_detailscommande"))
+    private Commande commande;
+
+
 }

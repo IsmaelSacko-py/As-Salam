@@ -5,10 +5,10 @@ import lombok.Data;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
-@Entity
 @Data
+@Entity
+@Table(name = "details_panier")
 public class DetailPanier implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
@@ -21,5 +21,15 @@ public class DetailPanier implements Serializable {
     private int quantite;
 
     @Column(nullable = false)
-    private double prixTotal;
+    private int montant;
+
+    @ManyToOne
+    @JoinColumn(name = "panier_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_detailspanier_panier"))
+    private Panier panier;
+
+    @ManyToOne
+    @JoinColumn(name = "produit_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_detailspanier_produit"))
+    private Produit produit;
+
+
 }

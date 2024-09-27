@@ -7,6 +7,7 @@ import lombok.EqualsAndHashCode;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Data
@@ -17,4 +18,18 @@ public class Membre extends Utilisateur implements Serializable {
 
     protected LocalDateTime dateInscription;
     protected boolean status;
+
+    @ManyToMany(mappedBy = "membres")
+    protected List<Adresse> adresses;
+
+    @OneToMany(mappedBy = "membre")
+    protected List<Commande> commandes;
+
+    @OneToMany(mappedBy = "membre")
+    protected List<ConversationChatBot> conversationChatBots;
+
+    @OneToOne
+    @JoinColumn(name = "panier_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_membre_panier"))
+    protected Panier panier;
+
 }

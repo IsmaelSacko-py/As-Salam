@@ -1,4 +1,7 @@
 package com.salam.backend.model;
 
-public class Administrateur {
+import jakarta.persistence.Entity;
+
+@Entity
+public class Administrateur extends Utilisateur{
 }

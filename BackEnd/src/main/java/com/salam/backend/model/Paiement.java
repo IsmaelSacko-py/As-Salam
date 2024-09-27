@@ -1,19 +1,18 @@
 package com.salam.backend.model;
 
-import com.salam.backend.enumeration.EtatCommande;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
 import lombok.Data;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-@Entity
 @Data
-public class Paiemement implements Serializable {
+@Entity
+@Table(name = "paiements")
+public class Paiement implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
@@ -21,7 +20,7 @@ public class Paiemement implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected int id;
 
-    @Column(nullable = false, length = 100, unique = true)
+    @Column(nullable = false, length = 50, unique = true)
     protected String numero;
 
     @Column(nullable = false)
@@ -32,5 +31,12 @@ public class Paiemement implements Serializable {
 
     @Column(nullable = false)
     protected boolean etat;
+
+    @OneToOne(mappedBy = "paiement")
+    private Recu recu;
+
+    @OneToOne
+    @JoinColumn(name = "commande_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_paiement_commande"))
+    private Commande commande;
 
 }
