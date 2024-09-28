@@ -260,6 +260,7 @@ document.addEventListener('DOMContentLoaded', () => {
       $(e.target).closest(".form-group").find(".store-file").click();
     });
     $(".form-img-upload").on("click", function () {
+      alert('je')
       $(".form-img-file").click();
     });
     if ($(".message-content-info").length) {

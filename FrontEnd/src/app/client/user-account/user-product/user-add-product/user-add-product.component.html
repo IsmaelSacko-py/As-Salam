@@ -1,1 +1,134 @@
-<p>user-add-product works!</p>
+<div class="user-wrapper">
+  <div class="user-card">
+    <div class="user-card-header">
+      <h4 class="user-card-title">Ajouter un produit</h4>
+      <a href="vendor-product.html" class="theme-btn"
+      ><span class="far fa-arrow-left"></span>Tous les produits</a
+      >
+    </div>
+    <div class="col-lg-12">
+      <div class="user-form">
+        <h6 class="mb-20">Information basic</h6>
+        <form (ngSubmit)="createProduct()" [formGroup]="productForm" enctype="multipart/form-data">
+          <div class="row align-items-center">
+            <div class="col-lg-12">
+              <div class="form-group">
+                <label>Nom du produt</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Nom"
+                  formControlName="nom"
+                />
+                <div class="form-text">
+                  Maximum 100 caractères
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label>Prix</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Prix"
+                  formControlName="prix"
+                />
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label>Catégorie</label>
+                <select class="form-control">
+                  <option value>Choisir une categorie</option>
+                  <option value="1">Fashion & Accessories</option>
+                  <option value="2">Electronics</option>
+                  <option value="3">Grocery & Market</option>
+                  <option value="4">Home & Furniture</option>
+                  <option value="5">Toy & Video Games</option>
+                  <option value="6">Gifts</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label>Stock</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Stock"
+                  formControlName="stock"
+                />
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label>Remise</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Remise"
+                  formControlName="remise"
+                />
+              </div>
+            </div>
+            <h6 class="mt-20 mb-20">Images du produits</h6>
+            <div class="col-lg-12">
+              <div class="form-group">
+                <input type="file" (change)="onFilesSelected($event)" multiple class="form-control"/>
+              </div>
+            </div>
+            <h6 class="mt-20 mb-20">Informations detaillées</h6>
+            <div class="col-lg-12">
+              <div class="form-group">
+                <label>Description</label>
+                <textarea
+                  class="form-control"
+                  placeholder="Description"
+                  cols="30"
+                  rows="5"
+                  formControlName="description"
+                ></textarea>
+              </div>
+            </div>
+            <h6 class="mt-20 mb-20">Statut</h6>
+            <div class="col-6 col-md-4">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  name="status"
+                  type="radio"
+                  value="true"
+                  id="status1"
+                  formControlName="statut"
+                />
+                <label class="form-check-label" for="status1">
+                  Publier
+                </label>
+              </div>
+            </div>
+            <div class="col-6 col-md-4">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  name="status"
+                  type="radio"
+                  value="false"
+                  id="status2"
+                  formControlName="statut"
+                />
+                <label class="form-check-label" for="status2">
+                  Enregistrer sans publier
+                </label>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="theme-btn">
+            <span class="far fa-save"></span> Enregistrer
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

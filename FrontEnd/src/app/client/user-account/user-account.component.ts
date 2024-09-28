@@ -125,7 +125,7 @@ export class UserAccountComponent {
     {
       label: 'Add New Product',
       icon: 'far fa-upload',
-      href: '/vendor-add-product',
+      href: '/user-account/vendor-add-product',
       badge: null,
       isActive: false
     },
