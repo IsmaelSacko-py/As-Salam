@@ -13,6 +13,8 @@ public class RecuDTO implements Serializable {
 
     private int id;
     private String numero;
-    private LocalDateTime dateEmission;
+    private LocalDateTime date;
     private double montant;
+
+    private PaiementDTO paiement;
 }

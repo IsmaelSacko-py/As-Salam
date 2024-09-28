@@ -6,6 +6,7 @@ import lombok.Data;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 public class CommandeDTO implements Serializable {
@@ -17,4 +18,8 @@ public class CommandeDTO implements Serializable {
     private LocalDateTime date;
     private EtatCommande statut;
     private double totalPrix;
+
+    private MembreDTO membre;
+    private PaiementDTO paiement;
+    private List<DetailCommandeDTO> details;
 }

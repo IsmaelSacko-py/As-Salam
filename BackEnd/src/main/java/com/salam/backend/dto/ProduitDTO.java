@@ -5,6 +5,7 @@ import lombok.Data;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 public class ProduitDTO implements Serializable {
@@ -20,5 +21,12 @@ public class ProduitDTO implements Serializable {
     private int quantiteEnStock;
     private LocalDateTime dateAjout;
     private boolean disponible;
+    private boolean bloque;
+
+    private CategorieDTO categorie;
+
+    private List<DetailPanierDTO> detailsPanier;
+    private List<DetailCommandeDTO> detailsCommande;
+    private List<ImageDTO> images;
 
 }

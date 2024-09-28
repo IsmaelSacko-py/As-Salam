@@ -13,6 +13,9 @@ public class MessageChatBotDTO implements Serializable {
 
     private int id;
     private String contenu;
-    private LocalDateTime dateEnvoi;
+    private LocalDateTime date;
     private boolean isChatBot; // Determine si le message provient du chatbot
+    private boolean lu;
+
+    private ConversationChatBotDTO conversationChatBot;
 }

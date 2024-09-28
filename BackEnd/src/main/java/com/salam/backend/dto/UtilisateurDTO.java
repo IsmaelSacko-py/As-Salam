@@ -15,5 +15,6 @@ public class UtilisateurDTO implements Serializable {
     protected String prenom;
     protected String email;
     protected String telephone;
-    protected String password;
+    protected String motDePasse;
+
 }

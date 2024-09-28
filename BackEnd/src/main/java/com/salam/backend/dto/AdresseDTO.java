@@ -5,6 +5,7 @@ import lombok.Data;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.List;
 
 @Data
 public class AdresseDTO implements Serializable {
@@ -14,6 +15,7 @@ public class AdresseDTO implements Serializable {
     private int id;
     private String nom;
     private String rue;
-    private String ville;
     private TypeAdresse typeAdresse;
+
+    private List<MembreDTO> membres;
 }

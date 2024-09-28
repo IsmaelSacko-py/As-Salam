@@ -1,5 +1,6 @@
 package com.salam.backend.dto;
 
+import com.salam.backend.model.Produit;
 import lombok.Data;
 
 import java.io.Serial;
@@ -12,4 +13,6 @@ public class ImageDTO implements Serializable {
 
     private int id;
     private String url;
+
+    private ProduitDTO produit;
 }

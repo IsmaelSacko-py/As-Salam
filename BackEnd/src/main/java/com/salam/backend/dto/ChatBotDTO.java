@@ -4,6 +4,7 @@ import lombok.Data;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.List;
 
 @Data
 public class ChatBotDTO implements Serializable {
@@ -13,4 +14,6 @@ public class ChatBotDTO implements Serializable {
     private int id;
     private String nom;
     private String langue;
+
+    private List<ConversationChatBotDTO> conversations;
 }
