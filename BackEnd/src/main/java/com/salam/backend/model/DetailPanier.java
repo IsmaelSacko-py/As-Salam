@@ -9,9 +9,7 @@ import java.io.Serializable;
 @Data
 @Entity
 @Table(name = "details_panier")
-public class DetailPanier implements Serializable {
-    @Serial
-    private static final long serialVersionUID = 1L;
+public class DetailPanier {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,5 +1,6 @@
 package com.salam.backend.dto;
 
+import com.salam.backend.model.Produit;
 import lombok.Data;
 
 import java.io.Serial;
@@ -18,5 +19,5 @@ public class CategorieDTO implements Serializable {
 
     private CategorieDTO categorie;
     private List<CategorieDTO> sousCategories;
-    private List<ProduitDTO> produits;
+    private List<Produit> produits;
 }

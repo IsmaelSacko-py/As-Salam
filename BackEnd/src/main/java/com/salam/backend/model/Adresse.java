@@ -15,10 +15,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "adresses")
-public class Adresse implements Serializable {
-    @Serial
-    private static final long serialVersionUID = 1L;
-
+public class Adresse {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

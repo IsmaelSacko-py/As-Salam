@@ -14,8 +14,6 @@ import java.util.List;
 @Entity
 @Table(name = "chatbot")
 public class ChatBot implements Serializable {
-    @Serial
-    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

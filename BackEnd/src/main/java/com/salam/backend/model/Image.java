@@ -9,9 +9,7 @@ import java.io.Serializable;
 @Data
 @Entity
 @Table(name = "images")
-public class Image implements Serializable {
-    @Serial
-    private static final long serialVersionUID = 1L;
+public class Image {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

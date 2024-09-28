@@ -2,6 +2,8 @@ package com.salam.backend.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
@@ -28,13 +30,15 @@ public class Produit {
     @Column(nullable = false)
     private String description;
 
-    @NotBlank(message = "prix requis")
+    @NotNull(message = "prix requis")
+    @PositiveOrZero(message = "Le prix doit être égal ou supérieur à 0")
     @Column(nullable = false)
     private double prix;
 
     private double remise;
 
-    @NotBlank(message = "quantité requise")
+    @NotNull(message = "quantité requis")
+    @PositiveOrZero(message = "La quantité doit être supérieur à 0")
     @Column(nullable = false)
     private int quantite;
 

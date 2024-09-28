@@ -12,9 +12,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "conversations_chatbot")
-public class ConversationChatBot implements Serializable {
-    @Serial
-    private static final long serialVersionUID = 1L;
+public class ConversationChatBot {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

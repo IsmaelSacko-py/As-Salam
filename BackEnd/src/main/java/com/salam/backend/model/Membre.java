@@ -12,9 +12,7 @@ import java.util.List;
 @Entity
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class Membre extends Utilisateur implements Serializable {
-    @Serial
-    private static final long serialVersionUID = 1L;
+public class Membre extends Utilisateur {
 
     protected LocalDateTime dateInscription;
     protected boolean status;

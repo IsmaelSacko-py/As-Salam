@@ -10,9 +10,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "details_commande")
-public class DetailCommande implements Serializable {
-    @Serial
-    private static final long serialVersionUID = 1L;
+public class DetailCommande {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

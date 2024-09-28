@@ -11,10 +11,7 @@ import java.io.Serializable;
 
 @Data
 @Entity
-public class ModePaiement implements Serializable {
-    @Serial
-    private static final long serialVersionUID = 1L;
-
+public class ModePaiement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

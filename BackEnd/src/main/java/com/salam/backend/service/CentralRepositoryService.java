@@ -47,13 +47,13 @@ public interface CentralRepositoryService<Entity> {
      * @param id the id of the entity.
      * @return the entity.
      */
-    Optional<Entity> findOne(Long id);
+    Optional<Entity> findOne(Integer id);
 
     /**
      * Delete the "id" entity.
      *
      * @param id the id of the entity.
      */
-    void delete(Long id);
+    void delete(Integer id);
 
 }

@@ -11,32 +11,32 @@ import java.util.Optional;
 public class DetailPanierServiceImpl implements DetailPanierService {
 
     @Override
-    public DetailPanier save(DetailPanier detailPanier) {
+    public DetailPanierDTO save(DetailPanierDTO detailPanierDTO) {
         return null;
     }
 
     @Override
-    public DetailPanier update(DetailPanier detailPanier) {
+    public DetailPanierDTO update(DetailPanierDTO detailPanierDTO) {
         return null;
     }
 
     @Override
-    public Optional<DetailPanier> partialUpdate(DetailPanier detailPanier) {
+    public Optional<DetailPanierDTO> partialUpdate(DetailPanierDTO detailPanierDTO) {
         return Optional.empty();
     }
 
     @Override
-    public Page<DetailPanier> findAll(Pageable pageable) {
+    public Page<DetailPanierDTO> findAll(Pageable pageable) {
         return null;
     }
 
     @Override
-    public Optional<DetailPanier> findOne(Long id) {
+    public Optional<DetailPanierDTO> findOne(Integer id) {
         return Optional.empty();
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(Integer id) {
 
     }
 }

@@ -30,12 +30,12 @@ public class CategorieServiceImpl implements CategorieService {
     }
 
     @Override
-    public Optional<CategorieDTO> findOne(Long id) {
+    public Optional<CategorieDTO> findOne(Integer id) {
         return Optional.empty();
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(Integer id) {
 
     }
 }

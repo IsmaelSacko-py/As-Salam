@@ -1,5 +1,6 @@
 package com.salam.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.salam.backend.enumeration.EtatCommande;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -13,9 +14,8 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "categories")
-public class Categorie  implements Serializable {
-    @Serial
-    private static final long serialVersionUID = 1L;
+@JsonIgnoreProperties({"parentCategorie", "produits"})
+public class Categorie {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

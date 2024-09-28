@@ -13,9 +13,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "utilisateurs")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class Utilisateur implements Serializable {
-    @Serial
-    private static final long serialVersionUID = 1L;
+public class Utilisateur {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,7 +31,7 @@ public class Utilisateur implements Serializable {
 
     @NotBlank(message = "email requis")
     @Size(min = 1, max = 100, message = "doit contenir au maximum 100 caractères")
-    @Email(regexp = "", message = "email invalide")
+//    @Email(regexp = "", message = "email invalide")
     @Column(nullable = false, length = 100, unique = true)
     protected String email;
 

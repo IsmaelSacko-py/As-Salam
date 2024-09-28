@@ -12,9 +12,7 @@ import java.time.LocalDateTime;
 @Data
 @Entity
 @Table(name = "messages_chatbot")
-public class MessageChatBot implements Serializable {
-    @Serial
-    private static final long serialVersionUID = 1L;
+public class MessageChatBot {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

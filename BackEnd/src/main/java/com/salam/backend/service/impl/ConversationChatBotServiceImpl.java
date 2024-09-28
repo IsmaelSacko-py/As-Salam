@@ -37,12 +37,12 @@ public class ConversationChatBotServiceImpl implements ConversationChatBotServic
     }
 
     @Override
-    public Optional<ConversationChatBotDTO> findOne(Long id) {
+    public Optional<ConversationChatBotDTO> findOne(Integer id) {
         return Optional.empty();
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(Integer id) {
 
     }
 }

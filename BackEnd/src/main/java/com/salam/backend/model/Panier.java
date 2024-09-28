@@ -10,9 +10,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "paniers")
-public class Panier implements Serializable {
-    @Serial
-    private static final long serialVersionUID = 1L;
+public class Panier {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

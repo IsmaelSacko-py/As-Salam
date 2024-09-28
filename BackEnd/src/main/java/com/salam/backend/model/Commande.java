@@ -12,9 +12,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "commandes")
-public class Commande implements Serializable {
-    @Serial
-    private static final long serialVersionUID = 1L;
+public class Commande {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

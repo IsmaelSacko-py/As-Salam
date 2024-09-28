@@ -10,9 +10,7 @@ import java.time.LocalDateTime;
 @Data
 @Entity
 @Table(name = "reçus")
-public class Recu implements Serializable {
-    @Serial
-    private static final long serialVersionUID = 1L;
+public class Recu {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

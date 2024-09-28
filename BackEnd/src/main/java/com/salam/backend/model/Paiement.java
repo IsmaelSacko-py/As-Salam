@@ -12,9 +12,7 @@ import java.time.LocalDateTime;
 @Data
 @Entity
 @Table(name = "paiements")
-public class Paiement implements Serializable {
-    @Serial
-    private static final long serialVersionUID = 1L;
+public class Paiement {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
