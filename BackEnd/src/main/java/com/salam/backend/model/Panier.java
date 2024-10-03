@@ -16,12 +16,12 @@ public class Panier {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(nullable = false)
-    private double totalPrix;
+    @Column(nullable = false, unique = true)
+    private String numero;
 
     @OneToMany(mappedBy = "panier")
     private List<DetailPanier> detailsPanier;
 
     @OneToOne(mappedBy = "panier")
-    private Membre membre;
+    private Client client;
 }

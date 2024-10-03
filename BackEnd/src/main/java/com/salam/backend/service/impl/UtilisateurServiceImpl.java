@@ -1,9 +1,5 @@
 package com.salam.backend.service.impl;
 
-import com.salam.backend.dto.ProfilDTO;
-import com.salam.backend.dto.UtilisateurDTO;
-import com.salam.backend.mapper.UtilisateurMapper;
-import com.salam.backend.mapper.UtilisateurMapperImpl;
 import com.salam.backend.model.Utilisateur;
 import com.salam.backend.repository.UtilisateurRepository;
 import com.salam.backend.service.UtilisateurService;
@@ -19,18 +15,17 @@ import java.util.Optional;
 @Slf4j
 @Service
 @Transactional
-public class UtilisateurServiceImpl implements UtilisateurService {
+public class UtilisateurServiceImpl<Entity extends Utilisateur> implements UtilisateurService<Entity> {
 
-    private final UtilisateurRepository utilisateurRepository;
-    private final UtilisateurMapper utilisateurMapper;
+    private final UtilisateurRepository<Entity> utilisateurRepository;
+//    private final UtilisateurMapper utilisateurMapper;
 
-    public UtilisateurServiceImpl(UtilisateurRepository utilisateurRepository, UtilisateurMapper utilisateurMapper) {
+    public UtilisateurServiceImpl(UtilisateurRepository<Entity> utilisateurRepository) {
         this.utilisateurRepository = utilisateurRepository;
-        this.utilisateurMapper = utilisateurMapper;
     }
 
     @Override
-    public Optional<UtilisateurDTO> updateProfile(UtilisateurDTO utilisateurDTO) {
+    public Optional<Entity> updateProfile(Entity utilisateur) {
         return Optional.empty();
     }
 
@@ -40,45 +35,43 @@ public class UtilisateurServiceImpl implements UtilisateurService {
     }
 
     @Override
-    public UtilisateurDTO save(UtilisateurDTO utilisateurDTO) {
-        log.debug("Request to save Utilisateur : {}", utilisateurDTO);
-        Utilisateur utilisateur = utilisateurMapper.toEntity(utilisateurDTO);
+    public Entity save(Entity utilisateur) {
+        log.debug("Request to save Utilisateur : {}", utilisateur);
+//        Utilisateur utilisateur = utilisateurMapper.toEntity(utilisateur);
         utilisateur = utilisateurRepository.save(utilisateur);
-        return utilisateurMapper.toDto(utilisateur);
+        return utilisateur;
     }
 
     @Override
-    public UtilisateurDTO update(UtilisateurDTO utilisateurDTO) {
-        log.debug("Request to update Utilisateur : {}", utilisateurDTO);
-        Utilisateur utilisateur = utilisateurMapper.toEntity(utilisateurDTO);
+    public Entity update(Entity utilisateur) {
+        log.debug("Request to update Utilisateur : {}", utilisateur);
+//        Utilisateur utilisateur = utilisateurMapper.toEntity(utilisateur);
         utilisateur = utilisateurRepository.save(utilisateur);
-        return utilisateurMapper.toDto(utilisateur);
+        return utilisateur;
     }
 
     @Override
-    public Optional<UtilisateurDTO> partialUpdate(UtilisateurDTO utilisateurDTO) {
-        log.debug("Request to partial update Utilisateur : {}", utilisateurDTO);
+    public Optional<Entity> partialUpdate(Entity utilisateur) {
+        log.debug("Request to partial update Utilisateur : {}", utilisateur);
         return utilisateurRepository
-                .findById(utilisateurDTO.getId())
+                .findById(utilisateur.getId())
                 .map( existingUser -> {
-                    utilisateurMapper.partialUpdate(existingUser, utilisateurDTO);
+                    utilisateurRepository.save(utilisateur);
                     return existingUser;
                 })
-                .map(utilisateurRepository::save)
-                .map(utilisateurMapper::toDto);
+                .map(utilisateurRepository::save);
     }
 
     @Override
-    public Page<UtilisateurDTO> findAll(Pageable pageable) {
+    public Page<Entity> findAll(Pageable pageable) {
         log.debug("Request to get all Utilisateurs");
-        return utilisateurRepository.findAll(pageable).map(utilisateurMapper::toDto);
+        return utilisateurRepository.findAll(pageable);
     }
 
     @Override
-    public Optional<UtilisateurDTO> findOne(Integer id) {
+    public Optional<Entity> findOne(Integer id) {
         log.debug("Request to get Utilisateur : {}", id);
-        return utilisateurRepository.findById(id)
-                .map(utilisateurMapper::toDto);
+        return utilisateurRepository.findById(id);
     }
 
     @Override

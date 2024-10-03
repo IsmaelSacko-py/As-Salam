@@ -18,7 +18,7 @@ public class ProduitDTO implements Serializable {
     private String description;
     private double prix;
     private double remise;
-    private int quantiteEnStock;
+    private int quantite;
     private LocalDateTime dateAjout;
     private boolean disponible;
     private boolean bloque;

@@ -1,17 +1,25 @@
 package com.salam.backend.service.impl;
 
-import com.salam.backend.dto.ProduitDTO;
-import com.salam.backend.mapper.ProduitMapper;
+import com.salam.backend.model.Image;
 import com.salam.backend.model.Produit;
+import com.salam.backend.repository.ImageRepository;
 import com.salam.backend.repository.ProduitRepository;
+import com.salam.backend.service.ImageService;
 import com.salam.backend.service.ProduitService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.time.LocalDateTime;
 import java.util.Optional;
+import java.util.UUID;
 
 
 @Slf4j
@@ -20,41 +28,62 @@ import java.util.Optional;
 public class ProduitServiceImpl implements ProduitService {
 
     private final ProduitRepository produitRepository;
-    private final ProduitMapper produitMapper;
+    private final ImageServiceImpl imageService;
 
-    public ProduitServiceImpl(ProduitRepository produitRepository, ProduitMapper produitMapper) {
+    @Value("${file_upload.upload_dir}")
+    private String UPLOAD_DIR;
+
+    public ProduitServiceImpl(ProduitRepository produitRepository, ImageServiceImpl imageService) {
         this.produitRepository = produitRepository;
-        this.produitMapper = produitMapper;
+        this.imageService = imageService;
     }
 
     @Override
-    public ProduitDTO save(ProduitDTO produitDTO) {
-        log.debug("Request to save Produit : {}", produitDTO);
-        Produit produit = produitMapper.toEntity(produitDTO);
+    public Produit save(Produit produit) {
+        log.debug("Request to save Produit : {}", produit);
+        String numProduit = UUID.randomUUID().toString();
+
+        LocalDateTime instant= LocalDateTime.now();
+        produit.setDateAjout(instant);
+        produit.setNumero(numProduit);
+
         produit = produitRepository.save(produit);
-        return produitMapper.toDto(produit);
+
+        try {
+            // Enregistrement des images du produit
+            for (Image image : produit.getImages()) {
+                log.debug("Saving image : {}", image);
+
+                image.setProduit(produit);
+                imageService.save(image);
+            }
+        }catch (Exception e){
+            log.debug("Error saving Produit : {}", produit);
+        }
+
+//        Produit produit = produitMapper.toEntity(produit);
+        return produit;
     }
 
     @Override
-    public ProduitDTO update(ProduitDTO produitDTO) {
+    public Produit update(Produit produit) {
         return null;
     }
 
     @Override
-    public Optional<ProduitDTO> partialUpdate(ProduitDTO produitDTO) {
+    public Optional<Produit> partialUpdate(Produit produit) {
         return Optional.empty();
     }
 
     @Override
-    public Page<ProduitDTO> findAll(Pageable pageable) {
-        return null;
+    public Page<Produit> findAll(Pageable pageable) {
+        return produitRepository.findAll(pageable);
     }
 
     @Override
-    public Optional<ProduitDTO> findOne(Integer id) {
+    public Optional<Produit> findOne(Integer id) {
         log.debug("Request to get Produit : {}", id);
-        return produitRepository.findById(id)
-                .map(produitMapper::toDto);
+        return produitRepository.findById(id);
     }
 
     @Override

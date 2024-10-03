@@ -1,6 +1,6 @@
 package com.salam.backend.service.impl;
 
-import com.salam.backend.dto.CategorieDTO;
+import com.salam.backend.model.Categorie;
 import com.salam.backend.service.CategorieService;
 import com.salam.backend.service.ProduitService;
 import org.springframework.data.domain.Page;
@@ -10,27 +10,27 @@ import java.util.Optional;
 
 public class CategorieServiceImpl implements CategorieService {
     @Override
-    public CategorieDTO save(CategorieDTO categorieDTO) {
+    public Categorie save(Categorie categorie) {
         return null;
     }
 
     @Override
-    public CategorieDTO update(CategorieDTO categorieDTO) {
+    public Categorie update(Categorie categorie) {
         return null;
     }
 
     @Override
-    public Optional<CategorieDTO> partialUpdate(CategorieDTO categorieDTO) {
+    public Optional<Categorie> partialUpdate(Categorie categorie) {
         return Optional.empty();
     }
 
     @Override
-    public Page<CategorieDTO> findAll(Pageable pageable) {
+    public Page<Categorie> findAll(Pageable pageable) {
         return null;
     }
 
     @Override
-    public Optional<CategorieDTO> findOne(Integer id) {
+    public Optional<Categorie> findOne(Integer id) {
         return Optional.empty();
     }
 
@@ -38,4 +38,33 @@ public class CategorieServiceImpl implements CategorieService {
     public void delete(Integer id) {
 
     }
+//    @Override
+//    public Categorie save(Categorie categorieDTO) {
+//        return null;
+//    }
+//
+//    @Override
+//    public Categorie update(Categorie categorieDTO) {
+//        return null;
+//    }
+//
+//    @Override
+//    public Optional<Categorie> partialUpdate(Categorie categorieDTO) {
+//        return Optional.empty();
+//    }
+//
+//    @Override
+//    public Page<Categorie> findAll(Pageable pageable) {
+//        return null;
+//    }
+//
+//    @Override
+//    public Optional<Categorie> findOne(Integer id) {
+//        return Optional.empty();
+//    }
+//
+//    @Override
+//    public void delete(Integer id) {
+//
+//    }
 }

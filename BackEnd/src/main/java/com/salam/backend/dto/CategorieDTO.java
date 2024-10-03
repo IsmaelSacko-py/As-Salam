@@ -15,7 +15,6 @@ public class CategorieDTO implements Serializable {
     private int id;
     private String numero;
     private String libelle;
-//    private String description;
 
     private CategorieDTO categorie;
     private List<CategorieDTO> sousCategories;

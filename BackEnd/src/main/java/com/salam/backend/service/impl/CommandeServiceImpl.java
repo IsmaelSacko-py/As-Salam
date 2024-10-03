@@ -1,24 +1,23 @@
 package com.salam.backend.service.impl;
 
-import com.salam.backend.dto.CommandeDTO;
-import com.salam.backend.dto.DetailCommandeDTO;
+import com.salam.backend.model.Commande;
 import com.salam.backend.service.CommandeService;
 
 public class CommandeServiceImpl implements CommandeService {
 
     @Override
-    public CommandeDTO annullerCommande(CommandeDTO commandeDTO) {
+    public Commande annullerCommande(Commande commande) {
         return null;
     }
 
 
     @Override
-    public CommandeDTO mettreAJourStatus(CommandeDTO commandeDTO) {
+    public Commande mettreAJourStatus(Commande commande) {
         return null;
     }
 
     @Override
-    public double calculerMontantTotal(CommandeDTO commandeDTO) {
+    public double calculerMontantTotal(Commande commande) {
         return 0;
     }
 }

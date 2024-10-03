@@ -1,24 +1,26 @@
-package com.salam.backend.service.impl;
-
-import com.salam.backend.dto.CommandeDTO;
-import com.salam.backend.dto.PaiementDTO;
-import com.salam.backend.dto.PanierDTO;
-import com.salam.backend.dto.ProduitDTO;
-import com.salam.backend.mapper.UtilisateurMapper;
-import com.salam.backend.repository.UtilisateurRepository;
-import com.salam.backend.service.MembreService;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-
-public class MembreServiceImpl extends UtilisateurServiceImpl implements MembreService{
-
-    public MembreServiceImpl(UtilisateurRepository utilisateurRepository, UtilisateurMapper utilisateurMapper) {
-        super(utilisateurRepository, utilisateurMapper);
-
-    }
-
-    @Override
-    public Page<CommandeDTO> getCommandes(Pageable pageable) {
-        return null;
-    }
-}
+//package com.salam.backend.service.impl;
+//
+//import com.salam.backend.model.Commande;
+//import com.salam.backend.model.Membre;
+//import com.salam.backend.repository.UtilisateurRepository;
+//import com.salam.backend.service.MembreService;
+//import lombok.extern.slf4j.Slf4j;
+//import org.springframework.data.domain.Page;
+//import org.springframework.data.domain.Pageable;
+//import org.springframework.stereotype.Service;
+//
+//
+//@Slf4j
+//@Service
+//public class MembreServiceImpl<Entity extends Membre> extends UtilisateurServiceImpl<Entity> implements MembreService<Entity>{
+//
+//
+//    public MembreServiceImpl(UtilisateurRepository<Entity> utilisateurRepository) {
+//        super(utilisateurRepository);
+//    }
+//
+//    @Override
+//    public Page<Commande> getCommandes(Pageable pageable) {
+//        return null;
+//    }
+//}

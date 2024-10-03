@@ -1,5 +1,6 @@
 package com.salam.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.salam.backend.enumeration.EtatConversationChatBot;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -12,6 +13,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "conversations_chatbot")
+@JsonIgnoreProperties({"client", "chatBot"})
 public class ConversationChatBot {
 
     @Id
@@ -25,8 +27,8 @@ public class ConversationChatBot {
     private EtatConversationChatBot statut;
 
     @ManyToOne
-    @JoinColumn(name = "membre_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_conversationchatbot_membre"))
-    private Membre membre;
+    @JoinColumn(name = "client_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_conversationchatbot_client"))
+    private Client client;
 
     @OneToMany(mappedBy = "conversationChatBot")
     private List<MessageChatBot> messageChatBot;

@@ -1,52 +1,60 @@
 package com.salam.backend.controller;
 
 
-import com.salam.backend.dto.ProduitDTO;
-import com.salam.backend.service.ProduitService;
+import com.salam.backend.model.Produit;
 import com.salam.backend.service.impl.ProduitServiceImpl;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PagedResourcesAssembler;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.MediaTypes;
+import org.springframework.hateoas.PagedModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Optional;
+import static org.springframework.web.servlet.function.RequestPredicates.contentType;
 
 @Slf4j
 @RestController
 @RequestMapping("/api/produits")
+//@CrossOrigin(origins = "http://localhost:4200")
 public class ProduitController {
 
     private final ProduitServiceImpl produitService;
 
-    public ProduitController(ProduitServiceImpl produitService) {
+    private final PagedResourcesAssembler<Produit> pagedResourcesAssembler;
+//    private static final Logger logger = LoggerFactory.getLogger(ProduitController.class);
+
+    public ProduitController(ProduitServiceImpl produitService, PagedResourcesAssembler<Produit> pagedResourcesAssembler) {
         this.produitService = produitService;
+        this.pagedResourcesAssembler = pagedResourcesAssembler;
     }
 
     @GetMapping
-    public ResponseEntity<List<ProduitDTO>> getProduits() {
-        return null;
+    public ResponseEntity<PagedModel<EntityModel<Produit>>> getProduits(Pageable pageable) {
+        log.debug("REST request to get a page of Produits");
+        Page<Produit> produits = produitService.findAll(pageable);
+        return ResponseEntity.ok().body(pagedResourcesAssembler.toModel(produits));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ProduitDTO> getProduitById(@PathVariable int id) {
+    public ResponseEntity<Produit> getProduitById(@PathVariable int id) {
         return produitService.findOne(id)
                 .map(existingProduct -> ResponseEntity.ok().body(existingProduct))
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public ProduitDTO createProduit(@RequestBody ProduitDTO produit) {
+    public ResponseEntity<Produit> createProduit(@RequestBody Produit produit) {
         log.debug("Rest to save produit: {}", produit);
-        LocalDateTime instant= LocalDateTime.now();
-        produit.setDateAjout(instant);
-        produitService.save(produit);
-        return produit;
+        System.out.println("termine");
+        produit = produitService.save(produit);
+        return ResponseEntity.ok().body(produit);
     }
 
     @PutMapping("/update")
-    public ProduitDTO updateProduit(@RequestBody ProduitDTO produit) {
+    public Produit updateProduit(@RequestBody Produit produit) {
         return null;
     }
 

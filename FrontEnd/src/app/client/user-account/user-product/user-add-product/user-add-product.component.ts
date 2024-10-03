@@ -1,5 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {ProduitService} from "../../../../service/produit.service";
+import {Produit} from "../../../../model/Produit.model";
+import {Categorie} from "../../../../model/Categorie.model";
+import {Image} from "../../../../model/Image.model";
 
 
 @Component({
@@ -11,41 +15,37 @@ export class UserAddProductComponent implements OnInit{
 
   productForm!: FormGroup
   selectedFiles: File[] = [];
+  fv!: any
+  dateAjout!: Date
+  productImage!: Image[]
 
-
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private produitService: ProduitService) {
   }
 
   ngOnInit(): void {
     this.productForm = this.formBuilder.group({
-      nom: [null, Validators.required],
+      libelle: [null, Validators.required],
       categorie: [null, Validators.required],
       prix: [null, Validators.required],
-      stock: [null, Validators.required],
+      quantite: [null, Validators.required],
       images: [null, Validators.required],
       remise: [null],
       description: [null, Validators.required],
-      statut: [null, Validators.required],
+      disponible: [null, Validators.required],
     })
   }
 
   createProduct(){
-    Swal.fire({
-      title: 'Etes-vous sûr?',
-      text: 'Voulez-vous vraiment créer cet reclamation?',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Oui, créer!',
-      cancelButtonText: 'Non'
-    }).then((result) => {
-      if (result.value) {
-        this.createReclamat();
-      } else if (result.dismiss === Swal.DismissReason.cancel) {
-        Swal.fire(
-          'Annulé',
-          'Création reclamation annulée',
-          'error'
-        )
+    // for (const imageUrl of this.productForm.value.images) {
+    //   this.productImage.push(imageUrl)
+    // }
+
+    this.produitService.create(this.productForm.value).subscribe({
+      next: response => {
+        console.log(response)
+      },
+      error: err => {
+        console.log(err)
       }
     })
   }
@@ -56,8 +56,11 @@ export class UserAddProductComponent implements OnInit{
   onFilesSelected(event: any): void {
     const files = event.target.files; // Here we use only the first file (single file)
     this.selectedFiles = Array.from(files).map((file: any) => file.name);
-    this.productForm.patchValue({ images: this.selectedFiles});
+    this.productForm.patchValue({ images: this.selectedFiles.map(image => ({id: null, url: image , produit_id: null}))});
+    // this.productForm.patchValue({ images: this.selectedFiles});
 
+
+    // this.selectedFiles = Array.from(files);
     // console.log('Fichiers sélectionnés:', this.selectedFiles);
   }
 

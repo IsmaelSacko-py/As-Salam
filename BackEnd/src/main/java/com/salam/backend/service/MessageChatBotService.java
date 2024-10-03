@@ -1,9 +1,9 @@
 package com.salam.backend.service;
 
-import com.salam.backend.dto.MessageChatBotDTO;
+import com.salam.backend.model.MessageChatBot;
 
 public interface MessageChatBotService {
-    int envoyerMessage(MessageChatBotDTO messageChatBotDTO);
-    int recevoirMessage(MessageChatBotDTO messageChatBotDTO);
-    void marquerCommeLu(MessageChatBotDTO messageChatBotDTO);
+    int envoyerMessage(MessageChatBot messageChatBot);
+    int recevoirMessage(MessageChatBot messageChatBot);
+    void marquerCommeLu(MessageChatBot messageChatBot);
 }

@@ -10,6 +10,6 @@ import lombok.EqualsAndHashCode;
 @Entity
 @DiscriminatorValue("vendeur")
 
-public class Vendeur extends Membre{
+public class Vendeur extends Client{
 
 }

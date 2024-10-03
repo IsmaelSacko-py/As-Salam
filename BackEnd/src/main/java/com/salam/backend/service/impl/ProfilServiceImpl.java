@@ -1,7 +1,5 @@
 package com.salam.backend.service.impl;
 
-import com.salam.backend.dto.ProfilDTO;
-import com.salam.backend.mapper.ProfilMapper;
 import com.salam.backend.model.Profil;
 import com.salam.backend.repository.ProfilRepository;
 import com.salam.backend.service.ProfilService;
@@ -19,37 +17,34 @@ import java.util.Optional;
 @Transactional
 public class ProfilServiceImpl implements ProfilService {
     private final ProfilRepository profilRepository;
-    private final ProfilMapper profilMapper;
 
-    public ProfilServiceImpl(ProfilRepository profilRepository, ProfilMapper profilMapper) {
+    public ProfilServiceImpl(ProfilRepository profilRepository) {
         this.profilRepository = profilRepository;
-        this.profilMapper = profilMapper;
     }
 
     @Override
-    public ProfilDTO save(ProfilDTO profilDTO) {
+    public Profil save(Profil profil) {
         return null;
     }
 
     @Override
-    public ProfilDTO update(ProfilDTO profilDTO) {
+    public Profil update(Profil profil) {
         return null;
     }
 
     @Override
-    public Optional<ProfilDTO> partialUpdate(ProfilDTO profilDTO) {
+    public Optional<Profil> partialUpdate(Profil profil) {
         return Optional.empty();
     }
 
     @Override
-    public Page<ProfilDTO> findAll(Pageable pageable) {
+    public Page<Profil> findAll(Pageable pageable) {
         return null;
     }
 
     @Override
-    public Optional<ProfilDTO> findOne(Integer id) {
-        return profilRepository.findById(id)
-                .map(profilMapper::toDto);
+    public Optional<Profil> findOne(Integer id) {
+        return profilRepository.findById(id);
 
     }
 

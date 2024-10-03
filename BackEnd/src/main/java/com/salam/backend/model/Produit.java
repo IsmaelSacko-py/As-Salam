@@ -1,11 +1,13 @@
 package com.salam.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
 import jakarta.validation.constraints.Size;
-import lombok.Data;
+import lombok.*;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -55,15 +57,21 @@ public class Produit {
 //    private List<Commande> commandes;
 
     @OneToMany(mappedBy = "produit")
+    @JsonIgnoreProperties(value = {"produit", "commande"}, allowSetters = true)
     private List<DetailCommande> detailsCommande;
 
     @OneToMany(mappedBy = "produit")
+    @JsonIgnoreProperties(value = {"produit", "panier"}, allowGetters = true)
     private List<DetailPanier> detailsPanier;
 
-    @OneToMany(mappedBy = "produit")
+//    @JsonIgnoreProperties(value = {"images"}, allowSetters = true)
+    @ToString.Exclude
+    @OneToMany(mappedBy = "produit", cascade = CascadeType.REMOVE)
+    @JsonIgnoreProperties(value = {"produit"}, allowGetters = true)
     private List<Image> images;
 
     @ManyToOne
     @JoinColumn(name = "categorie_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_produit_categorie"))
+    @JsonIgnoreProperties(value = {"produit"}, allowGetters = true)
     private Categorie categorie;
 }

@@ -32,6 +32,7 @@ public class Categorie {
 //    @Column(nullable = false)
 //    private String description;
 
+//    @JsonIgnoreProperties(value = {"images", "categorie", "sousCategorie"}, allowSetters = true)
     @OneToMany(mappedBy = "categorie")
     private List<Produit> produits;
 

@@ -17,13 +17,16 @@ import {UserTransactionComponent} from "./user-transaction/user-transaction.comp
 import {UserWishlistComponent} from "./user-wishlist/user-wishlist.component";
 import {ClientDashboardComponent} from "./user-dashboard/client-dashboard/client-dashboard.component";
 import {UserAddProductComponent} from "./user-product/user-add-product/user-add-product.component";
+import {UserAdressListComponent} from "./user-address/user-adress-list/user-adress-list.component";
+import {UserAdressAddComponent} from "./user-address/user-adress-add/user-adress-add.component";
 
 const routes: Routes = [
   {path: 'user-dashboard', component: ClientDashboardComponent},
   {path: 'vendor-dashboard', component: VendorDashboardComponent},
   {path: 'user-profile', component: UserProfileComponent},
   {path: 'user-message', component: UserMessageComponent},
-  {path: 'user-address', component: UserAddressComponent},
+  {path: 'user-address', component: UserAdressListComponent},
+  {path: 'user-address-add', component: UserAdressAddComponent},
   {path: 'user-notification', component: UserNotificationComponent},
   {path: 'user-order', component: UserOrderComponent},
   {path: 'user-payment-method', component: UserPaymentMethodComponent},

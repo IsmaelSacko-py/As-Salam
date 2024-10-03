@@ -1,13 +1,17 @@
 package com.salam.backend.service.impl;
 
-import com.salam.backend.dto.ProduitDTO;
-import com.salam.backend.mapper.UtilisateurMapper;
+import com.salam.backend.model.Vendeur;
 import com.salam.backend.repository.UtilisateurRepository;
+import com.salam.backend.repository.VendeurRepository;
 import com.salam.backend.service.VendeurService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 
-public class VendeurServiceImpl extends MembreServiceImpl implements VendeurService {
+@Slf4j
+@Service
+public class VendeurServiceImpl extends ClientServiceImpl<Vendeur> implements VendeurService {
 
-    public VendeurServiceImpl(UtilisateurRepository utilisateurRepository, UtilisateurMapper utilisateurMapper) {
-        super(utilisateurRepository, utilisateurMapper);
+    public VendeurServiceImpl(VendeurRepository vendeurRepository) {
+        super(vendeurRepository);
     }
 }

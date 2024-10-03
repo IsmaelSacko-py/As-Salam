@@ -1,7 +1,7 @@
 package com.salam.backend.service.impl;
 
-import com.salam.backend.dto.ConversationChatBotDTO;
 import com.salam.backend.dto.MessageChatBotDTO;
+import com.salam.backend.model.ConversationChatBot;
 import com.salam.backend.service.ConversationChatBotService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,32 +12,32 @@ public class ConversationChatBotServiceImpl implements ConversationChatBotServic
 
 
     @Override
-    public ConversationChatBotDTO escalader(ConversationChatBotDTO conversationChatBotDTO) {
+    public ConversationChatBot escalader(ConversationChatBot conversationChatBot) {
         return null;
     }
 
     @Override
-    public ConversationChatBotDTO save(ConversationChatBotDTO conversationChatBotDTO) {
+    public ConversationChatBot save(ConversationChatBot conversationChatBot) {
         return null;
     }
 
     @Override
-    public ConversationChatBotDTO update(ConversationChatBotDTO conversationChatBotDTO) {
+    public ConversationChatBot update(ConversationChatBot conversationChatBot) {
         return null;
     }
 
     @Override
-    public Optional<ConversationChatBotDTO> partialUpdate(ConversationChatBotDTO conversationChatBotDTO) {
+    public Optional<ConversationChatBot> partialUpdate(ConversationChatBot conversationChatBot) {
         return Optional.empty();
     }
 
     @Override
-    public Page<ConversationChatBotDTO> findAll(Pageable pageable) {
+    public Page<ConversationChatBot> findAll(Pageable pageable) {
         return null;
     }
 
     @Override
-    public Optional<ConversationChatBotDTO> findOne(Integer id) {
+    public Optional<ConversationChatBot> findOne(Integer id) {
         return Optional.empty();
     }
 

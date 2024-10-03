@@ -31,8 +31,8 @@ public class Commande {
     private double totalPrix;
 
     @ManyToOne
-    @JoinColumn(name = "membre_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_commande_membre"))
-    private Membre membre;
+    @JoinColumn(name = "client_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_commande_client"))
+    private Client client;
 
 //    @ManyToMany
 //    @JoinTable(

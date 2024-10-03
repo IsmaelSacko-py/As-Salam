@@ -1,0 +1,5 @@
+export enum TypeAdresse {
+  DOMICILE = 'DOMICILE',
+  LIVRAISON = 'LIVRAISON',
+  COMMERCIAL = 'COMMERCIAL'
+}

@@ -27,6 +27,8 @@ import {
 import { AddProductImageSectionComponent } from './add-product-image-section/add-product-image-section.component';
 import {SharedModule} from "../shared/shared.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { UserAdressListComponent } from './user-address/user-adress-list/user-adress-list.component';
+import { UserAdressAddComponent } from './user-address/user-adress-add/user-adress-add.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,9 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     UserAddressComponent,
     UserWishlistComponent,
     UserAccountSidebarItemComponent,
-    AddProductImageSectionComponent
+    AddProductImageSectionComponent,
+    UserAdressListComponent,
+    UserAdressAddComponent
   ],
   imports: [
     CommonModule,
