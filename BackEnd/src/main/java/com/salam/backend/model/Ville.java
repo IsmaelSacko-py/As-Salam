@@ -31,5 +31,6 @@ public class Ville {
     private Region region;
 
     @OneToMany(mappedBy = "ville")
+    @JsonIgnoreProperties({"ville"})
     private List<Adresse> adresses;
 }

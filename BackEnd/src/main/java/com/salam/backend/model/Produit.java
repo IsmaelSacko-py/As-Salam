@@ -53,24 +53,21 @@ public class Produit {
     @Column(nullable = false)
     private boolean bloque = true;
 
-//    @ManyToMany(mappedBy = "produits")
-//    private List<Commande> commandes;
-
     @OneToMany(mappedBy = "produit")
-    @JsonIgnoreProperties(value = {"produit"}, allowSetters = true)
+    @JsonIgnoreProperties(value = {"produit", "commande"}, allowSetters = true)
     private List<DetailCommande> detailsCommande;
 
     @OneToMany(mappedBy = "produit")
-    @ToString.Exclude
-    @JsonIgnoreProperties(value = {"produit"}, allowSetters = true)
+    @JsonIgnoreProperties(value = {"produit", "panier"}, allowSetters = true)
     private List<DetailPanier> detailsPanier;
 
-//    @JsonIgnoreProperties(value = {"images"}, allowSetters = true)
-    @ToString.Exclude
+//    @ToString.Exclude
     @OneToMany(mappedBy = "produit", cascade = CascadeType.REMOVE)
+    @JsonIgnoreProperties(value = {"produit"}, allowSetters = true)
     private List<Image> images;
 
     @ManyToOne
     @JoinColumn(name = "categorie_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_produit_categorie"))
+//    @JsonIgnoreProperties({"categorie"})
     private Categorie categorie;
 }

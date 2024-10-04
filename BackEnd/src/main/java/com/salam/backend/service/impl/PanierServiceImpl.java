@@ -49,11 +49,13 @@ public class PanierServiceImpl implements PanierService {
 
     @Override
     public Page<Panier> findAll(Pageable pageable) {
-        return null;
+        log.debug("Request to get all Paniers");
+        return panierRepository.findAll(pageable);
     }
 
     @Override
     public Optional<Panier> findOne(Integer id) {
+        log.debug("Request to get Panier : {}", id);
         return panierRepository.findById(id);
     }
 

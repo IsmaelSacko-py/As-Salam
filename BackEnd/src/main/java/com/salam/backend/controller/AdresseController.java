@@ -11,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.hateoas.PagedModel;
+import org.springframework.data.web.PagedResourcesAssembler;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,16 +30,19 @@ import java.util.Optional;
 public class AdresseController {
 
     private final AdresseServiceImpl adresseService;
+    private final PagedResourcesAssembler<Adresse> pagedResourcesAssembler;
 //    private static final Logger logger = LoggerFactory.getLogger(AdresseController.class);
 
-    public AdresseController(AdresseServiceImpl adresseService) {
+    public AdresseController(AdresseServiceImpl adresseService, PagedResourcesAssembler<Adresse> pagedResourcesAssembler) {
         this.adresseService = adresseService;
+        this.pagedResourcesAssembler = pagedResourcesAssembler;
     }
 
     @GetMapping
-    public Page<Adresse> getAdresses(Pageable pageable) {
+    public ResponseEntity<PagedModel<EntityModel<Adresse>>> getAdresses(Pageable pageable) {
         log.debug("REST request to get a page of Adresses");
-        return adresseService.findAll(pageable);
+        Page<Adresse> adresses = adresseService.findAll(pageable);
+        return ResponseEntity.ok(pagedResourcesAssembler.toModel(adresses));
     }
 
     @GetMapping("/{id}")

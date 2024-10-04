@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Data
 @Entity
 @Table(name = "images")
-@JsonIgnoreProperties({"produit"})
+//@JsonIgnoreProperties(value = {"produit"}, allowSetters = true)
 public class Image {
 
     @Id
@@ -21,7 +21,6 @@ public class Image {
     @Column(nullable = false, unique = true, length = 100)
     private String url;
 
-//    @JsonIgnoreProperties(value = {"images", "categorie"}, allowSetters = true)
     @ManyToOne
     @JoinColumn(name = "produit_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_image_prduit"))
     private Produit produit;

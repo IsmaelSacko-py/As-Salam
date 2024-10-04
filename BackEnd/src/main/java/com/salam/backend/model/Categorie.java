@@ -14,7 +14,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "categories")
-@JsonIgnoreProperties({"parentCategorie", "produits"})
+@JsonIgnoreProperties(value = {"parentCategorie"}, allowSetters = true)
 public class Categorie {
 
     @Id
@@ -34,9 +34,11 @@ public class Categorie {
 
 //    @JsonIgnoreProperties(value = {"images", "categorie", "sousCategorie"}, allowSetters = true)
     @OneToMany(mappedBy = "categorie")
+    @JsonIgnoreProperties(value = {"categorie"}, allowSetters = true)
     private List<Produit> produits;
 
     @OneToMany(mappedBy = "parentCategorie")
+    @JsonIgnoreProperties(value = {"parentCategorie"}, allowSetters = true)
     private List<Categorie> sousCategories;
 
     @ManyToOne

@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Data
 @Entity
 @Table(name = "details_panier")
-@JsonIgnoreProperties(value = {"panier"})
+//@JsonIgnoreProperties(value = {"produit", "panier"})
 public class DetailPanier {
 
     @Id
@@ -26,12 +26,10 @@ public class DetailPanier {
 
     @ManyToOne
     @JoinColumn(name = "panier_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_detailspanier_panier"))
-//    @ToString.Exclude
     private Panier panier;
 
     @ManyToOne
     @JoinColumn(name = "produit_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_detailspanier_produit"))
-//    @JsonIgnoreProperties(value = {"produit"}, allowSetters = true)
     private Produit produit;
 
 

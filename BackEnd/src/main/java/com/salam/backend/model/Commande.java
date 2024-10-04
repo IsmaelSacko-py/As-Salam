@@ -1,5 +1,6 @@
 package com.salam.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.salam.backend.enumeration.EtatCommande;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -33,14 +34,6 @@ public class Commande {
     @ManyToOne
     @JoinColumn(name = "client_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_commande_client"))
     private Client client;
-
-//    @ManyToMany
-//    @JoinTable(
-//            name = "detailsCommande",
-//            joinColumns = @JoinColumn(name = "produit_id"),
-//            inverseJoinColumns = @JoinColumn(name = "commande_id")
-//    )
-//    private List<Produit> produits;
 
     @OneToMany(mappedBy = "commande")
     private List<DetailCommande> detailsCommande;

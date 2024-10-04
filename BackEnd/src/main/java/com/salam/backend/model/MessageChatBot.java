@@ -13,7 +13,6 @@ import java.time.LocalDateTime;
 @Data
 @Entity
 @Table(name = "messages_chatbot")
-@JsonIgnoreProperties({"conversationChatBot"})
 public class MessageChatBot {
 
     @Id

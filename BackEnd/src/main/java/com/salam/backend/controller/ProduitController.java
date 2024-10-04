@@ -35,11 +35,12 @@ public class ProduitController {
     public ResponseEntity<PagedModel<EntityModel<Produit>>> getProduits(Pageable pageable) {
         log.debug("REST request to get a page of Produits");
         Page<Produit> produits = produitService.findAll(pageable);
-        return ResponseEntity.ok().body(pagedResourcesAssembler.toModel(produits));
+        return ResponseEntity.ok(pagedResourcesAssembler.toModel(produits));
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Produit> getProduitById(@PathVariable int id) {
+        log.debug("REST request to get Produit : {}", id);
         return produitService.findOne(id)
                 .map(existingProduct -> ResponseEntity.ok().body(existingProduct))
                 .orElseGet(() -> ResponseEntity.notFound().build());

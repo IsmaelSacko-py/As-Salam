@@ -12,7 +12,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "paniers")
-@JsonIgnoreProperties({"client"})
+@JsonIgnoreProperties(value = {"client"}, allowSetters = true)
 public class Panier {
 
     @Id
@@ -24,10 +24,8 @@ public class Panier {
 
     @OneToMany(mappedBy = "panier")
     @JsonIgnoreProperties(value = {"panier"}, allowSetters = true)
-    @ToString.Exclude
     private List<DetailPanier> detailsPanier;
 
     @OneToOne(mappedBy = "panier")
-    @ToString.Exclude
     private Client client;
 }

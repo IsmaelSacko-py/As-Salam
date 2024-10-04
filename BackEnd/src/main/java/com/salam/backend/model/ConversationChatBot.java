@@ -13,7 +13,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "conversations_chatbot")
-@JsonIgnoreProperties({"client", "chatBot"})
+//@JsonIgnoreProperties({"client", "chatBot"})
 public class ConversationChatBot {
 
     @Id
@@ -31,6 +31,7 @@ public class ConversationChatBot {
     private Client client;
 
     @OneToMany(mappedBy = "conversationChatBot")
+    @JsonIgnoreProperties(value = {"conversationChatBot"}, allowSetters = true)
     private List<MessageChatBot> messageChatBot;
 
     @ManyToOne

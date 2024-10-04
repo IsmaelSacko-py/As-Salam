@@ -1,11 +1,15 @@
 package com.salam.backend.controller;
 
 
+import com.salam.backend.model.Client;
 import com.salam.backend.model.Region;
 import com.salam.backend.service.impl.RegionServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PagedResourcesAssembler;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.PagedModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,16 +20,18 @@ import org.springframework.web.bind.annotation.*;
 public class RegionController {
 
     private final RegionServiceImpl regionService;
+    private final PagedResourcesAssembler<Region> pagedResourcesAssembler;
 //    private static final Logger logger = LoggerFactory.getLogger(RegionController.class);
 
-    public RegionController(RegionServiceImpl regionService) {
+    public RegionController(RegionServiceImpl regionService, PagedResourcesAssembler<Region> pagedResourcesAssembler) {
         this.regionService = regionService;
+        this.pagedResourcesAssembler = pagedResourcesAssembler;
     }
 
     @GetMapping
-    public Page<Region> getRegions(Pageable pageable) {
+    public ResponseEntity<PagedModel<EntityModel<Region>>> getRegions(Pageable pageable) {
         log.debug("REST request to get a page of Regions");
-        return regionService.findAll(pageable);
+        return ResponseEntity.ok(pagedResourcesAssembler.toModel(regionService.findAll(pageable)));
     }
 
     @GetMapping("/{id}")

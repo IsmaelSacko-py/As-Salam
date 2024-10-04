@@ -27,14 +27,13 @@ import java.util.Optional;
 @RequestMapping("/api/utilisateurs")
 public class UtilisateurController {
     private final UtilisateurServiceImpl<Utilisateur> utilisateurService;
-    private final ClientServiceImpl<Client> clientService;
+//    private final ClientServiceImpl<Client> clientService;
     private final VendeurServiceImpl vendeurService;
     private final ProfilServiceImpl profilService;
     private final PagedResourcesAssembler<Utilisateur> pagedResourcesAssembler;
 
-    public UtilisateurController(UtilisateurServiceImpl<Utilisateur> utilisateurService, ClientServiceImpl<Client> clientService, VendeurServiceImpl vendeurService, ProfilServiceImpl profilService, PagedResourcesAssembler<Utilisateur> pagedResourcesAssembler) {
+    public UtilisateurController(UtilisateurServiceImpl<Utilisateur> utilisateurService, VendeurServiceImpl vendeurService, ProfilServiceImpl profilService, PagedResourcesAssembler<Utilisateur> pagedResourcesAssembler) {
         this.utilisateurService = utilisateurService;
-        this.clientService = clientService;
         this.vendeurService = vendeurService;
         this.profilService = profilService;
         this.pagedResourcesAssembler = pagedResourcesAssembler;
@@ -58,28 +57,6 @@ public class UtilisateurController {
 
     }
 
-    @GetMapping("/client/{id}")
-    public ResponseEntity<Client> getClient(@PathVariable(value = "id") int id) {
-        Optional<Client> client = clientService.findOne(id);
-        return client.map( user ->
-            ResponseEntity.ok().body(user)
-        ).orElseGet( ()  ->
-            ResponseEntity.notFound().build()
-        );
-
-    }
-
-    @PostMapping("/client")
-    public ResponseEntity<Client> createClient(@RequestBody Client client) {
-        log.info("Adding new client");
-        Optional<Profil> profilDTO = profilService.findOne(2);
-        return profilDTO.map(existingProfil -> {
-            client.setProfil(existingProfil);
-            Client user = clientService.save(client);
-            return ResponseEntity.ok().body(user);
-        }).orElseGet(() -> ResponseEntity.badRequest().build());
-
-    }
 
     @PostMapping("/vendeur")
     public ResponseEntity<Vendeur> createVendeur(@RequestBody Vendeur vendeur) {
