@@ -11,6 +11,11 @@ import com.salam.backend.service.impl.UtilisateurServiceImpl;
 import com.salam.backend.service.impl.VendeurServiceImpl;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PagedResourcesAssembler;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.PagedModel;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,12 +30,21 @@ public class UtilisateurController {
     private final ClientServiceImpl<Client> clientService;
     private final VendeurServiceImpl vendeurService;
     private final ProfilServiceImpl profilService;
+    private final PagedResourcesAssembler<Utilisateur> pagedResourcesAssembler;
 
-    public UtilisateurController(UtilisateurServiceImpl<Utilisateur> utilisateurService, ClientServiceImpl<Client> clientService, VendeurServiceImpl vendeurService, ProfilServiceImpl profilService) {
+    public UtilisateurController(UtilisateurServiceImpl<Utilisateur> utilisateurService, ClientServiceImpl<Client> clientService, VendeurServiceImpl vendeurService, ProfilServiceImpl profilService, PagedResourcesAssembler<Utilisateur> pagedResourcesAssembler) {
         this.utilisateurService = utilisateurService;
         this.clientService = clientService;
         this.vendeurService = vendeurService;
         this.profilService = profilService;
+        this.pagedResourcesAssembler = pagedResourcesAssembler;
+    }
+
+    @GetMapping
+    public ResponseEntity<PagedModel<EntityModel<Utilisateur>>> findAll(Pageable pageable) {
+        Page<Utilisateur> utilisateurs = utilisateurService.findAll(pageable);
+        return ResponseEntity.ok(pagedResourcesAssembler.toModel(utilisateurs));
+
     }
 
     @GetMapping("/{id}")

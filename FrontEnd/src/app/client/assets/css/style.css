@@ -2632,6 +2632,7 @@ span::before {
 .shop-cart-qty {
   width: 110px;
 }
+
 .shop-cart-qty button {
   width: 30px;
   height: 30px;
@@ -3508,10 +3509,10 @@ span::before {
   border: none;
   background: var(--theme-color2);
   color: var(--color-white);
-  border-radius: 50%;
+  border-radius: 10px;
   text-align: center;
   font-size: 18px;
-  width: 42px;
+  width: 40%;
   height: 42px;
   transition: var(--transition);
   box-shadow: var(--box-shadow);

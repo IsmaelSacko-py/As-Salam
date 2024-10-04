@@ -1,0 +1,35 @@
+.shop-cart-qty button {
+  width: 35px;
+  height: 35px;
+  line-height: 34px;
+  transition: var(--transition);
+}
+.shop-cart-qty button:hover {
+  background: var(--theme-color2);
+  color: var(--color-white);
+}
+
+.shop-cart-qty {
+  width: 80%;
+  justify-self: center;
+}
+.shop-cart-qty button {
+  width: 30px;
+  height: 30px;
+  line-height: 28px;
+  color: var(--theme-color);
+  text-align: center;
+  border: 0;
+  border-radius: 50px;
+  background: var(--theme-bg-light);
+}
+.shop-cart-qty button i {
+  font-weight: 500;
+}
+.shop-cart-qty input {
+  width: 30px;
+  border: none;
+  background: 0 0;
+  color: var(--theme-color);
+  text-align: center;
+}

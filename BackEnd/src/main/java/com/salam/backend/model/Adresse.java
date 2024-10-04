@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
+import lombok.ToString;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -36,10 +37,12 @@ public class Adresse {
 
     @ManyToOne
     @JoinColumn(name = "client_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_adresse_client"))
+    @ToString.Exclude
     private Client client;
 
     @ManyToOne
     @JoinColumn(name = "ville_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_adresse_ville"))
+    @ToString.Exclude
     private Ville ville;
 
 }

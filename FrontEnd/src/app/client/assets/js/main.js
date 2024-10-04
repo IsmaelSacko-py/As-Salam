@@ -235,6 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
           .value++,
         c = $(this).closest(".shop-cart-qty").children(".minus-btn");
       i > 0 && c.removeAttr("disabled");
+      alert('hello')
     }),
       $(".minus-btn").on("click", function () {
         2 ==

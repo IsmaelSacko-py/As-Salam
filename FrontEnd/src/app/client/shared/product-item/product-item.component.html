@@ -37,15 +37,36 @@
     <div class="product-price">
       <span>{{produit.prix | number:'1.0-0'}} FCFA</span>
     </div>
-    <button
-      (click)="addToCart()"
-      type="button"
-      class="product-cart-btn"
-      data-bs-placement="left"
-      data-tooltip="tooltip"
-      title="Add To Cart"
-    >
-      <i class="far fa-shopping-bag"></i>
+
+
+  </div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <button
+        (click)="addToCart(produit)"
+        type="button"
+        class="product-cart-btn"
+        data-bs-placement="left"
+        data-tooltip="tooltip"
+        title="Add To Cart"
+        [hidden]="produit.detailsPanier.length > 0"
+      >
+        <i class="far fa-shopping-bag"></i>
+      </button>
+    </div>
+  </div>
+  <div class="shop-cart-qty" *ngIf="produit.detailsPanier.length > 0">
+    <button (click)="decrement()" class="minus-btn">
+      <i class="fal fa-minus"></i>
+    </button>
+    <input
+      class="quantity"
+      type="text"
+      [value]="produit.detailsPanier[0].quantite"
+      disabled
+    />
+    <button (click)="increment()" class="plus-btn">
+      <i class="fal fa-plus"></i>
     </button>
   </div>
 </div>
