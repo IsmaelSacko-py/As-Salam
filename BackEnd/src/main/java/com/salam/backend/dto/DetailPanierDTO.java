@@ -14,6 +14,5 @@ public class DetailPanierDTO implements Serializable {
     private int quantite;
     private double montant;
 
-    private ProduitDTO produit;
-    private PanierDTO panier;
+
 }

@@ -1,5 +1,7 @@
 package com.salam.backend.service.impl;
 
+import com.salam.backend.dto.CategorieDTO;
+import com.salam.backend.mapper.CategorieMapper;
 import com.salam.backend.model.Categorie;
 import com.salam.backend.repository.CategorieRepository;
 import com.salam.backend.service.CategorieService;
@@ -15,35 +17,38 @@ import java.util.Optional;
 @Service
 public class CategorieServiceImpl implements CategorieService {
     private final CategorieRepository categorieRepository;
+    private final CategorieMapper categorieMapper;
 
-    public CategorieServiceImpl(CategorieRepository categorieRepository) {
+    public CategorieServiceImpl(CategorieRepository categorieRepository, CategorieMapper categorieMapper) {
         this.categorieRepository = categorieRepository;
+        this.categorieMapper = categorieMapper;
     }
 
     @Override
-    public Categorie save(Categorie categorie) {
+    public CategorieDTO save(CategorieDTO categorie) {
         return null;
     }
 
     @Override
-    public Categorie update(Categorie categorie) {
+    public CategorieDTO update(CategorieDTO categorie) {
         return null;
     }
 
     @Override
-    public Optional<Categorie> partialUpdate(Categorie categorie) {
+    public Optional<CategorieDTO> partialUpdate(CategorieDTO categorie) {
         return Optional.empty();
     }
 
     @Override
-    public Page<Categorie> findAll(Pageable pageable) {
+    public Page<CategorieDTO> findAll(Pageable pageable) {
         log.debug("Request to get all Categories");
-        return categorieRepository.findAll(pageable);
+        return categorieRepository.findAll(pageable).map(categorieMapper::toDto);
     }
 
     @Override
-    public Optional<Categorie> findOne(Integer id) {
-        return Optional.empty();
+    public Optional<CategorieDTO> findOne(Integer id) {
+        log.debug("Request to get Categorie : {}", id);
+        return categorieRepository.findById(id).map(categorieMapper::toDto);
     }
 
     @Override
@@ -51,27 +56,27 @@ public class CategorieServiceImpl implements CategorieService {
 
     }
 //    @Override
-//    public Categorie save(Categorie categorieDTO) {
+//    public CategorieDTO save(CategorieDTO categorieDTO) {
 //        return null;
 //    }
 //
 //    @Override
-//    public Categorie update(Categorie categorieDTO) {
+//    public CategorieDTO update(CategorieDTO categorieDTO) {
 //        return null;
 //    }
 //
 //    @Override
-//    public Optional<Categorie> partialUpdate(Categorie categorieDTO) {
+//    public Optional<CategorieDTO> partialUpdate(CategorieDTO categorieDTO) {
 //        return Optional.empty();
 //    }
 //
 //    @Override
-//    public Page<Categorie> findAll(Pageable pageable) {
+//    public Page<CategorieDTO> findAll(Pageable pageable) {
 //        return null;
 //    }
 //
 //    @Override
-//    public Optional<Categorie> findOne(Integer id) {
+//    public Optional<CategorieDTO> findOne(Integer id) {
 //        return Optional.empty();
 //    }
 //

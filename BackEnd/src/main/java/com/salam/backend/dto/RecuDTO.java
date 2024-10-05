@@ -16,5 +16,4 @@ public class RecuDTO implements Serializable {
     private LocalDateTime date;
     private double montant;
 
-    private PaiementDTO paiement;
 }

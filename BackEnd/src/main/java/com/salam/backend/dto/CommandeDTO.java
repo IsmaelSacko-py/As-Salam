@@ -19,7 +19,6 @@ public class CommandeDTO implements Serializable {
     private EtatCommande statut;
     private double totalPrix;
 
-    private MembreDTO membre;
     private PaiementDTO paiement;
-    private List<DetailCommandeDTO> details;
+    private List<DetailCommandeDTO> detailsCommande;
 }

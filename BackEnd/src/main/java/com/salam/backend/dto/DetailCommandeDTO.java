@@ -14,6 +14,4 @@ public class DetailCommandeDTO implements Serializable {
     private int quantite;
     private double montant;
 
-    private ProduitDTO produit;
-    private CommandeDTO commande;
 }

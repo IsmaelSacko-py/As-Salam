@@ -16,7 +16,5 @@ public class ConversationChatBotDTO implements Serializable {
     private String numero;
     private EtatConversationChatBot statut;
 
-    private MembreDTO membre;
-    private ChatBotDTO chatBot;
-    private List<MessageChatBotDTO> messages;
+    private List<MessageChatBotDTO> messageChatBot;
 }

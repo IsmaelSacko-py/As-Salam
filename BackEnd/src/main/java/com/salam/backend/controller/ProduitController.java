@@ -1,6 +1,7 @@
 package com.salam.backend.controller;
 
 
+import com.salam.backend.dto.ProduitDTO;
 import com.salam.backend.model.Produit;
 import com.salam.backend.service.impl.ProduitServiceImpl;
 import lombok.extern.slf4j.Slf4j;
@@ -23,23 +24,23 @@ public class ProduitController {
 
     private final ProduitServiceImpl produitService;
 
-    private final PagedResourcesAssembler<Produit> pagedResourcesAssembler;
+    private final PagedResourcesAssembler<ProduitDTO> pagedResourcesAssembler;
 //    private static final Logger logger = LoggerFactory.getLogger(ProduitController.class);
 
-    public ProduitController(ProduitServiceImpl produitService, PagedResourcesAssembler<Produit> pagedResourcesAssembler) {
+    public ProduitController(ProduitServiceImpl produitService, PagedResourcesAssembler<ProduitDTO> pagedResourcesAssembler) {
         this.produitService = produitService;
         this.pagedResourcesAssembler = pagedResourcesAssembler;
     }
 
     @GetMapping
-    public ResponseEntity<PagedModel<EntityModel<Produit>>> getProduits(Pageable pageable) {
+    public ResponseEntity<PagedModel<EntityModel<ProduitDTO>>> getProduits(Pageable pageable) {
         log.debug("REST request to get a page of Produits");
-        Page<Produit> produits = produitService.findAll(pageable);
+        Page<ProduitDTO> produits = produitService.findAll(pageable);
         return ResponseEntity.ok(pagedResourcesAssembler.toModel(produits));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Produit> getProduitById(@PathVariable int id) {
+    public ResponseEntity<ProduitDTO> getProduitById(@PathVariable int id) {
         log.debug("REST request to get Produit : {}", id);
         return produitService.findOne(id)
                 .map(existingProduct -> ResponseEntity.ok().body(existingProduct))
@@ -47,7 +48,7 @@ public class ProduitController {
     }
 
     @PostMapping
-    public ResponseEntity<Produit> createProduit(@RequestBody Produit produit) {
+    public ResponseEntity<ProduitDTO> createProduit(@RequestBody ProduitDTO produit) {
         log.debug("Rest to save produit: {}", produit);
         System.out.println("termine");
         produit = produitService.save(produit);
@@ -55,7 +56,7 @@ public class ProduitController {
     }
 
     @PutMapping("/update")
-    public Produit updateProduit(@RequestBody Produit produit) {
+    public ProduitDTO updateProduit(@RequestBody ProduitDTO produit) {
         return null;
     }
 

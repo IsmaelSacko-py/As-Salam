@@ -1,5 +1,8 @@
 package com.salam.backend.service.impl;
 
+import com.salam.backend.dto.ProduitDTO;
+import com.salam.backend.mapper.ImageMapper;
+import com.salam.backend.mapper.ProduitMapper;
 import com.salam.backend.model.Image;
 import com.salam.backend.model.Produit;
 import com.salam.backend.repository.ImageRepository;
@@ -29,19 +32,25 @@ public class ProduitServiceImpl implements ProduitService {
 
     private final ProduitRepository produitRepository;
     private final ImageServiceImpl imageService;
+    private final ProduitMapper produitMapper;
+    private final ImageMapper imageMapper;
 
     @Value("${file_upload.upload_dir}")
     private String UPLOAD_DIR;
 
-    public ProduitServiceImpl(ProduitRepository produitRepository, ImageServiceImpl imageService) {
+    public ProduitServiceImpl(ProduitRepository produitRepository, ImageServiceImpl imageService, ProduitMapper produitMapper, ImageMapper imageMapper) {
         this.produitRepository = produitRepository;
         this.imageService = imageService;
+        this.produitMapper = produitMapper;
+        this.imageMapper = imageMapper;
     }
 
     @Override
-    public Produit save(Produit produit) {
-        log.debug("Request to save Produit : {}", produit);
+    public ProduitDTO save(ProduitDTO produitDTO) {
+        log.debug("Request to save Produit : {}", produitDTO);
         String numProduit = UUID.randomUUID().toString();
+
+        Produit produit = produitMapper.toEntity(produitDTO);
 
         LocalDateTime instant= LocalDateTime.now();
         produit.setDateAjout(instant);
@@ -52,6 +61,7 @@ public class ProduitServiceImpl implements ProduitService {
         try {
             // Enregistrement des images du produit
             for (Image image : produit.getImages()) {
+
                 log.debug("Saving image : {}", image);
 
                 image.setProduit(produit);
@@ -62,28 +72,28 @@ public class ProduitServiceImpl implements ProduitService {
         }
 
 //        Produit produit = produitMapper.toEntity(produit);
-        return produit;
+        return produitMapper.toDto(produit);
     }
 
     @Override
-    public Produit update(Produit produit) {
+    public ProduitDTO update(ProduitDTO produit) {
         return null;
     }
 
     @Override
-    public Optional<Produit> partialUpdate(Produit produit) {
+    public Optional<ProduitDTO> partialUpdate(ProduitDTO produit) {
         return Optional.empty();
     }
 
     @Override
-    public Page<Produit> findAll(Pageable pageable) {
-        return produitRepository.findAll(pageable);
+    public Page<ProduitDTO> findAll(Pageable pageable) {
+        return produitRepository.findAll(pageable).map(produitMapper::toDto);
     }
 
     @Override
-    public Optional<Produit> findOne(Integer id) {
+    public Optional<ProduitDTO> findOne(Integer id) {
         log.debug("Request to get Produit : {}", id);
-        return produitRepository.findById(id);
+        return produitRepository.findById(id).map(produitMapper::toDto);
     }
 
     @Override

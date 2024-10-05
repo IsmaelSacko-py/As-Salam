@@ -13,6 +13,4 @@ public class ProfilDTO implements Serializable {
 
     private int id;
     private String nom;
-
-    private List<UtilisateurDTO> utilisateurs;
 }

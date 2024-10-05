@@ -18,5 +18,4 @@ public class PaiementDTO implements Serializable {
     private boolean etat;
 
     private RecuDTO recu;
-    private CommandeDTO commande;
 }

@@ -14,5 +14,5 @@ public class ImageDTO implements Serializable {
     private int id;
     private String url;
 
-    private ProduitDTO produit;
+//    private ProduitDTO produit;
 }

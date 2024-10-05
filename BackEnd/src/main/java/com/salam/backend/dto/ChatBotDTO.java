@@ -15,5 +15,5 @@ public class ChatBotDTO implements Serializable {
     private String nom;
     private String langue;
 
-    private List<ConversationChatBotDTO> conversations;
+    private List<ConversationChatBotDTO> conversationsChatBot;
 }

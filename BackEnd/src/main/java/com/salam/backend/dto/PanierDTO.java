@@ -15,5 +15,4 @@ public class PanierDTO implements Serializable {
     private double totalPrix;
 
     private List<DetailPanierDTO> detailsPanier;
-    private MembreDTO membre;
 }

@@ -1,7 +1,6 @@
 package com.salam.backend.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.salam.backend.dto.MembreDTO;
 import com.salam.backend.enumeration.TypeAdresse;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;

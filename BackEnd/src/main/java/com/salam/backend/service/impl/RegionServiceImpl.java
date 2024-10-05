@@ -1,5 +1,7 @@
 package com.salam.backend.service.impl;
 
+import com.salam.backend.dto.RegionDTO;
+import com.salam.backend.mapper.RegionMapper;
 import com.salam.backend.model.Region;
 import com.salam.backend.repository.RegionRepository;
 import com.salam.backend.service.RegionService;
@@ -17,35 +19,41 @@ import java.util.Optional;
 @Transactional
 public class RegionServiceImpl implements RegionService {
     private final RegionRepository regionRepository;
+    private final RegionMapper regionMapper;
 
-    public RegionServiceImpl(RegionRepository regionRepository) {
+    public RegionServiceImpl(RegionRepository regionRepository, RegionMapper regionMapper) {
         this.regionRepository = regionRepository;
+        this.regionMapper = regionMapper;
     }
 
     @Override
-    public Region save(Region region) {
-        log.debug("Request to save Region : {}", region);
-        return regionRepository.save(region);
+    public RegionDTO save(RegionDTO regionDTO) {
+        log.debug("Request to save Region : {}", regionDTO);
+        Region region = regionMapper.toEntity(regionDTO);
+        region = regionRepository.save(region);
+        return regionMapper.toDto(region);
     }
 
     @Override
-    public Region update(Region region) {
+    public RegionDTO update(RegionDTO region) {
         return null;
     }
 
     @Override
-    public Optional<Region> partialUpdate(Region region) {
+    public Optional<RegionDTO> partialUpdate(RegionDTO region) {
         return Optional.empty();
     }
 
     @Override
-    public Page<Region> findAll(Pageable pageable) {
-        return regionRepository.findAll(pageable);
+    public Page<RegionDTO> findAll(Pageable pageable) {
+        log.debug("Request to get all Regions");
+        return regionRepository.findAll(pageable).map(regionMapper::toDto);
     }
 
     @Override
-    public Optional<Region> findOne(Integer id) {
-        return Optional.empty();
+    public Optional<RegionDTO> findOne(Integer id) {
+        log.debug("Request to get Region : {}", id);
+        return regionRepository.findById(id).map(regionMapper::toDto);
     }
 
     @Override

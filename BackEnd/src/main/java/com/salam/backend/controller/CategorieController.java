@@ -1,6 +1,7 @@
 package com.salam.backend.controller;
 
 
+import com.salam.backend.dto.CategorieDTO;
 import com.salam.backend.model.Categorie;
 import com.salam.backend.service.impl.CategorieServiceImpl;
 import lombok.extern.slf4j.Slf4j;
@@ -19,30 +20,30 @@ import org.springframework.web.bind.annotation.*;
 public class CategorieController {
 
     private final CategorieServiceImpl categorieService;
-    private final PagedResourcesAssembler<Categorie> pagedResourcesAssembler;
+    private final PagedResourcesAssembler<CategorieDTO> pagedResourcesAssembler;
 //    private static final Logger logger = LoggerFactory.getLogger(CategorieController.class);
 
-    public CategorieController(CategorieServiceImpl categorieService, PagedResourcesAssembler<Categorie> pagedResourcesAssembler) {
+    public CategorieController(CategorieServiceImpl categorieService, PagedResourcesAssembler<CategorieDTO> pagedResourcesAssembler) {
         this.categorieService = categorieService;
         this.pagedResourcesAssembler = pagedResourcesAssembler;
     }
 
     @GetMapping
-    public ResponseEntity<PagedModel<EntityModel<Categorie>>> getCategories(Pageable pageable) {
+    public ResponseEntity<PagedModel<EntityModel<CategorieDTO>>> getCategories(Pageable pageable) {
         log.debug("REST request to get a page of Categories");
-        Page<Categorie> categories = categorieService.findAll(pageable);
+        Page<CategorieDTO> categories = categorieService.findAll(pageable);
         return ResponseEntity.ok(pagedResourcesAssembler.toModel(categories));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Categorie> getCategorieById(@PathVariable int id) {
+    public ResponseEntity<CategorieDTO> getCategorieById(@PathVariable int id) {
         return categorieService.findOne(id)
                 .map(existingProduct -> ResponseEntity.ok().body(existingProduct))
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public ResponseEntity<Categorie> createCategorie(@RequestBody Categorie categorie) {
+    public ResponseEntity<CategorieDTO> createCategorie(@RequestBody CategorieDTO categorie) {
         log.debug("Rest to save categorie: {}", categorie);
         System.out.println("termine");
         categorie = categorieService.save(categorie);
@@ -50,7 +51,7 @@ public class CategorieController {
     }
 
     @PutMapping("/update")
-    public Categorie updateCategorie(@RequestBody Categorie categorie) {
+    public Categorie updateCategorie(@RequestBody CategorieDTO categorie) {
         return null;
     }
 

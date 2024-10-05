@@ -1,5 +1,11 @@
 package com.salam.backend.service.impl;
 
+import com.salam.backend.dto.AdresseDTO;
+import com.salam.backend.dto.ClientDTO;
+import com.salam.backend.dto.VilleDTO;
+import com.salam.backend.mapper.AdresseMapper;
+import com.salam.backend.mapper.ClientMapper;
+import com.salam.backend.mapper.VilleMapper;
 import com.salam.backend.model.Adresse;
 import com.salam.backend.model.Client;
 import com.salam.backend.model.Utilisateur;
@@ -25,16 +31,23 @@ public class AdresseServiceImpl implements AdresseService {
 //    private final UtilisateurServiceImpl utilisateurServiceImpl;
     private final VilleServiceImpl villeServiceImpl;
     private final ClientServiceImpl<Client> clientServiceImpl;
+    private final AdresseMapper adresseMapper;
+    private final VilleMapper villeMapper;
+    private final ClientMapper clientMapper;
 
-    public AdresseServiceImpl(AdresseRepository adresseRepository, VilleServiceImpl villeServiceImpl, ClientServiceImpl<Client> clientServiceImpl) {
+    public AdresseServiceImpl(AdresseRepository adresseRepository, VilleServiceImpl villeServiceImpl, ClientServiceImpl<Client> clientServiceImpl, AdresseMapper adresseMapper, VilleMapper villeMapper, ClientMapper clientMapper) {
         this.adresseRepository = adresseRepository;
         this.villeServiceImpl = villeServiceImpl;
         this.clientServiceImpl = clientServiceImpl;
+        this.adresseMapper = adresseMapper;
+        this.villeMapper = villeMapper;
+        this.clientMapper = clientMapper;
     }
 
     @Override
-    public Adresse save(Adresse adresse) {
-        log.debug("Request to save Adresse : {}", adresse);
+    public AdresseDTO save(AdresseDTO adresseDTO) {
+        log.debug("Request to save Adresse : {}", adresseDTO);
+        Adresse adresse = adresseMapper.toEntity(adresseDTO);
 
         String numAdresse = UUID.randomUUID().toString();
 
@@ -47,27 +60,30 @@ public class AdresseServiceImpl implements AdresseService {
         adresse.setClient(client.get());
         adresse.setVille(ville.get());
         adresse.setNumero(numAdresse);
-        return adresseRepository.save(adresse);
+
+        adresse =  adresseRepository.save(adresse);
+        return adresseMapper.toDto(adresse);
     }
 
     @Override
-    public Adresse update(Adresse adresse) {
+    public AdresseDTO update(AdresseDTO adresseDTO) {
         return null;
     }
 
     @Override
-    public Optional<Adresse> partialUpdate(Adresse adresse) {
+    public Optional<AdresseDTO> partialUpdate(AdresseDTO adresseDTO) {
         return Optional.empty();
     }
 
     @Override
-    public Page<Adresse> findAll(Pageable pageable) {
-        return adresseRepository.findAll(pageable);
+    public Page<AdresseDTO> findAll(Pageable pageable) {
+        log.debug("Request to get all Adresses");
+        return adresseRepository.findAll(pageable).map(adresseMapper::toDto);
     }
 
     @Override
-    public Optional<Adresse> findOne(Integer id) {
-        return Optional.empty();
+    public Optional<AdresseDTO> findOne(Integer id) {
+        return adresseRepository.findById(id).map(adresseMapper::toDto);
     }
 
     @Override

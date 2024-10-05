@@ -16,7 +16,7 @@ public class CategorieDTO implements Serializable {
     private String numero;
     private String libelle;
 
-    private CategorieDTO categorie;
+//    private CategorieDTO parentCategorie;
     private List<CategorieDTO> sousCategories;
     private List<Produit> produits;
 }

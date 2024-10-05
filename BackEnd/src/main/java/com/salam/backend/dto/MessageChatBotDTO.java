@@ -17,5 +17,5 @@ public class MessageChatBotDTO implements Serializable {
     private boolean isChatBot; // Determine si le message provient du chatbot
     private boolean lu;
 
-    private ConversationChatBotDTO conversationChatBot;
+
 }
