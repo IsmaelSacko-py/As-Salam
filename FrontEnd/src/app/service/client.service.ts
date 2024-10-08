@@ -14,7 +14,7 @@ export class ClientService {
   constructor(private httpClient: HttpClient) { }
 
   findOne(id: number): Observable<any>{
-    return this.httpClient.get<any>(`${this.resourceUrl}/client/${id}`)
+    return this.httpClient.get<any>(`${this.resourceUrl}/clients/${id}`)
   }
 
   setUser(user: any){

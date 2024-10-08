@@ -8,6 +8,8 @@ logging:
 spring:
   application:
     name: AsSalam
+    secret-key: 1234567890qwertyuiopasdfghjkl
+    expiration-time: 900000
   security:
     user:
       name: admin
@@ -30,6 +32,7 @@ spring:
     web:
       pageable:
         default-page-size: 3
+
 
 
 file_upload:

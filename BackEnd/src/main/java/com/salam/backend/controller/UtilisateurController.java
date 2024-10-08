@@ -7,9 +7,9 @@ import com.salam.backend.model.Vendeur;
 import com.salam.backend.service.UtilisateurService;
 import com.salam.backend.service.impl.ClientServiceImpl;
 import com.salam.backend.service.impl.ProfilServiceImpl;
-import com.salam.backend.service.impl.UtilisateurServiceImpl;
 import com.salam.backend.service.impl.VendeurServiceImpl;
 import jakarta.persistence.EntityNotFoundException;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -25,19 +25,13 @@ import java.util.Optional;
 @Slf4j
 @RestController
 @RequestMapping("/api/utilisateurs")
+@RequiredArgsConstructor
 public class UtilisateurController {
-    private final UtilisateurServiceImpl<Utilisateur> utilisateurService;
+    private final UtilisateurService<Utilisateur> utilisateurService;
 //    private final ClientServiceImpl<Client> clientService;
     private final VendeurServiceImpl vendeurService;
     private final ProfilServiceImpl profilService;
     private final PagedResourcesAssembler<Utilisateur> pagedResourcesAssembler;
-
-    public UtilisateurController(UtilisateurServiceImpl<Utilisateur> utilisateurService, VendeurServiceImpl vendeurService, ProfilServiceImpl profilService, PagedResourcesAssembler<Utilisateur> pagedResourcesAssembler) {
-        this.utilisateurService = utilisateurService;
-        this.vendeurService = vendeurService;
-        this.profilService = profilService;
-        this.pagedResourcesAssembler = pagedResourcesAssembler;
-    }
 
     @GetMapping
     public ResponseEntity<PagedModel<EntityModel<Utilisateur>>> findAll(Pageable pageable) {

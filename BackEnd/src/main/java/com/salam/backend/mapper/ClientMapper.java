@@ -15,7 +15,7 @@ public interface ClientMapper {
     ClientMapper INSTANCE = Mappers.getMapper(ClientMapper.class);
 
     // Mapping Entité -> DTO
-//    @SubclassMapping(source = Vendeur.class, target = VendeurDTO.class)
+    @SubclassMapping(source = Vendeur.class, target = VendeurDTO.class)
     @Mapping(target = "adresses", source = "adresses")
     @Mapping(target = "commandes", source = "commandes")
     @Mapping(target = "conversationsChatBot", source = "conversationsChatBot")
@@ -23,7 +23,7 @@ public interface ClientMapper {
     ClientDTO toDto(Client client);
 
     // Mapping DTO -> Entité
-//    @SubclassMapping(source = Vendeur.class, target = VendeurDTO.class)
+    @SubclassMapping(source = VendeurDTO.class, target = Vendeur.class)
     @Mapping(target = "adresses", source = "adresses")
     @Mapping(target = "commandes", source = "commandes")
     @Mapping(target = "conversationsChatBot", source = "conversationsChatBot")

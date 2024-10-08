@@ -11,6 +11,7 @@ import { CartComponent } from './client/cart/cart.component';
 import { CheckoutComponent } from './client/checkout/checkout.component';
 import {provideHttpClient} from "@angular/common/http";
 import { ShopComponent } from './client/shop/shop.component';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ShopComponent } from './client/shop/shop.component';
     ProductDetailsComponent,
     CartComponent,
     CheckoutComponent,
-    ShopComponent
+    ShopComponent,
+    AuthComponent
   ],
     imports: [
       BrowserModule,

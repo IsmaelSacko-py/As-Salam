@@ -7,4 +7,5 @@ import java.util.Optional;
 public interface UtilisateurService<Entity extends Utilisateur> extends CentralRepositoryService<Entity> {
     Optional<Entity> updateProfile(Entity entity);
     int resetPassword(String newPassword);
+    Entity findByTelephone(String telephone);
 }

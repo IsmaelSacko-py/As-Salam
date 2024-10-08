@@ -22,12 +22,12 @@ public class Utilisateur {
     @NotBlank(message = "nom requis")
     @Size(min = 1, max = 100, message = "doit contenir au maximum 100 caractères")
     @Column(nullable = false, length = 100)
-    protected String nom;
+    protected String name;
 
     @NotBlank(message = "prenom requis")
     @Size(min = 1, max = 100, message = "doit contenir au maximum 100 caractères")
     @Column(nullable = false, length = 100)
-    protected String prenom;
+    protected String surname;
 
     @NotBlank(message = "email requis")
     @Size(min = 1, max = 100, message = "doit contenir au maximum 100 caractères")
@@ -41,9 +41,8 @@ public class Utilisateur {
     protected String telephone;
 
     @NotBlank(message = "mot de passe requis")
-    @Size(min = 1, max = 50, message = "doit contenir au maximum 50 caractères")
-    @Column(nullable = false, length = 50)
-    protected String motDePasse;
+    @Column(nullable = false, length = 150)
+    protected String password;
 
     @ManyToOne
     @JoinColumn(name = "profil_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_user_profil"))

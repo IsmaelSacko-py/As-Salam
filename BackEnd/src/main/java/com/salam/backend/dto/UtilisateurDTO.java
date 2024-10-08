@@ -11,11 +11,11 @@ public class UtilisateurDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     protected int id;
-    protected String nom;
-    protected String prenom;
+    protected String name;
+    protected String surname;
     protected String email;
     protected String telephone;
-    protected String motDePasse;
+    protected String password;
 
     protected ProfilDTO profil;
 
