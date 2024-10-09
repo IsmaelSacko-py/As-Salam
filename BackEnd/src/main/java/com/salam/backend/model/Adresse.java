@@ -16,7 +16,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "adresses")
-@JsonIgnoreProperties({"client", "ville"})
+@JsonIgnoreProperties(value = {"client"}, allowSetters = true)
 public class Adresse {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

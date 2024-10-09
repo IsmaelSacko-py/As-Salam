@@ -6,7 +6,7 @@ import {Observable} from "rxjs";
 @Injectable({
   providedIn: 'root'
 })
-export class ClientService {
+export class UserService {
 
   resourceUrl = environment.apiUrl
   user!: any
@@ -14,13 +14,13 @@ export class ClientService {
   constructor(private httpClient: HttpClient) { }
 
   findOne(id: number): Observable<any>{
-    return this.httpClient.get<any>(`${this.resourceUrl}/clients/${id}`)
+    return this.httpClient.get<any>(`${this.resourceUrl}/utilisateurs/${id}`)
   }
 
-  setUser(user: any){
-    this.user = user
-  }
-  getUser(){
-    return this.user
-  }
+  // setUser(user: any){
+  //   this.user = user
+  // }
+  // getUser(){
+  //   return this.user
+  // }
 }

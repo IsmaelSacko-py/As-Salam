@@ -4,7 +4,7 @@ import com.salam.backend.dto.CommandeDTO;
 import com.salam.backend.dto.DetailCommandeDTO;
 import com.salam.backend.model.Commande;
 
-public interface CommandeService {
+public interface CommandeService extends CentralRepositoryService<Commande>{
     Commande annullerCommande(Commande commande);
     Commande mettreAJourStatus(Commande commande);
     double calculerMontantTotal(Commande commande);

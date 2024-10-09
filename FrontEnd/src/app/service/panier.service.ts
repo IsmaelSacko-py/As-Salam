@@ -15,4 +15,8 @@ export class PanierService {
   createCartItem(detailsPanier: DetailPanier): Observable<DetailPanier>{
     return this.httpClient.post<DetailPanier>(`${this.resourceUrl}/paniers/cartItem`, detailsPanier)
   }
+
+  validate(user: any): Observable<any>{
+    return this.httpClient.post<any>(`${this.resourceUrl}/paniers/validate`, user)
+  }
 }

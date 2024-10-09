@@ -1,7 +1,7 @@
 package com.salam.backend.controller;
 
 
-import com.salam.backend.model.Panier;
+import com.salam.backend.model.*;
 import com.salam.backend.service.impl.PanierServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -41,6 +41,14 @@ public class PanierController {
         System.out.println("termine");
         panier = panierService.save(panier);
         return ResponseEntity.ok().body(panier);
+    }
+
+    @PostMapping("/validate")
+    public ResponseEntity<?> validatePanier(@RequestBody Client client) {
+        log.debug("REST to validat client panier: {}", client);
+        System.out.println("termine");
+        int result = panierService.validerPanier(client);
+        return ResponseEntity.ok().body(result);
     }
 
     @PutMapping("/update")

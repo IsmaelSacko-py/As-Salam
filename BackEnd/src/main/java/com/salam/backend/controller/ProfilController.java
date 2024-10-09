@@ -34,7 +34,7 @@ public class ProfilController {
         return ResponseEntity.ok(profils);
     }
 
-    @GetMapping("/member-profil")
+        @GetMapping("/member-profil")
     public ResponseEntity<Page<Profil>> findMemberProfil(Pageable pageable) {
         log.debug("REST request to get member profil");
         Page<Profil> profils = profilService.findMemberProfil(pageable);

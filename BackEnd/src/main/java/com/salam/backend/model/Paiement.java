@@ -37,4 +37,8 @@ public class Paiement {
     @JoinColumn(name = "commande_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_paiement_commande"))
     private Commande commande;
 
+    @ManyToOne
+    @JoinColumn(name = "mode_paiement_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "paiement_modepaiement"))
+    private ModePaiement modePaiement;
+
 }

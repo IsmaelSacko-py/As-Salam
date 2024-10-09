@@ -12,7 +12,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "villes")
-@JsonIgnoreProperties({"region"})
+//@JsonIgnoreProperties({"region"})
 public class Ville {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,6 +31,6 @@ public class Ville {
     private Region region;
 
     @OneToMany(mappedBy = "ville")
-    @JsonIgnoreProperties({"ville"})
+    @JsonIgnoreProperties(value = {"ville"}, allowSetters = true)
     private List<Adresse> adresses;
 }

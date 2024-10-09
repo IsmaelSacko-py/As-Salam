@@ -28,159 +28,57 @@
                   <thead>
                   <tr>
                     <th>Image</th>
-                    <th>Product Name</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
+                    <th>Libellé</th>
+                    <th>Prix</th>
+                    <th>Quantité</th>
                     <th>Sub Total</th>
                     <th></th>
                   </tr>
                   </thead>
                   <tbody>
-                  <tr>
+                  <tr *ngFor="let details of user.panier.detailsPanier">
                     <td>
                       <div class="shop-cart-img">
                         <a href="#"
-                        ><img src="app/client/assets/img/product/p1.png" alt
+                        ><img src="app/client/assets/img/product/new_products/{{details.produit.images[0].url}}" alt
                         /></a>
                       </div>
                     </td>
                     <td>
                       <div class="shop-cart-content">
                         <h5 class="shop-cart-name">
-                          <a href="#">Black Headphone</a>
+                          <a href="#">{{ details.produit.libelle }}</a>
                         </h5>
                         <div class="shop-cart-info">
-                          <p><span>Type:</span>Headphone</p>
-                          <p><span>Color:</span>Black</p>
+                          <p><span>Type:</span>{{ details.produit.categorie.libelle }}</p>
+<!--                          <p><span>Color:</span>Black</p>-->
                         </div>
                       </div>
                     </td>
                     <td>
                       <div class="shop-cart-price">
-                        <span>$1,500</span>
+                        <span>{{ details.produit.prix | number: '1.0-0'}}</span>
                       </div>
                     </td>
                     <td>
                       <div class="shop-cart-qty">
-                        <button class="minus-btn">
+                        <button (click)="decrement(details)" class="minus-btn">
                           <i class="fal fa-minus"></i>
                         </button>
                         <input
                           class="quantity"
                           type="text"
-                          value="1"
+                          [value]="details.quantite"
                           disabled
                         />
-                        <button class="plus-btn">
+                        <button (click)="increment(details)" class="plus-btn">
                           <i class="fal fa-plus"></i>
                         </button>
                       </div>
                     </td>
                     <td>
                       <div class="shop-cart-subtotal">
-                        <span>$1,500</span>
-                      </div>
-                    </td>
-                    <td>
-                      <a href="#" class="shop-cart-remove"
-                      ><i class="far fa-times"></i
-                      ></a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="shop-cart-img">
-                        <a href="#"
-                        ><img src="app/client/assets/img/product/p2.png" alt
-                        /></a>
-                      </div>
-                    </td>
-                    <td>
-                      <div class="shop-cart-content">
-                        <h5 class="shop-cart-name">
-                          <a href="#">Black Headphone</a>
-                        </h5>
-                        <div class="shop-cart-info">
-                          <p><span>Type:</span>Headphone</p>
-                          <p><span>Color:</span>Black</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <div class="shop-cart-price">
-                        <span>$1,500</span>
-                      </div>
-                    </td>
-                    <td>
-                      <div class="shop-cart-qty">
-                        <button class="minus-btn">
-                          <i class="fal fa-minus"></i>
-                        </button>
-                        <input
-                          class="quantity"
-                          type="text"
-                          value="1"
-                          disabled
-                        />
-                        <button class="plus-btn">
-                          <i class="fal fa-plus"></i>
-                        </button>
-                      </div>
-                    </td>
-                    <td>
-                      <div class="shop-cart-subtotal">
-                        <span>$1,500</span>
-                      </div>
-                    </td>
-                    <td>
-                      <a href="#" class="shop-cart-remove"
-                      ><i class="far fa-times"></i
-                      ></a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="shop-cart-img">
-                        <a href="#"
-                        ><img src="app/client/assets/img/product/p3.png" alt
-                        /></a>
-                      </div>
-                    </td>
-                    <td>
-                      <div class="shop-cart-content">
-                        <h5 class="shop-cart-name">
-                          <a href="#">Black Headphone</a>
-                        </h5>
-                        <div class="shop-cart-info">
-                          <p><span>Type:</span>Headphone</p>
-                          <p><span>Color:</span>Black</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <div class="shop-cart-price">
-                        <span>$1,500</span>
-                      </div>
-                    </td>
-                    <td>
-                      <div class="shop-cart-qty">
-                        <button class="minus-btn">
-                          <i class="fal fa-minus"></i>
-                        </button>
-                        <input
-                          class="quantity"
-                          type="text"
-                          value="1"
-                          disabled
-                        />
-                        <button class="plus-btn">
-                          <i class="fal fa-plus"></i>
-                        </button>
-                      </div>
-                    </td>
-                    <td>
-                      <div class="shop-cart-subtotal">
-                        <span>$1,500</span>
+                        <span>{{ details.montant | number: '1.0-0'}} F</span>
                       </div>
                     </td>
                     <td>
@@ -211,10 +109,8 @@
                 </div>
                 <div class="col-md-5 col-lg-6">
                   <div class="shop-cart-btn text-md-end">
-                    <a href="#" class="theme-btn"
-                    ><span class="fas fa-arrow-left"></span> Continue
-                      Shopping</a
-                    >
+                    <a href="/shop" class="theme-btn"
+                    ><span class="fas fa-arrow-left"></span> Poursuivre mes achats</a>
                   </div>
                 </div>
               </div>
@@ -222,21 +118,7 @@
           </div>
           <div class="col-lg-4">
             <div class="shop-cart-summary">
-              <h5>Cart Summary</h5>
-              <ul>
-                <li><strong>Sub Total:</strong> <span>$4,500.00</span></li>
-                <li><strong>Discount:</strong> <span>$5.00</span></li>
-                <li><strong>Shipping:</strong> <span>Free</span></li>
-                <li><strong>Taxes:</strong> <span>$25.00</span></li>
-                <li class="shop-cart-total">
-                  <strong>Total:</strong> <span>$4,520.00</span>
-                </li>
-              </ul>
-              <div class="text-end mt-40">
-                <a href="#" class="theme-btn"
-                >Checkout Now<i class="fas fa-arrow-right-long"></i
-                ></a>
-              </div>
+              <app-cart-summary [cart]="user.panier"></app-cart-summary>
             </div>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ClientService} from "../../../../service/client.service";
+import {UserService} from "../../../../service/user.service";
+import {AuthService} from "../../../../service/auth.service";
 
 @Component({
   selector: 'app-header',
@@ -11,7 +12,7 @@ export class HeaderComponent implements OnInit{
   @Input() hideHeader!: boolean
   user!: any
 
-  constructor(private clientService: ClientService) {
+  constructor(private authService: AuthService) {
   }
 
   ngOnInit(): void {
@@ -22,14 +23,7 @@ export class HeaderComponent implements OnInit{
   }
 
   findUser(){
-    this.clientService.findOne(1).subscribe({
-      next: response => {
-        localStorage.setItem("user", JSON.stringify(response))
-      },
-      error: err => {
-        console.log(err)
-      }
-    })
+    this.user = this.authService.getUser()
   }
 
 }

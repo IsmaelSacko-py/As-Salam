@@ -11,7 +11,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "profils")
-@JsonIgnoreProperties({"utilisateurs"})
+@JsonIgnoreProperties(value = {"utilisateurs"}, allowSetters = true)
 public class Profil {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

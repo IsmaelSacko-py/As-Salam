@@ -54,12 +54,13 @@ public class UtilisateurServiceImpl<Entity extends Utilisateur> implements Utili
 //    @Query("select user from Utilisateur user where user")
     @Override
     public Entity findByTelephone(String telephone) {
+        log.debug("Request to find entite by telephone : {}", telephone);
         return utilisateurRepository.findByTelephone(telephone);
     }
 
     @Override
     public Entity save(Entity entity) {
-        log.debug("Saving entity: {}", entity);
+        log.debug("Request to save entity: {}", entity);
         return utilisateurRepository.save(entity);
     }
 
@@ -75,12 +76,14 @@ public class UtilisateurServiceImpl<Entity extends Utilisateur> implements Utili
 
     @Override
     public Page<Entity> findAll(Pageable pageable) {
-        return null;
+        log.debug("Request to get all entities");
+        return utilisateurRepository.findAll(pageable);
     }
 
     @Override
     public Optional<Entity> findOne(Integer id) {
-        return Optional.empty();
+        log.debug("Request to find entity by id: {}", id);
+        return utilisateurRepository.findById(id);
     }
 
     @Override

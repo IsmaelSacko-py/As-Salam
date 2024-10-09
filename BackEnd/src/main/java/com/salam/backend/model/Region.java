@@ -1,5 +1,6 @@
 package com.salam.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -10,6 +11,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "regions")
+//@JsonIgnoreProperties(value = {"villes"}, allowSetters = true)
 public class Region {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,5 +25,6 @@ public class Region {
     private String nom;
 
     @OneToMany(mappedBy = "region")
+    @JsonIgnoreProperties(value = {"region"}, allowSetters = true)
     private List<Ville> villes;
 }

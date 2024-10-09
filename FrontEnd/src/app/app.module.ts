@@ -12,6 +12,8 @@ import { CheckoutComponent } from './client/checkout/checkout.component';
 import {provideHttpClient} from "@angular/common/http";
 import { ShopComponent } from './client/shop/shop.component';
 import { AuthComponent } from './auth/auth.component';
+import {FormsModule} from "@angular/forms";
+import { CheckoutCompletComponent } from './client/checkout/checkout-complet/checkout-complet.component';
 
 @NgModule({
   declarations: [
@@ -21,13 +23,15 @@ import { AuthComponent } from './auth/auth.component';
     CartComponent,
     CheckoutComponent,
     ShopComponent,
-    AuthComponent
+    AuthComponent,
+    CheckoutCompletComponent
   ],
     imports: [
-      BrowserModule,
-      AppRoutingModule,
-      CoreModule,
-      SharedModule
+        BrowserModule,
+        AppRoutingModule,
+        CoreModule,
+        SharedModule,
+        FormsModule
     ],
   providers: [provideHttpClient()],
   bootstrap: [AppComponent]

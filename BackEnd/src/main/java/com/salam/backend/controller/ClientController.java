@@ -43,6 +43,7 @@ public class ClientController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Client> getClient(@PathVariable(value = "id") int id) {
+        log.debug("Rest request to get Client {}", id);
         Optional<Client> client = clientService.findOne(id);
         return client.map( user ->
             ResponseEntity.ok().body(user)

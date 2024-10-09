@@ -37,12 +37,12 @@ public class DetailPanierServiceImpl implements DetailPanierService {
     public DetailPanier update(DetailPanier detailPanier) {
         log.debug("Request to update DetailPanier : {}", detailPanier);
 
-        Double montant = detailPanier.getMontant() * detailPanier.getQuantite();
-
+        double montant = detailPanier.getProduit().getPrix() * detailPanier.getQuantite();
+//
+        // recupere le panier car l'api n'a pas de reference pour Panier
         Optional<DetailPanier> detailPanier1 = findOne(detailPanier.getId());
-
         detailPanier.setPanier(detailPanier1.get().getPanier());
-        detailPanier.setProduit(detailPanier1.get().getProduit());
+
         detailPanier.setMontant(montant);
 
         return detailPanierRepository.save(detailPanier);

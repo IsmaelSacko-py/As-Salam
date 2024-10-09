@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ProduitService} from "../../../service/produit.service";
 import {Produit} from "../../../model/Produit.model";
-import {ClientService} from "../../../service/client.service";
+import {UserService} from "../../../service/user.service";
 
 @Component({
   selector: 'app-shop-grid',
@@ -13,13 +13,13 @@ export class ShopGridComponent implements OnInit{
 
   produits!: Produit[]
 
-  constructor(private produitService: ProduitService, private clientService: ClientService) {
+  constructor(private produitService: ProduitService, private clientService: UserService) {
 
   }
 
   ngOnInit(): void {
     this.getProducts()
-    console.log(this.clientService.getUser())
+    // console.log(this.clientService.getUser())
   }
 
   getProducts(){

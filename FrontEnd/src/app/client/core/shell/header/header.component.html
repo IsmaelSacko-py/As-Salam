@@ -66,6 +66,7 @@
                       <a class="dropdown-item" href="#">EUR</a>
                       <a class="dropdown-item" href="#">AUD</a>
                       <a class="dropdown-item" href="#">CUD</a>
+<!--                      <a class="dropdown-item" href="#">{{ user.name }}</a>-->
                     </div>
                   </div>
                 </li>
@@ -164,67 +165,25 @@
               </li>
               <li class="dropdown-cart">
                 <a href="#" class="shop-cart list-item"
-                ><i class="far fa-shopping-bag"></i> <span>5</span></a
+                ><i class="far fa-shopping-bag"></i> <span>{{user.panier.detailsPanier.length}}</span></a
                 >
-                <div class="dropdown-cart-menu">
+                <div *ngIf="user" class="dropdown-cart-menu">
                   <div class="dropdown-cart-header">
-                    <span>03 Items</span>
-                    <a href="/cart">View Cart</a>
+                    <span>{{user.panier.detailsPanier.length}} Items</span>
+                    <a href="/cart">Voir le panier</a>
                   </div>
                   <ul class="dropdown-cart-list">
-                    <li>
+                    <li *ngFor="let details of user.panier.detailsPanier">
                       <div class="dropdown-cart-item">
                         <div class="cart-img">
                           <a href="#"
-                          ><img src="app/client/assets/img/product/p47.png" alt="#"
+                          ><img src="app/client/assets/img/product/new_products/{{details.produit.images[0].url}}" alt="#"
                           /></a>
                         </div>
                         <div class="cart-info">
-                          <h4><a href="#">Xamaha R15 Red</a></h4>
+                          <h4><a href="#">{{ details.produit.libelle }}</a></h4>
                           <p class="cart-qty">
-                            1x - <span class="cart-amount">$200.00</span>
-                          </p>
-                        </div>
-                        <a
-                          href="#"
-                          class="cart-remove"
-                          title="Remove this item"
-                        ><i class="far fa-times-circle"></i
-                        ></a>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="dropdown-cart-item">
-                        <div class="cart-img">
-                          <a href="#"
-                          ><img src="app/client/assets/img/product/p12.png" alt="#"
-                          /></a>
-                        </div>
-                        <div class="cart-info">
-                          <h4><a href="#">Apple Blue Watch</a></h4>
-                          <p class="cart-qty">
-                            1x - <span class="cart-amount">$120.00</span>
-                          </p>
-                        </div>
-                        <a
-                          href="#"
-                          class="cart-remove"
-                          title="Remove this item"
-                        ><i class="far fa-times-circle"></i
-                        ></a>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="dropdown-cart-item">
-                        <div class="cart-img">
-                          <a href="#"
-                          ><img src="app/client/assets/img/product/p32.png" alt="#"
-                          /></a>
-                        </div>
-                        <div class="cart-info">
-                          <h4><a href="#">Orange Sweater</a></h4>
-                          <p class="cart-qty">
-                            1x - <span class="cart-amount">$330.00</span>
+                            {{details.produit.detailsPanier[0].quantite}}x - <span class="cart-amount">{{ details.montant }} FCFA</span>
                           </p>
                         </div>
                         <a
@@ -241,7 +200,7 @@
                       <span>Total</span>
                       <span class="total-amount">$650.00</span>
                     </div>
-                    <a href="/checkout" class="theme-btn">Checkout</a>
+                    <a href="/checkout" class="theme-btn">Commander</a>
                   </div>
                 </div>
               </li>

@@ -31,11 +31,6 @@ export class LoginComponent implements OnInit{
         localStorage.setItem("type", response.type)
         localStorage.setItem("user", JSON.stringify(response.user))
 
-        console.log(localStorage.getItem("token"))
-        console.log(localStorage.getItem("type"))
-        const userString = localStorage.getItem("user")
-        const user = userString? JSON.parse(userString) : null
-        console.log(user)
         this.router.navigate(['/'])
       },
       error: err => {

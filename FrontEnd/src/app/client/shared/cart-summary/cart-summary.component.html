@@ -1,0 +1,18 @@
+<h5>Resumé de panier</h5>
+<ul>
+  <li><strong>Sub Total:</strong> <span>{{ totalMontant | number: '1.0-0' }} FCFA</span></li>
+  <li><strong>Réduction:</strong> <span>0 FCFA</span></li>
+  <li><strong>Livraison:</strong> <span>Gratuite</span></li>
+  <li><strong>Taxes:</strong> <span>0 FCFA</span></li>
+  <li class="shop-cart-total">
+    <strong>Total:</strong> <span>$4,520.00</span>
+  </li>
+</ul>
+<div class="text-end mt-40">
+  <a *ngIf="isCartProcess" href="/checkout" class="theme-btn"
+  >Commander<i class="fas fa-arrow-right-long"></i
+  ></a>
+  <button *ngIf="!isCartProcess" (click)="validatePanier()" class="theme-btn"
+  >Confirmer la commande<i class="fas fa-arrow-right-long"></i
+  ></button>
+</div>

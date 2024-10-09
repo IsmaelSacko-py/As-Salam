@@ -1,0 +1,7 @@
+.update-address {
+  color: var(--theme-color);
+  transition: 0.5s;
+}
+.update-address:hover {
+  color: var(--theme-color2);
+}

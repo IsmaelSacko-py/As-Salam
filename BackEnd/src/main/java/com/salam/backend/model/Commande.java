@@ -35,7 +35,7 @@ public class Commande {
     @JoinColumn(name = "client_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_commande_client"))
     private Client client;
 
-    @OneToMany(mappedBy = "commande")
+    @OneToMany(mappedBy = "commande", cascade = CascadeType.REMOVE)
     private List<DetailCommande> detailsCommande;
 
     @OneToOne(mappedBy = "commande")

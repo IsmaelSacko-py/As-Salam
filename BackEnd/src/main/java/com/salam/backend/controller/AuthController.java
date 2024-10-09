@@ -106,20 +106,17 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> login (@RequestBody UtilisateurDTO utilisateurDTO){
-        log.debug("Rest request to login utilisateur {}", utilisateurDTO);
+    public ResponseEntity<?> login (@RequestBody Utilisateur utilisateur){
+        log.debug("Rest request to login utilisateur {}", utilisateur);
         try {
-            Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(utilisateurDTO.getTelephone(), utilisateurDTO.getPassword()));
+            Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(utilisateur.getTelephone(), utilisateur.getPassword()));
             if(authentication.isAuthenticated()){
                 Map<String, Object> authData = new HashMap<>();
-                Utilisateur user = utilisateurServiceImpl.findByTelephone(utilisateurDTO.getTelephone());
-                log.info("Utilisateur find {}", user);
-                utilisateurDTO = utilisateurMapper.toDto(user);
-                log.info("utilisateur toDto {}", utilisateurDTO);
+                utilisateur = utilisateurServiceImpl.findByTelephone(utilisateur.getTelephone());
 
-                authData.put("token", jwtUtils.generateToken(utilisateurDTO.getTelephone()));
+                authData.put("token", jwtUtils.generateToken(utilisateur.getTelephone()));
                 authData.put("type", "Bearer");
-                authData.put("user", utilisateurDTO);
+                authData.put("user", utilisateur);
 
                 return ResponseEntity.ok(authData);
             }

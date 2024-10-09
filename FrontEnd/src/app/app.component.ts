@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ClientService} from "./service/client.service";
+import {UserService} from "./service/user.service";
 
 @Component({
   selector: 'app-root',
@@ -11,7 +11,7 @@ export class AppComponent implements OnInit{
   hideCategoryDropDown!: string
   hideHeader!: boolean
 
-  constructor(private clientService: ClientService) {
+  constructor(private clientService: UserService) {
   }
 
   ngOnInit() {
