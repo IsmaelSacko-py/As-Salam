@@ -47,6 +47,8 @@ public class PanierServiceImpl implements PanierService {
             commande.setStatut(EtatCommande.EN_COURS);
             commande.setClient(client);
             commande = commandeServiceImpl.save(commande);
+
+            double montantTotal = 0;
             for (DetailPanier item : panier.getDetailsPanier()) {
                 DetailCommande detail = new DetailCommande();
 
@@ -56,9 +58,10 @@ public class PanierServiceImpl implements PanierService {
                 detail.setCommande(commande);
 
                 detailCommandeServiceImpl.save(detail);
+
+                montantTotal+= item.getMontant() * item.getQuantite();
             }
-            double moantTotal = detailCommandeService.calculerPrixTotal();
-            commande.setTotalPrix(moantTotal);
+            commande.setTotalPrix(montantTotal);
             commandeServiceImpl.update(commande);
             return 1;
         }catch (Exception e) {

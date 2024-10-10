@@ -33,11 +33,14 @@ public class Commande {
 
     @ManyToOne
     @JoinColumn(name = "client_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_commande_client"))
+    @JsonIgnoreProperties(value = {"commandes"}, allowSetters = true)
     private Client client;
 
     @OneToMany(mappedBy = "commande", cascade = CascadeType.REMOVE)
+    @JsonIgnoreProperties(value = {"commande"}, allowSetters = true)
     private List<DetailCommande> detailsCommande;
 
     @OneToOne(mappedBy = "commande")
+    @JsonIgnoreProperties(value = {"commande"}, allowSetters = true)
     private Paiement paiement;
 }

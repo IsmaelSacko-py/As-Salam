@@ -3509,10 +3509,10 @@ span::before {
   border: none;
   background: var(--theme-color2);
   color: var(--color-white);
-  border-radius: 10px;
+  border-radius: 50%;
   text-align: center;
   font-size: 18px;
-  width: 40%;
+  width: 42px;
   height: 42px;
   transition: var(--transition);
   box-shadow: var(--box-shadow);

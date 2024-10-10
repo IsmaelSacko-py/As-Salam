@@ -38,35 +38,32 @@
       <span>{{produit.prix | number:'1.0-0'}} FCFA</span>
     </div>
 
-
-  </div>
-  <div class="container">
-    <div class="row justify-content-center">
-      <button
-        (click)="addToCart(produit)"
-        type="button"
-        class="product-cart-btn"
-        data-bs-placement="left"
-        data-tooltip="tooltip"
-        title="Add To Cart"
-        [hidden]="produit.detailsPanier.length > 0"
-      >
-        <i class="far fa-shopping-bag"></i>
-      </button>
+    <button
+      (click)="addToCart(produit)"
+      type="button"
+      class="product-cart-btn"
+      data-bs-placement="left"
+      data-tooltip="tooltip"
+      title="Add To Cart"
+      *ngIf="produit.detailsPanier.length == 0 || produit.detailsPanier[0].quantite == 0 "
+    >
+      <i class="far fa-shopping-bag"></i>
+    </button>
+    <div class="float-end" *ngIf="produit.detailsPanier.length > 0" [hidden]="produit.detailsPanier[0].quantite == 0 ">
+      <div class="shop-cart-qty">
+        <button (click)="decrement()" class="minus-btn">
+          <i class="fal fa-minus"></i>
+        </button>
+        <input
+          class="quantity"
+          type="text"
+          [value]="produit.detailsPanier[0].quantite"
+          disabled
+        />
+        <button (click)="increment()" class="plus-btn">
+          <i class="fal fa-plus"></i>
+        </button>
+      </div>
     </div>
-  </div>
-  <div class="shop-cart-qty" *ngIf="produit.detailsPanier.length > 0">
-    <button (click)="decrement()" class="minus-btn">
-      <i class="fal fa-minus"></i>
-    </button>
-    <input
-      class="quantity"
-      type="text"
-      [value]="produit.detailsPanier[0].quantite"
-      disabled
-    />
-    <button (click)="increment()" class="plus-btn">
-      <i class="fal fa-plus"></i>
-    </button>
   </div>
 </div>

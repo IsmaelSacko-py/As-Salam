@@ -26,10 +26,12 @@ public class DetailPanier {
 
     @ManyToOne
     @JoinColumn(name = "panier_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_detailspanier_panier"))
+    @JsonIgnoreProperties(value = {"produit", "detailsPanier"}, allowSetters = true)
     private Panier panier;
 
     @ManyToOne
     @JoinColumn(name = "produit_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_detailspanier_produit"))
+    @JsonIgnoreProperties(value = {"detailsPanier", "detailsCommande"}, allowSetters = true)
     private Produit produit;
 
 

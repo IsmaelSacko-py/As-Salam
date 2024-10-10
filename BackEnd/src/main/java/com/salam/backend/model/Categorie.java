@@ -34,7 +34,7 @@ public class Categorie {
 
 //    @JsonIgnoreProperties(value = {"images", "categorie", "sousCategorie"}, allowSetters = true)
     @OneToMany(mappedBy = "categorie")
-    @JsonIgnoreProperties(value = {"categorie"}, allowSetters = true)
+    @JsonIgnoreProperties(value = {"categorie", "detailsCommande", "detailsPanier"}, allowSetters = true)
     private List<Produit> produits;
 
     @OneToMany(mappedBy = "parentCategorie")

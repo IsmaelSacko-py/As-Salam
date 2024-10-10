@@ -17,13 +17,11 @@ export class HeaderComponent implements OnInit{
 
   ngOnInit(): void {
     this.findUser()
-    const user = localStorage.getItem("user")
-    const value = user? JSON.parse(user) : null
-    console.log(value)
   }
 
   findUser(){
     this.user = this.authService.getUser()
+    console.log(this.user)
   }
 
 }

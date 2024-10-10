@@ -19,18 +19,16 @@ export class LoginComponent implements OnInit{
       telephone: [null, Validators.required],
       password: [null, Validators.required],
     })
-
+    this.login()
   }
 
   login(){
     this.authService.login(this.loginForm.value).subscribe({
       next: response => {
-        console.log(response)
-
         localStorage.setItem("token", response.token)
         localStorage.setItem("type", response.type)
         localStorage.setItem("user", JSON.stringify(response.user))
-
+        console.log(response)
         this.router.navigate(['/'])
       },
       error: err => {

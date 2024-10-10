@@ -1,7 +1,6 @@
 package com.salam.backend.controller;
 
 
-import com.salam.backend.dto.AdresseDTO;
 import com.salam.backend.model.Adresse;
 import com.salam.backend.service.AdresseService;
 import com.salam.backend.service.impl.AdresseServiceImpl;
@@ -31,30 +30,30 @@ import java.util.Optional;
 public class AdresseController {
 
     private final AdresseServiceImpl adresseService;
-    private final PagedResourcesAssembler<AdresseDTO> pagedResourcesAssembler;
+    private final PagedResourcesAssembler<Adresse> pagedResourcesAssembler;
 //    private static final Logger logger = LoggerFactory.getLogger(AdresseController.class);
 
-    public AdresseController(AdresseServiceImpl adresseService, PagedResourcesAssembler<AdresseDTO> pagedResourcesAssembler) {
+    public AdresseController(AdresseServiceImpl adresseService, PagedResourcesAssembler<Adresse> pagedResourcesAssembler) {
         this.adresseService = adresseService;
         this.pagedResourcesAssembler = pagedResourcesAssembler;
     }
 
     @GetMapping
-    public ResponseEntity<PagedModel<EntityModel<AdresseDTO>>> getAdresses(Pageable pageable) {
+    public ResponseEntity<PagedModel<EntityModel<Adresse>>> getAdresses(Pageable pageable) {
         log.debug("REST request to get a page of Adresses");
-        Page<AdresseDTO> adresses = adresseService.findAll(pageable);
+        Page<Adresse> adresses = adresseService.findAll(pageable);
         return ResponseEntity.ok(pagedResourcesAssembler.toModel(adresses));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<AdresseDTO> getAdresseById(@PathVariable int id) {
+    public ResponseEntity<Adresse> getAdresseById(@PathVariable int id) {
         return adresseService.findOne(id)
                 .map(existingProduct -> ResponseEntity.ok().body(existingProduct))
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public ResponseEntity<AdresseDTO> createAdresse(@RequestBody AdresseDTO adresse) {
+    public ResponseEntity<Adresse> createAdresse(@RequestBody Adresse adresse) {
         log.debug("Rest to save adresse: {}", adresse);
         System.out.println("termine");
         adresse = adresseService.save(adresse);
@@ -62,7 +61,7 @@ public class AdresseController {
     }
 
     @PutMapping("/update")
-    public AdresseDTO updateAdresse(@RequestBody AdresseDTO adresse) {
+    public Adresse updateAdresse(@RequestBody Adresse adresse) {
         return null;
     }
 

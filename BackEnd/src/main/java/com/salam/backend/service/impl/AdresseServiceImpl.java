@@ -1,6 +1,5 @@
 package com.salam.backend.service.impl;
 
-import com.salam.backend.dto.AdresseDTO;
 import com.salam.backend.dto.ClientDTO;
 import com.salam.backend.dto.VilleDTO;
 import com.salam.backend.mapper.AdresseMapper;
@@ -13,6 +12,7 @@ import com.salam.backend.model.Ville;
 import com.salam.backend.repository.AdresseRepository;
 import com.salam.backend.service.AdresseService;
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
@@ -26,6 +26,7 @@ import java.util.UUID;
 @Slf4j
 @Service
 @Transactional
+@RequiredArgsConstructor
 public class AdresseServiceImpl implements AdresseService {
     private final AdresseRepository adresseRepository;
 //    private final UtilisateurServiceImpl utilisateurServiceImpl;
@@ -35,23 +36,14 @@ public class AdresseServiceImpl implements AdresseService {
     private final VilleMapper villeMapper;
     private final ClientMapper clientMapper;
 
-    public AdresseServiceImpl(AdresseRepository adresseRepository, VilleServiceImpl villeServiceImpl, ClientServiceImpl<Client> clientServiceImpl, AdresseMapper adresseMapper, VilleMapper villeMapper, ClientMapper clientMapper) {
-        this.adresseRepository = adresseRepository;
-        this.villeServiceImpl = villeServiceImpl;
-        this.clientServiceImpl = clientServiceImpl;
-        this.adresseMapper = adresseMapper;
-        this.villeMapper = villeMapper;
-        this.clientMapper = clientMapper;
-    }
 
     @Override
-    public AdresseDTO save(AdresseDTO adresseDTO) {
-        log.debug("Request to save Adresse : {}", adresseDTO);
-        Adresse adresse = adresseMapper.toEntity(adresseDTO);
+    public Adresse save(Adresse adresse) {
+        log.debug("Request to save Adresse : {}", adresse);
 
         String numAdresse = UUID.randomUUID().toString();
 
-        Optional<Client> client = clientServiceImpl.findOne(1);
+        Optional<Client> client = clientServiceImpl.findOne(50);
         Optional<Ville> ville = villeServiceImpl.findOne(1);
 
         log.info("client : {}", client);
@@ -61,29 +53,28 @@ public class AdresseServiceImpl implements AdresseService {
         adresse.setVille(ville.get());
         adresse.setNumero(numAdresse);
 
-        adresse =  adresseRepository.save(adresse);
-        return adresseMapper.toDto(adresse);
+        return adresseRepository.save(adresse);
     }
 
     @Override
-    public AdresseDTO update(AdresseDTO adresseDTO) {
+    public Adresse update(Adresse adresse) {
         return null;
     }
 
     @Override
-    public Optional<AdresseDTO> partialUpdate(AdresseDTO adresseDTO) {
+    public Optional<Adresse> partialUpdate(Adresse adresse) {
         return Optional.empty();
     }
 
     @Override
-    public Page<AdresseDTO> findAll(Pageable pageable) {
+    public Page<Adresse> findAll(Pageable pageable) {
         log.debug("Request to get all Adresses");
-        return adresseRepository.findAll(pageable).map(adresseMapper::toDto);
+        return adresseRepository.findAll(pageable);
     }
 
     @Override
-    public Optional<AdresseDTO> findOne(Integer id) {
-        return adresseRepository.findById(id).map(adresseMapper::toDto);
+    public Optional<Adresse> findOne(Integer id) {
+        return adresseRepository.findById(id);
     }
 
     @Override

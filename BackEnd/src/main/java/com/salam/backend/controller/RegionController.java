@@ -1,7 +1,6 @@
 package com.salam.backend.controller;
 
 
-import com.salam.backend.dto.RegionDTO;
 import com.salam.backend.model.Client;
 import com.salam.backend.model.Region;
 import com.salam.backend.service.impl.RegionServiceImpl;
@@ -21,22 +20,22 @@ import org.springframework.web.bind.annotation.*;
 public class RegionController {
 
     private final RegionServiceImpl regionService;
-    private final PagedResourcesAssembler<RegionDTO> pagedResourcesAssembler;
+    private final PagedResourcesAssembler<Region> pagedResourcesAssembler;
 //    private static final Logger logger = LoggerFactory.getLogger(RegionController.class);
 
-    public RegionController(RegionServiceImpl regionService, PagedResourcesAssembler<RegionDTO> pagedResourcesAssembler) {
+    public RegionController(RegionServiceImpl regionService, PagedResourcesAssembler<Region> pagedResourcesAssembler) {
         this.regionService = regionService;
         this.pagedResourcesAssembler = pagedResourcesAssembler;
     }
 
     @GetMapping
-    public ResponseEntity<PagedModel<EntityModel<RegionDTO>>> getRegions(Pageable pageable) {
+    public ResponseEntity<PagedModel<EntityModel<Region>>> getRegions(Pageable pageable) {
         log.debug("REST request to get a page of Regions");
         return ResponseEntity.ok(pagedResourcesAssembler.toModel(regionService.findAll(pageable)));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<RegionDTO> getRegionById(@PathVariable int id) {
+    public ResponseEntity<Region> getRegionById(@PathVariable int id) {
         log.debug("REST request to get Region : {}", id);
         return regionService.findOne(id)
                 .map(existingProduct -> ResponseEntity.ok().body(existingProduct))
@@ -44,7 +43,7 @@ public class RegionController {
     }
 
     @PostMapping
-    public ResponseEntity<RegionDTO> createRegion(@RequestBody RegionDTO region) {
+    public ResponseEntity<Region> createRegion(@RequestBody Region region) {
         log.debug("Rest request to save region: {}", region);
         System.out.println("termine");
         region = regionService.save(region);
@@ -52,7 +51,7 @@ public class RegionController {
     }
 
     @PutMapping("/update")
-    public Region updateRegion(@RequestBody RegionDTO region) {
+    public Region updateRegion(@RequestBody Region region) {
         return null;
     }
 

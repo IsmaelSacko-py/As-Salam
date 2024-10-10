@@ -48,7 +48,7 @@ export class CartComponent implements OnInit{
     console.log(details)
     this.detailsPanierService.update(details).subscribe({
       next: response => {
-        this.findUser()
+        // this.findUser()
         this.router.navigate(['/cart']).then(result => {
           if(result){
             this.user = this.authService.getUser()
@@ -65,7 +65,8 @@ export class CartComponent implements OnInit{
   deleteDetailsPanier(id?: number){
     this.detailsPanierService.delete(id).subscribe({
       next: response => {
-        this.findUser()
+        // this.findUser()
+        this.user = this.authService.getUser()
         console.log(response)
       },
       error: err => {
@@ -74,19 +75,21 @@ export class CartComponent implements OnInit{
     })
   }
 
-  findUser(){
-    const userId = this.authService.getUser().id
-    console.log(this.authService.getUser())
-    this.userService.findOne(userId).subscribe({
-      next: response => {
-        console.log(response)
-        this.authService.setUser(response)
-      },
-      error: err => {
-        console.log(err)
-      }
-    })
-  }
+  // findUser(){
+  //   const user: any = this.authService.getUser()
+  //   console.log(this.authService.getUser())
+  //   if(user){
+  //     this.userService.findOne(user.id).subscribe({
+  //       next: response => {
+  //         console.log(response)
+  //         this.authService.setUser(response)
+  //       },
+  //       error: err => {
+  //         console.log(err)
+  //       }
+  //     })
+  //   }
+  // }
 
 
 }

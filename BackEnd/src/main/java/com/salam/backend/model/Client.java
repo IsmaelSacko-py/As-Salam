@@ -12,7 +12,7 @@ import java.util.List;
 @Entity
 @Data
 @DiscriminatorValue("client")
-//@JsonIgnoreProperties({"profil", "adresses", "commandes", "conversationsChatBot", "panier"})
+//@JsonIgnoreProperties({"profil", "adresses", "conversationsChatBot", "panier"})
 public class Client extends Utilisateur{
     protected LocalDateTime dateInscription;
     protected boolean status;

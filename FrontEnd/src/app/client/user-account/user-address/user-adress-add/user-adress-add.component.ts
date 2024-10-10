@@ -31,7 +31,7 @@ export class UserAdressAddComponent implements OnInit{
   findAllRegions(){
     this.regionService.findAll().subscribe({
       next: response => {
-        this.regions = response.content
+        this.regions = response._embedded.regionList
         console.log(this.regions)
       },
       error: err => {

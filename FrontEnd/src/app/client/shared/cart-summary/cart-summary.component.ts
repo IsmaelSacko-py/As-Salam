@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
 })
 export class CartSummaryComponent implements OnInit{
   @Input() cart!: any
-  totalMontant!: number
+  subTotal!: number
   @Input() isCartProcess = true
 
   constructor(private panierService: PanierService, private authService: AuthService, private router: Router) {
@@ -21,8 +21,8 @@ export class CartSummaryComponent implements OnInit{
   }
 
   calculateTotal() {
-    this.totalMontant = this.cart.detailsPanier.reduce((acc: any, details: any) => {
-      return acc + details.montant;
+    this.subTotal = this.cart.detailsPanier.reduce((acc: any, details: any) => {
+      return acc + details.montant * details.quantite;
     }, 0);
   }
 
@@ -38,4 +38,6 @@ export class CartSummaryComponent implements OnInit{
       }
     })
   }
+
+
 }

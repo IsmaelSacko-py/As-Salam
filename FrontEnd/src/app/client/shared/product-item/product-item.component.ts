@@ -5,6 +5,8 @@ import {DetailPanier} from "../../../model/DetailPanier.model";
 import {PanierService} from "../../../service/panier.service";
 import {DetailsPanierService} from "../../../service/details-panier.service";
 import {Router} from "@angular/router";
+import {AuthService} from "../../../service/auth.service";
+import {UserService} from "../../../service/user.service";
 @Component({
   selector: 'app-product-item',
   templateUrl: './product-item.component.html',
@@ -15,13 +17,13 @@ export class ProductItemComponent implements OnInit{
   detailsPanier!: DetailPanier
   quantity = 1
   isCreated!: boolean
+  user!: any
 
-  constructor(private detailsPanierService: DetailsPanierService, private router: Router) {
+  constructor(private detailsPanierService: DetailsPanierService, private router: Router, private authService: AuthService, private userService: UserService) {
   }
 
   ngOnInit(): void {
-    // this.produit.detailsPanier[0].quantite = 1
-    // this.isCreated = false
+    this.user = this.authService.getUser()
   }
 
   increment(): void {
@@ -34,6 +36,8 @@ export class ProductItemComponent implements OnInit{
     if (details.quantite > 0) {
       details.quantite--;
       this.updateDetailsPanier(this.produit.detailsPanier[0])
+      this.user = this.authService.getUser()
+      console.log(this.user)
       if(details.quantite <= 0){
         this.deleteDetailsPanier(details.id)
       }
@@ -46,13 +50,14 @@ export class ProductItemComponent implements OnInit{
       quantite: 1,
       montant: produit.prix, // Montant total ou calculé
       produit: produit, // Référence au produit
-      panier: null // Votre logique pour obtenir le panier
+      panier: this.user.panier // Votre logique pour obtenir le panier
     }
     // this.detailsPanier.produit = produit
     console.log(details)
     this.detailsPanierService.create(details).subscribe({
       next: response => {
         this.produit.detailsPanier.push(response)
+        this.user.panier.detailsPanier.push(response)
         // this.isCreated = true
         console.log(response)
         console.log(this.produit)
@@ -66,17 +71,22 @@ export class ProductItemComponent implements OnInit{
   updateDetailsPanier(details: DetailPanier){
     this.detailsPanierService.update(details).subscribe({
       next: response => {
+        this.produit.detailsPanier[0] = response
+        this.findUser() // actualiser les donnees de l'utilisateur
         console.log(response)
       },
       error: err => {
         console.log(err)
       }
     })
+
   }
 
   deleteDetailsPanier(id?: number){
     this.detailsPanierService.delete(id).subscribe({
       next: response => {
+        this.produit.detailsPanier = []
+        this.user = this.authService.getUser()
         console.log(response)
       },
       error: err => {
@@ -89,6 +99,18 @@ export class ProductItemComponent implements OnInit{
     alert("add to wishlist")
   }
 
+  findUser(){
+    this.userService.findOne(this.user.id).subscribe({
+      next: response => {
+        this.user = response
+        this.authService.setUser(this.user)
+        // console.log(this.authService.getUser())
+      },
+      error: err => {
+        console.log(err)
+      }
+    })
+  }
 
 
 }

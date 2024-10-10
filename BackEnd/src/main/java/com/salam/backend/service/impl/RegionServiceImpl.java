@@ -1,6 +1,5 @@
 package com.salam.backend.service.impl;
 
-import com.salam.backend.dto.RegionDTO;
 import com.salam.backend.mapper.RegionMapper;
 import com.salam.backend.model.Region;
 import com.salam.backend.repository.RegionRepository;
@@ -27,33 +26,31 @@ public class RegionServiceImpl implements RegionService {
     }
 
     @Override
-    public RegionDTO save(RegionDTO regionDTO) {
-        log.debug("Request to save Region : {}", regionDTO);
-        Region region = regionMapper.toEntity(regionDTO);
-        region = regionRepository.save(region);
-        return regionMapper.toDto(region);
+    public Region save(Region region) {
+        log.debug("Request to save Region : {}", region);
+        return regionRepository.save(region);
     }
 
     @Override
-    public RegionDTO update(RegionDTO region) {
+    public Region update(Region region) {
         return null;
     }
 
     @Override
-    public Optional<RegionDTO> partialUpdate(RegionDTO region) {
+    public Optional<Region> partialUpdate(Region region) {
         return Optional.empty();
     }
 
     @Override
-    public Page<RegionDTO> findAll(Pageable pageable) {
+    public Page<Region> findAll(Pageable pageable) {
         log.debug("Request to get all Regions");
-        return regionRepository.findAll(pageable).map(regionMapper::toDto);
+        return regionRepository.findAll(pageable);
     }
 
     @Override
-    public Optional<RegionDTO> findOne(Integer id) {
+    public Optional<Region> findOne(Integer id) {
         log.debug("Request to get Region : {}", id);
-        return regionRepository.findById(id).map(regionMapper::toDto);
+        return regionRepository.findById(id);
     }
 
     @Override

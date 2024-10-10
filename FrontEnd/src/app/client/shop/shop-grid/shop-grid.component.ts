@@ -25,7 +25,7 @@ export class ShopGridComponent implements OnInit{
   getProducts(){
     this.produitService.findAll().subscribe({
       next: response => {
-        this.produits = response._embedded.produitDTOList
+        this.produits = response._embedded.produitList
         console.log(response)
       },
       error: err => {

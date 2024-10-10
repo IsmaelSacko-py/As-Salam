@@ -27,24 +27,14 @@ public class DetailPanierServiceImpl implements DetailPanierService {
     @Override
     public DetailPanier save(DetailPanier detailPanier) {
         log.debug("Request to save DetailPanier : {}", detailPanier);
-        Optional<Panier> panier = panierService.findOne(1);
-        log.debug("panier : {}", panier);
-        detailPanier.setPanier(panier.get());
+        // permet de s'assurer que le client paie le prix du produit au moment de l'ajout qu panier
+        detailPanier.setMontant(detailPanier.getProduit().getPrix());
         return detailPanierRepository.save(detailPanier);
     }
 
     @Override
     public DetailPanier update(DetailPanier detailPanier) {
         log.debug("Request to update DetailPanier : {}", detailPanier);
-
-        double montant = detailPanier.getProduit().getPrix() * detailPanier.getQuantite();
-//
-        // recupere le panier car l'api n'a pas de reference pour Panier
-        Optional<DetailPanier> detailPanier1 = findOne(detailPanier.getId());
-        detailPanier.setPanier(detailPanier1.get().getPanier());
-
-        detailPanier.setMontant(montant);
-
         return detailPanierRepository.save(detailPanier);
     }
 

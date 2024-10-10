@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {environment} from "../../environments/environment.development";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {UserService} from "./user.service";
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import {Observable} from "rxjs";
 export class AuthService {
 
   resourceUrl = environment.apiUrl
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private userService: UserService) { }
 
   register(user: any): Observable<any>{
     return this.httpClient.post<any>(`${this.resourceUrl}/auth/register`, user)
@@ -29,6 +30,7 @@ export class AuthService {
   }
 
   setUser(user: any){
+    localStorage.removeItem("user")
     localStorage.setItem("user", JSON.stringify(user))
   }
 }

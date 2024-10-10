@@ -58,7 +58,7 @@ public class Produit {
     private List<DetailCommande> detailsCommande;
 
     @OneToMany(mappedBy = "produit")
-    @JsonIgnoreProperties(value = {"produit", "panier"}, allowSetters = true)
+//    @JsonIgnoreProperties(value = {"panier"}, allowSetters = true)
     private List<DetailPanier> detailsPanier;
 
 //    @ToString.Exclude

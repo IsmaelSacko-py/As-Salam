@@ -6,5 +6,5 @@ import com.salam.backend.model.Region;
 import org.springframework.stereotype.Service;
 
 @Service
-public interface RegionService extends CentralRepositoryService<RegionDTO> {
+public interface RegionService extends CentralRepositoryService<Region> {
 }
