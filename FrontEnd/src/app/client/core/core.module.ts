@@ -4,6 +4,7 @@ import { HeaderComponent } from './shell/header/header.component';
 import { FooterComponent } from './shell/footer/footer.component';
 import { PreloaderComponent } from './shell/preloader/preloader.component';
 import {RouterLink} from "@angular/router";
+import { ChatbotComponent } from './shell/chatbot/chatbot.component';
 
 
 
@@ -11,12 +12,14 @@ import {RouterLink} from "@angular/router";
   declarations: [
     HeaderComponent,
     FooterComponent,
-    PreloaderComponent
+    PreloaderComponent,
+    ChatbotComponent
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
-    PreloaderComponent
+    PreloaderComponent,
+    ChatbotComponent
   ],
     imports: [
         CommonModule,

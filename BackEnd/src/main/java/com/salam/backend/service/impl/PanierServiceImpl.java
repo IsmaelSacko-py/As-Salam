@@ -1,5 +1,6 @@
 package com.salam.backend.service.impl;
 
+import ch.qos.logback.core.testUtil.RandomUtil;
 import com.salam.backend.dto.DetailPanierDTO;
 import com.salam.backend.dto.PanierDTO;
 import com.salam.backend.enumeration.EtatCommande;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
+import java.util.Random;
 import java.util.UUID;
 
 @Slf4j
@@ -32,16 +34,17 @@ public class PanierServiceImpl implements PanierService {
 
     /***
      * Determiner le total des articles ajoutés au panier.
-     * @param panier le panier du client
+     * @param client le panier du client
      * @return le résultat de l'opération. 1 : succès / 0 : échec
      */
     @Override
     public int validerPanier(Client client) {
 
+
         Panier panier = client.getPanier();
         try {
             Commande commande = new Commande();
-            String numCommande = UUID.randomUUID().toString();
+            String numCommande = UUID.randomUUID().toString().replace("-", "").substring(0, 10).toUpperCase();
             commande.setNumero(numCommande);
             commande.setDate(LocalDateTime.now());
             commande.setStatut(EtatCommande.EN_COURS);
@@ -104,6 +107,6 @@ public class PanierServiceImpl implements PanierService {
 
     @Override
     public void delete(Integer id) {
-
+        log.debug("Request to delete Panier : {}", id);
     }
 }

@@ -3,7 +3,7 @@
     <div class="col-lg-12">
       <div class="user-card">
         <div class="user-card-header">
-          <h4 class="user-card-title">My Orders List</h4>
+          <h4 class="user-card-title">Mes commandes</h4>
           <div class="user-card-header-right">
             <div class="user-card-filter">
               <select class="select">
@@ -30,155 +30,29 @@
           <table class="table table-borderless text-nowrap">
             <thead>
             <tr>
-              <th>#Order No</th>
-              <th>Purchased Date</th>
+              <th>#ID</th>
+              <th>Date</th>
               <th>Total</th>
               <th>Status</th>
               <th>Action</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
+            <tr *ngFor="let commande of user.commandes">
               <td>
-                <span class="table-list-code">#35VR5K54</span>
+                <span class="table-list-code">{{commande.numero}}</span>
               </td>
-              <td>January 21, 2024</td>
-              <td>$3,650</td>
+              <td>{{commande.date | date:'MMMM d, y'}}</td>
+              <td>{{commande.totalPrix}}</td>
               <td>
-                <span class="badge badge-info">Pending</span>
-              </td>
-              <td>
-                <a
-                  href="order-detail.html"
-                  class="btn btn-outline-secondary btn-sm rounded-2"
-                  data-tooltip="tooltip"
-                  title="Details"
-                ><i class="far fa-eye"></i
-                ></a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <span class="table-list-code">#35VR5K54</span>
-              </td>
-              <td>January 21, 2024</td>
-              <td>$3,650</td>
-              <td>
-                                <span class="badge badge-primary"
-                                >Processing</span
-                                >
+                <span class="badge badge-info">{{commande.statut}}</span>
               </td>
               <td>
                 <a
-                  href="order-detail.html"
                   class="btn btn-outline-secondary btn-sm rounded-2"
                   data-tooltip="tooltip"
                   title="Details"
-                ><i class="far fa-eye"></i
-                ></a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <span class="table-list-code">#35VR5K54</span>
-              </td>
-              <td>January 21, 2024</td>
-              <td>$3,650</td>
-              <td>
-                                <span class="badge badge-success"
-                                >Completed</span
-                                >
-              </td>
-              <td>
-                <a
-                  href="order-detail.html"
-                  class="btn btn-outline-secondary btn-sm rounded-2"
-                  data-tooltip="tooltip"
-                  title="Details"
-                ><i class="far fa-eye"></i
-                ></a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <span class="table-list-code">#35VR5K54</span>
-              </td>
-              <td>January 21, 2024</td>
-              <td>$3,650</td>
-              <td>
-                                <span class="badge badge-danger"
-                                >Cancelled</span
-                                >
-              </td>
-              <td>
-                <a
-                  href="order-detail.html"
-                  class="btn btn-outline-secondary btn-sm rounded-2"
-                  data-tooltip="tooltip"
-                  title="Details"
-                ><i class="far fa-eye"></i
-                ></a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <span class="table-list-code">#35VR5K54</span>
-              </td>
-              <td>January 21, 2024</td>
-              <td>$3,650</td>
-              <td>
-                                <span class="badge badge-success"
-                                >Completed</span
-                                >
-              </td>
-              <td>
-                <a
-                  href="order-detail.html"
-                  class="btn btn-outline-secondary btn-sm rounded-2"
-                  data-tooltip="tooltip"
-                  title="Details"
-                ><i class="far fa-eye"></i
-                ></a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <span class="table-list-code">#35VR5K54</span>
-              </td>
-              <td>January 21, 2024</td>
-              <td>$3,650</td>
-              <td>
-                                <span class="badge badge-success"
-                                >Completed</span
-                                >
-              </td>
-              <td>
-                <a
-                  href="order-detail.html"
-                  class="btn btn-outline-secondary btn-sm rounded-2"
-                  data-tooltip="tooltip"
-                  title="Details"
-                ><i class="far fa-eye"></i
-                ></a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <span class="table-list-code">#35VR5K54</span>
-              </td>
-              <td>January 21, 2024</td>
-              <td>$3,650</td>
-              <td>
-                                <span class="badge badge-success"
-                                >Completed</span
-                                >
-              </td>
-              <td>
-                <a
-                  href="order-detail.html"
-                  class="btn btn-outline-secondary btn-sm rounded-2"
-                  data-tooltip="tooltip"
-                  title="Details"
+                  (click)="detailCommnade(commande.id)"
                 ><i class="far fa-eye"></i
                 ></a>
               </td>

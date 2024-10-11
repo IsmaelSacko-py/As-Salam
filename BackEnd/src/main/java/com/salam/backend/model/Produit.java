@@ -68,6 +68,6 @@ public class Produit {
 
     @ManyToOne
     @JoinColumn(name = "categorie_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_produit_categorie"))
-//    @JsonIgnoreProperties({"categorie"})
+    @JsonIgnoreProperties(value = {"produits", "sousCategories"}, allowSetters = true)
     private Categorie categorie;
 }

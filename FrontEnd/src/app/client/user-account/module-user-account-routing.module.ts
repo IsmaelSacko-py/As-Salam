@@ -19,6 +19,7 @@ import {ClientDashboardComponent} from "./user-dashboard/client-dashboard/client
 import {UserAddProductComponent} from "./user-product/user-add-product/user-add-product.component";
 import {UserAdressListComponent} from "./user-address/user-adress-list/user-adress-list.component";
 import {UserAdressAddComponent} from "./user-address/user-adress-add/user-adress-add.component";
+import {UserOrderDetailsComponent} from "./user-order/user-order-details/user-order-details.component";
 
 const routes: Routes = [
   {path: 'user-dashboard', component: ClientDashboardComponent},
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path: 'user-address-add', component: UserAdressAddComponent},
   {path: 'user-notification', component: UserNotificationComponent},
   {path: 'user-order', component: UserOrderComponent},
+  {path: 'user-order-details/:id', component: UserOrderDetailsComponent},
   {path: 'user-payment-method', component: UserPaymentMethodComponent},
   {path: 'user-payout', component: UserPayoutComponent},
   {path: 'user-product', component: UserProductComponent},

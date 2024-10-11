@@ -9,7 +9,7 @@ import {AuthService} from "../../../../service/auth.service";
 })
 export class HeaderComponent implements OnInit{
   @Input() hideCategoryDropDown = ''
-  @Input() hideHeader!: boolean
+  @Input() hideHeader = false
   user!: any
 
   constructor(private authService: AuthService) {

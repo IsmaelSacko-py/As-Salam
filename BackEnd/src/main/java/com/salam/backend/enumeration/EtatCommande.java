@@ -1,8 +1,14 @@
 package com.salam.backend.enumeration;
 
-public enum EtatCommande {
-    EN_COURS,
-    LIVREE,
-    ANNULEE
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
+@Getter
+public enum EtatCommande {
+    EN_COURS("en cours"),
+    LIVREE("livrée"),
+    ANNULEE("annulée");
+
+    private final String description;
 }

@@ -29,6 +29,7 @@ import {SharedModule} from "../shared/shared.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { UserAdressListComponent } from './user-address/user-adress-list/user-adress-list.component';
 import { UserAdressAddComponent } from './user-address/user-adress-add/user-adress-add.component';
+import { UserOrderDetailsComponent } from './user-order/user-order-details/user-order-details.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { UserAdressAddComponent } from './user-address/user-adress-add/user-adre
     UserAccountSidebarItemComponent,
     AddProductImageSectionComponent,
     UserAdressListComponent,
-    UserAdressAddComponent
+    UserAdressAddComponent,
+    UserOrderDetailsComponent
   ],
   imports: [
     CommonModule,

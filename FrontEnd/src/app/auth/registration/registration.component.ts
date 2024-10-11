@@ -13,6 +13,7 @@ export class RegistrationComponent implements OnInit{
   hideCategoryDropDown = 'hide-category'
 
   hideHeader = true
+  hideFooter = true
 
   registerForm!: FormGroup
 

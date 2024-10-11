@@ -14,6 +14,7 @@ import { ShopComponent } from './client/shop/shop.component';
 import { AuthComponent } from './auth/auth.component';
 import {FormsModule} from "@angular/forms";
 import { CheckoutCompletComponent } from './client/checkout/checkout-complet/checkout-complet.component';
+import { CommandeComponent } from './service/commande/commande.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { CheckoutCompletComponent } from './client/checkout/checkout-complet/che
     CheckoutComponent,
     ShopComponent,
     AuthComponent,
-    CheckoutCompletComponent
+    CheckoutCompletComponent,
+    CommandeComponent
   ],
     imports: [
         BrowserModule,

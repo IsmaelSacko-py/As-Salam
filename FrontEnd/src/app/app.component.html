@@ -1,4 +1,4 @@
 <app-preloader></app-preloader>
-<app-header [hideCategoryDropDown]="hideCategoryDropDown"></app-header>
+<app-header [hidden]="hideHeader" [hideCategoryDropDown]="hideCategoryDropDown"></app-header>
   <router-outlet (activate)="onActivate($event)"/>
-<app-footer></app-footer>
+<app-footer [hidden]="hideFooter"></app-footer>

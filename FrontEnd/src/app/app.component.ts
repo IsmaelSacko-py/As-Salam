@@ -6,16 +6,15 @@ import {UserService} from "./service/user.service";
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit{
+export class AppComponent {
   title = 'FrontEnd';
   hideCategoryDropDown!: string
-  hideHeader!: boolean
+  hideHeader = false
+  hideFooter = false
 
   constructor(private clientService: UserService) {
   }
 
-  ngOnInit() {
-  }
 
   onActivate(composant: any){
     if(composant.hideCategoryDropDown){
@@ -24,6 +23,10 @@ export class AppComponent implements OnInit{
 
     if(composant.hideHeader){
       this.hideHeader = composant.hideHeader
+    }
+
+    if(composant.hideFooter){
+      this.hideFooter = composant.hideFooter
     }
   }
 

@@ -31,7 +31,6 @@ public class AdresseController {
 
     private final AdresseServiceImpl adresseService;
     private final PagedResourcesAssembler<Adresse> pagedResourcesAssembler;
-//    private static final Logger logger = LoggerFactory.getLogger(AdresseController.class);
 
     public AdresseController(AdresseServiceImpl adresseService, PagedResourcesAssembler<Adresse> pagedResourcesAssembler) {
         this.adresseService = adresseService;
@@ -55,7 +54,6 @@ public class AdresseController {
     @PostMapping
     public ResponseEntity<Adresse> createAdresse(@RequestBody Adresse adresse) {
         log.debug("Rest to save adresse: {}", adresse);
-        System.out.println("termine");
         adresse = adresseService.save(adresse);
         return ResponseEntity.ok().body(adresse);
     }
@@ -67,6 +65,6 @@ public class AdresseController {
 
     @DeleteMapping("/{id}")
     public void deleteAdresse(@PathVariable int id) {
-
+        log.debug("Rest to delete adresse: {}", id);
     }
 }
