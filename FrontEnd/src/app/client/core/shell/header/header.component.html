@@ -215,7 +215,7 @@
               </li>
               <li class="dropdown-cart">
                 <a href="#" class="shop-cart list-item"
-                ><i class="far fa-shopping-bag"></i> <span>{{user.panier.detailsPanier.length}}</span></a
+                ><i class="far fa-shopping-bag" *ngIf="user"></i> <span>{{user.panier.detailsPanier.length}}</span></a
                 >
                 <div *ngIf="user" class="dropdown-cart-menu">
                   <div class="dropdown-cart-header">
