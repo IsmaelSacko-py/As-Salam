@@ -16,7 +16,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "adresses")
-@JsonIgnoreProperties(value = {"client"}, allowSetters = true)
+@JsonIgnoreProperties(value = {"client", "commandes"}, allowSetters = true)
 public class Adresse {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,5 +43,8 @@ public class Adresse {
     @JoinColumn(name = "ville_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_adresse_ville"))
     @ToString.Exclude
     private Ville ville;
+
+    @OneToMany(mappedBy = "adresse")
+    private List<Commande> commandes;
 
 }

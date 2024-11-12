@@ -47,7 +47,9 @@ public class WebSecurityConfiguration {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/api/**").allowedOrigins("http://localhost:4200");
+                registry.addMapping("/api/**")
+                        .allowedOrigins("http://localhost:4200")
+                        .allowedOrigins("https://52b3-2001-4278-80-ec84-3970-6379-207f-5810.ngrok-free.app");
             }
         };
     }

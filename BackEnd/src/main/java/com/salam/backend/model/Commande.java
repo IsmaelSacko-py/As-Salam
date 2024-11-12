@@ -43,4 +43,9 @@ public class Commande {
     @OneToOne(mappedBy = "commande")
     @JsonIgnoreProperties(value = {"commande"}, allowSetters = true)
     private Paiement paiement;
+
+    @ManyToOne
+    @JoinColumn(name = "adresse_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_commande_adresse"))
+    @JsonIgnoreProperties(value = {"commandes"}, allowSetters = true)
+    private Adresse adresse;
 }

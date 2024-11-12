@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+#  app:
+#    build:
+#      context: ./BackEnd
+#      dockerfile: Dockerfile
+#    container_name: assalam-backend
+#    ports:
+#      - "8080:8080"
+#    depends_on:
+#      - db
+#    environment:
+#      - POSTGRES_USER=postgres
+#      - POSTGRES_PASSWORD=passer
+#      - SPRING_DATASOURCE_HOST=postgres-db
+#      - SPRING_DATASOURCE_PORT=5432
+#      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-db:5432/AsSalam
+#      - SPRING_DATASOURCE_USERNAME=postgres
+#      - SPRING_DATASOURCE_PASSWORD=passer
+#    networks:
+#      - salam_network
+
+  frontend:
+    build:
+      context: ./FrontEnd
+      dockerfile: Dockerfile
+    container_name: assalam-frontend
+    ports:
+      - "4300:80"
+    networks:
+      - salam_network
+
+#  db:
+#    image: postgres
+#    container_name: postgres-db
+#    environment:
+#      POSTGRES_DB: AsSalam
+#      POSTGRES_USER: postgres
+#      POSTGRES_PASSWORD: passer
+#    volumes:
+#      - pgdata:/var/lib/postgresql/data
+#    ports:
+#      - "5432:5432"
+#    networks:
+#      - salam_network
+
+networks:
+  salam_network:
+    name: salam_network
+
+volumes:
+  pgdata:

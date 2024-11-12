@@ -15,9 +15,9 @@ spring:
       name: admin
       password: admin
   datasource:
-    url: jdbc:postgresql://localhost:5432/AsSalam
-    username: postgres
-    password: passer
+    url: jdbc:postgresql://${SPRING_DATASOURCE_HOST:localhost}:${SPRING_DATASOURCE_PORT:5432}/AsSalam
+    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD:passer}
 
   jpa:
     show-sql: true
