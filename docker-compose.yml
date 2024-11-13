@@ -27,7 +27,7 @@ services:
       dockerfile: Dockerfile
     container_name: assalam-frontend
     ports:
-      - "4300:80"
+      - "4200:80"
     networks:
       - salam_network
 

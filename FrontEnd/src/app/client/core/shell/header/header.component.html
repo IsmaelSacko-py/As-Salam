@@ -213,9 +213,9 @@
                 ><i class="far fa-heart"></i><span>0</span></a
                 >
               </li>
-              <li class="dropdown-cart">
+              <li class="dropdown-cart" *ngIf="user">
                 <a href="#" class="shop-cart list-item"
-                ><i class="far fa-shopping-bag" *ngIf="user"></i> <span>{{user.panier.detailsPanier.length}}</span></a
+                ><i class="far fa-shopping-bag"></i> <span>{{user.panier.detailsPanier.length}}</span></a
                 >
                 <div *ngIf="user" class="dropdown-cart-menu">
                   <div class="dropdown-cart-header">
@@ -251,6 +251,46 @@
                       <span class="total-amount">$650.00</span>
                     </div>
                     <a href="/checkout" class="theme-btn">Commander</a>
+                  </div>
+                </div>
+              </li>
+              <li class="dropdown-cart" *ngIf="!user">
+                <a href="#" class="shop-cart list-item"
+                ><i class="far fa-shopping-bag"></i> <span>0</span></a
+                >
+                <div class="dropdown-cart-menu">
+<!--                  <div class="dropdown-cart-header">-->
+<!--                    <span>{{user.panier.detailsPanier.length}} Items</span>-->
+<!--                    <a href="/cart">Voir le panier</a>-->
+<!--                  </div>-->
+                  <ul class="dropdown-cart-list">
+<!--                    <li *ngFor="let details of user.panier.detailsPanier">-->
+<!--                      <div class="dropdown-cart-item">-->
+<!--                        <div class="cart-img">-->
+<!--                          <a href="#"-->
+<!--                          ><img src="app/client/assets/img/product/new_products/{{details.produit.images[0].url}}" alt="#"-->
+<!--                          /></a>-->
+<!--                        </div>-->
+<!--                        <div class="cart-info">-->
+<!--                          <h4><a href="#">{{ details.produit.libelle }}</a></h4>-->
+<!--                          <p class="cart-qty">-->
+<!--                            {{details.quantite}}x - <span class="cart-amount">{{ details.montant }} FCFA</span>-->
+<!--                          </p>-->
+<!--                        </div>-->
+<!--                        <a-->
+<!--                          href="#"-->
+<!--                          class="cart-remove"-->
+<!--                          title="Remove this item"-->
+<!--                        ><i class="far fa-times-circle"></i-->
+<!--                        ></a>-->
+<!--                      </div>-->
+<!--                    </li>-->
+                  </ul>
+                  <div class="dropdown-cart-bottom">
+                    <div class="dropdown-cart-total">
+                      <span class="justify-content-center">Votre panier est vide!</span>
+                    </div>
+                    <a href="/shop" class="theme-btn">Commencez vos achats</a>
                   </div>
                 </div>
               </li>

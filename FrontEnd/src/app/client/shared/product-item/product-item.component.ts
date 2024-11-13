@@ -1,12 +1,13 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Produit} from "../../../model/Produit.model";
 import Swal from "sweetalert2";
 import {DetailPanier} from "../../../model/DetailPanier.model";
 import {PanierService} from "../../../service/panier.service";
 import {DetailsPanierService} from "../../../service/details-panier.service";
-import {Router} from "@angular/router";
+import {Event, Router} from "@angular/router";
 import {AuthService} from "../../../service/auth.service";
 import {UserService} from "../../../service/user.service";
+import {CommunicationService} from "../../../service/communication.service";
 @Component({
   selector: 'app-product-item',
   templateUrl: './product-item.component.html',
@@ -14,12 +15,13 @@ import {UserService} from "../../../service/user.service";
 })
 export class ProductItemComponent implements OnInit{
   @Input() produit!: Produit
+  @Output() produitEvent = new EventEmitter<any>()
   detailsPanier!: DetailPanier
   quantity = 1
   isCreated!: boolean
   user!: any
 
-  constructor(private detailsPanierService: DetailsPanierService, private router: Router, private authService: AuthService, private userService: UserService) {
+  constructor(private comService: CommunicationService, private detailsPanierService: DetailsPanierService, private router: Router, private authService: AuthService, private userService: UserService) {
   }
 
   ngOnInit(): void {
@@ -36,8 +38,8 @@ export class ProductItemComponent implements OnInit{
     if (details.quantite > 0) {
       details.quantite--;
       this.updateDetailsPanier(this.produit.detailsPanier[0])
-      this.user = this.authService.getUser()
-      console.log(this.user)
+      // this.user = this.authService.getUser()
+      // console.log(this.user)
       if(details.quantite <= 0){
         this.deleteDetailsPanier(details.id)
       }
@@ -58,9 +60,7 @@ export class ProductItemComponent implements OnInit{
       next: response => {
         this.produit.detailsPanier.push(response)
         this.user.panier.detailsPanier.push(response)
-        // this.isCreated = true
-        console.log(response)
-        console.log(this.produit)
+        this.findUser()
       },
       error: err => {
         console.log(err)
@@ -87,7 +87,6 @@ export class ProductItemComponent implements OnInit{
       next: response => {
         this.produit.detailsPanier = []
         this.user = this.authService.getUser()
-        console.log(response)
       },
       error: err => {
         console.log(err)
@@ -104,6 +103,8 @@ export class ProductItemComponent implements OnInit{
       next: response => {
         this.user = response
         this.authService.setUser(this.user)
+        this.comService.triggerAction() // mettre les infos de l'utilisateurs à jour pour l'affichage du panier
+        console.log("user dans p-item", this.user)
         // console.log(this.authService.getUser())
       },
       error: err => {
