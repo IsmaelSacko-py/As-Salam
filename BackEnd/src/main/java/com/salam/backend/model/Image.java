@@ -8,7 +8,8 @@ import java.io.File;
 import java.io.Serial;
 import java.io.Serializable;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "images")
 //@JsonIgnoreProperties(value = {"produit"}, allowSetters = true)

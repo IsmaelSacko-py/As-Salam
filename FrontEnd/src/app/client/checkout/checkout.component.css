@@ -5,3 +5,17 @@
 .update-address:hover {
   color: var(--theme-color2);
 }
+
+.widget {
+  background: var(--theme-bg-light);
+  padding: 10px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+}
+
+.widget .recent-post-single {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin-bottom: 0px;
+}

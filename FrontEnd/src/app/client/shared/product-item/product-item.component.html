@@ -1,6 +1,6 @@
 <div class="product-img">
   <a href="/product-details"
-  ><img src="app/client/assets/img/product/new_products/{{produit.images[0].url}}" alt
+  ><img src="app/client/assets/img/product/{{produit.images[0].url}}" alt
   /></a>
   <div class="product-action-wrap">
     <div class="product-action">
@@ -33,10 +33,13 @@
     <a href="/product-details">{{ produit.libelle }}</a>
   </h3>
   <div class="product-bottom">
-    <div class="product-price">
-      <pre>3.500f</pre>
+    <div class="">
+      <span class="text-black">{{ produit.prix - (produit.prix * produit.remise)/100 | number: '1.0-0' }} FCFA</span>
+      <div style="margin-top: -6px" *ngIf="produit.remise">
+        <del class="me-2" style="font-size: small">{{ produit.prix | number: '1.0-0' }}</del>
+        <span class="opacity-75 bg-opacity-75 text-bg-warning" style="font-size: small">-{{produit.remise}}%</span>
+      </div>
     </div>
-
     <button
       (click)="addToCart(produit)"
       type="button"

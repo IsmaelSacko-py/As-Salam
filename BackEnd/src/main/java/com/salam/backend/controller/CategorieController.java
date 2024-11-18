@@ -13,9 +13,11 @@ import org.springframework.hateoas.PagedModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Slf4j
 @RestController
-@RequestMapping("/api/categories")
+@RequestMapping("/api/categorie")
 //@CrossOrigin(origins = "http://localhost:4200")
 public class CategorieController {
 
@@ -43,11 +45,11 @@ public class CategorieController {
     }
 
     @PostMapping
-    public ResponseEntity<CategorieDTO> createCategorie(@RequestBody CategorieDTO categorie) {
+    public ResponseEntity<CategorieDTO> createCategorie(@RequestBody List<CategorieDTO> categorie) {
         log.debug("Rest to save categorie: {}", categorie);
-        System.out.println("termine");
-        categorie = categorieService.save(categorie);
-        return ResponseEntity.ok().body(categorie);
+        for (CategorieDTO cat : categorie)
+            categorieService.save(cat);
+        return ResponseEntity.ok().build();
     }
 
     @PutMapping("/update")

@@ -9,7 +9,7 @@
     <div class="col-lg-12">
       <div class="user-form">
         <h6 class="mb-20">Information basic</h6>
-        <form (ngSubmit)="createProduct()" [formGroup]="productForm" enctype="multipart/form-data">
+        <form (ngSubmit)="submitProcutForm()" [formGroup]="productForm" enctype="multipart/form-data">
           <div class="row align-items-center">
             <div class="col-lg-12">
               <div class="form-group">
@@ -40,14 +40,9 @@
             <div class="col-lg-6">
               <div class="form-group">
                 <label>Catégorie</label>
-                <select class="form-control">
-                  <option value>Choisir une categorie</option>
-                  <option value="1">Fashion & Accessories</option>
-                  <option value="2">Electronics</option>
-                  <option value="3">Grocery & Market</option>
-                  <option value="4">Home & Furniture</option>
-                  <option value="5">Toy & Video Games</option>
-                  <option value="6">Gifts</option>
+                <select class="form-control" formControlName="categorie">
+                  <option disabled selected>Sélectionner une categorie</option>
+                  <option *ngFor="let categorie of productCategories"  [value]="categorie.id">{{ categorie.libelle }}</option>
                 </select>
               </div>
             </div>
@@ -76,7 +71,7 @@
             <h6 class="mt-20 mb-20">Images du produits</h6>
             <div class="col-lg-12">
               <div class="form-group">
-                <input type="file" (change)="onFilesSelected($event)" multiple class="form-control"/>
+                <input type="file" formControlName="images" (change)="onFilesSelected($event)" multiple class="form-control"/>
               </div>
             </div>
             <h6 class="mt-20 mb-20">Informations detaillées</h6>

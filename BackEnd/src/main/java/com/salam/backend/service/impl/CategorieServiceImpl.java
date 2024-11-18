@@ -6,27 +6,34 @@ import com.salam.backend.model.Categorie;
 import com.salam.backend.repository.CategorieRepository;
 import com.salam.backend.service.CategorieService;
 import com.salam.backend.service.ProduitService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.rmi.server.UID;
 import java.util.Optional;
+import java.util.UUID;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class CategorieServiceImpl implements CategorieService {
     private final CategorieRepository categorieRepository;
     private final CategorieMapper categorieMapper;
 
-    public CategorieServiceImpl(CategorieRepository categorieRepository, CategorieMapper categorieMapper) {
-        this.categorieRepository = categorieRepository;
-        this.categorieMapper = categorieMapper;
-    }
 
     @Override
     public CategorieDTO save(CategorieDTO categorie) {
-        return null;
+        log.debug("Request to save Categorie : {}", categorie);
+        Categorie categorieEntity = categorieMapper.toEntity(categorie);
+
+        String numero = UUID.randomUUID().toString().replace("-", "").substring(0, 10).toUpperCase();
+        categorieEntity.setNumero(numero);
+
+        categorieEntity = categorieRepository.save(categorieEntity);
+        return categorieMapper.toDto(categorieEntity);
     }
 
     @Override

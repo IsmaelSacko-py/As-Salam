@@ -20,30 +20,47 @@ services:
 #      - SPRING_DATASOURCE_PASSWORD=passer
 #    networks:
 #      - salam_network
-
-  frontend:
-    build:
-      context: ./FrontEnd
-      dockerfile: Dockerfile
-    container_name: assalam-frontend
-    ports:
-      - "4200:80"
-    networks:
-      - salam_network
-
-#  db:
-#    image: postgres
-#    container_name: postgres-db
-#    environment:
-#      POSTGRES_DB: AsSalam
-#      POSTGRES_USER: postgres
-#      POSTGRES_PASSWORD: passer
-#    volumes:
-#      - pgdata:/var/lib/postgresql/data
+#
+#  frontend:
+#    build:
+#      context: ./FrontEnd
+#      dockerfile: Dockerfile
+#    container_name: assalam-frontend
 #    ports:
-#      - "5432:5432"
+#      - "4200:80"
 #    networks:
 #      - salam_network
+
+  sonarqube:
+    image: sonarqube:community
+    restart: unless-stopped
+    container_name: sonarqube
+    depends_on:
+      - db
+    environment:
+      SONAR_JDBC_URL: jdbc:postgresql://db:5432/sonar
+      SONAR_JDBC_USERNAME: postgres
+      SONAR_JDBC_PASSWORD: passer
+    volumes:
+      - sonarqube_data:/opt/sonarqube/data
+      - sonarqube_extensions:/opt/sonarqube/extensions
+      - sonarqube_logs:/opt/sonarqube/logs
+    ports:
+      - '9000:9000'
+
+  db:
+    image: postgres
+    container_name: postgres-db
+    environment:
+      POSTGRES_DB: AsSalam
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: passer
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - salam_network
 
 networks:
   salam_network:

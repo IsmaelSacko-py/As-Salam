@@ -4,6 +4,8 @@ import {ProduitService} from "../../../../service/produit.service";
 import {Produit} from "../../../../model/Produit.model";
 import {Categorie} from "../../../../model/Categorie.model";
 import {Image} from "../../../../model/Image.model";
+import {CategorieProduitService} from "../../../../service/categorie-produit.service";
+import Swal from "sweetalert2";
 
 
 @Component({
@@ -18,8 +20,9 @@ export class UserAddProductComponent implements OnInit{
   fv!: any
   dateAjout!: Date
   productImage!: Image[]
+  productCategories!: any
 
-  constructor(private formBuilder: FormBuilder, private produitService: ProduitService) {
+  constructor(private formBuilder: FormBuilder, private produitService: ProduitService, private categorieService: CategorieProduitService) {
   }
 
   ngOnInit(): void {
@@ -33,22 +36,48 @@ export class UserAddProductComponent implements OnInit{
       description: [null, Validators.required],
       disponible: [null, Validators.required],
     })
+
+    this.getAllCategories()
   }
 
   createProduct(){
-    // for (const imageUrl of this.productForm.value.images) {
-    //   this.productImage.push(imageUrl)
-    // }
-
+    const categorie = this.productCategories.find((cat: any) => cat.id == this.productForm.value.categorie)
+    this.productForm.value.categorie = categorie
     this.produitService.create(this.productForm.value).subscribe({
       next: response => {
-        console.log(response)
+        this.productForm.reset()
+        Swal.fire(
+          'Créé!',
+          'Produit enregistré avec succès.',
+          'success'
+        )
       },
       error: err => {
         console.log(err)
+        Swal.fire(
+          'Erreur',
+          'Erreur lors de l\'enregistrement',
+          'error'
+        )
       }
     })
   }
+
+  submitProcutForm(){
+    Swal.fire({
+      icon: 'warning',
+      title: 'Enregistrement',
+      text: 'Etes-vous sûr de vouloir enregistrer ce produit ?',
+      showCancelButton: true,
+      confirmButtonText: "Oui",
+      cancelButtonText: "Annuler"
+    }).then(result => {
+      if(result.isConfirmed){
+        this.createProduct()
+      }
+    })
+  }
+
 
 
 
@@ -62,6 +91,17 @@ export class UserAddProductComponent implements OnInit{
 
     // this.selectedFiles = Array.from(files);
     // console.log('Fichiers sélectionnés:', this.selectedFiles);
+  }
+
+  getAllCategories(){
+    this.categorieService.getAll().subscribe({
+      next: response => {
+        this.productCategories = response._embedded.categorieDTOList
+      },
+      error: err => {
+        console.log(err)
+      }
+    })
   }
 
 

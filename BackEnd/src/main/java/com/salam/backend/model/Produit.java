@@ -12,7 +12,8 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "produits")
 public class Produit {
@@ -29,7 +30,7 @@ public class Produit {
     private String libelle;
 
     @NotBlank(message = "description requise")
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String description;
 
     @NotNull(message = "prix requis")

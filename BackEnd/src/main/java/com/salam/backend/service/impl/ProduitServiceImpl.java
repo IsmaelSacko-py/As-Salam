@@ -84,6 +84,7 @@ public class ProduitServiceImpl implements ProduitService {
 
     @Override
     public Page<Produit> findAll(Pageable pageable) {
+        log.debug("Request to get all Produits");
         return produitRepository.findAll(pageable);
     }
 
