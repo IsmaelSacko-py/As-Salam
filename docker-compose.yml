@@ -1,44 +1,59 @@
 version: '3.8'
 
 services:
-#  app:
-#    build:
-#      context: ./BackEnd
-#      dockerfile: Dockerfile
-#    container_name: assalam-backend
-#    ports:
-#      - "8080:8080"
-#    depends_on:
-#      - db
-#    environment:
-#      - POSTGRES_USER=postgres
-#      - POSTGRES_PASSWORD=passer
-#      - SPRING_DATASOURCE_HOST=postgres-db
-#      - SPRING_DATASOURCE_PORT=5432
-#      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-db:5432/AsSalam
-#      - SPRING_DATASOURCE_USERNAME=postgres
-#      - SPRING_DATASOURCE_PASSWORD=passer
-#    networks:
-#      - salam_network
-#
-#  frontend:
-#    build:
-#      context: ./FrontEnd
-#      dockerfile: Dockerfile
-#    container_name: assalam-frontend
-#    ports:
-#      - "4200:80"
-#    networks:
-#      - salam_network
+  backend:
+    build:
+      context: ./BackEnd
+      dockerfile: Dockerfile
+    container_name: assalam-backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - salam_db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=passer
+      - SPRING_DATASOURCE_HOST=assalam-db
+      - SPRING_DATASOURCE_PORT=5432
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://assalam-db:5432/AsSalam
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=passer
+    networks:
+      - salam_network
+
+  frontend:
+    build:
+      context: ./FrontEnd
+      dockerfile: Dockerfile
+    container_name: assalam-frontend
+    ports:
+      - "4200:80"
+    networks:
+      - salam_network
+
+
+  salam_db:
+    image: postgres
+    container_name: assalam-db
+    environment:
+      POSTGRES_DB: AsSalam
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: passer
+    volumes:
+      - pg_assalam_data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    networks:
+      - salam_network
 
   sonarqube:
     image: sonarqube:community
     restart: unless-stopped
     container_name: sonarqube
     depends_on:
-      - db
+      - sonar_db
     environment:
-      SONAR_JDBC_URL: jdbc:postgresql://db:5432/sonar
+      SONAR_JDBC_URL: jdbc:postgresql://sonarqube-db:5432/sonar
       SONAR_JDBC_USERNAME: postgres
       SONAR_JDBC_PASSWORD: passer
     volumes:
@@ -48,23 +63,26 @@ services:
     ports:
       - '9000:9000'
 
-  db:
+
+  sonar_db:
     image: postgres
-    container_name: postgres-db
+    container_name: sonarqube-db
     environment:
-      POSTGRES_DB: AsSalam
+      POSTGRES_DB: sonar
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: passer
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - pg_sonar_data:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
-    networks:
-      - salam_network
+      - "5434:5432"
 
 networks:
   salam_network:
     name: salam_network
 
 volumes:
-  pgdata:
+  pg_sonar_data:
+  pg_assalam_data:
+  sonarqube_data:
+  sonarqube_extensions:
+  sonarqube_logs:
