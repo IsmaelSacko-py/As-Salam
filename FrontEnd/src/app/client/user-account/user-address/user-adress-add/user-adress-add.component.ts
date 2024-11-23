@@ -3,7 +3,8 @@ import {ProduitService} from "../../../../service/produit.service";
 import {RegionService} from "../../../../service/region.service";
 import {AdresseService} from "../../../../service/adresse.service";
 import Swal from "sweetalert2";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {AuthService} from "../../../../service/auth.service";
 
 @Component({
   selector: 'app-user-adress-add',
@@ -15,7 +16,7 @@ export class UserAdressAddComponent implements OnInit{
   villes!: any[]
   selectedRegion!: any
   addressForm!: FormGroup
-  constructor(private regionService: RegionService, private adresseService: AdresseService, private formBuilder: FormBuilder) { }
+  constructor(private regionService: RegionService, private adresseService: AdresseService, private formBuilder: FormBuilder, private authService: AuthService) { }
 
   ngOnInit() {
     this.findAllRegions()
@@ -23,7 +24,7 @@ export class UserAdressAddComponent implements OnInit{
       nom: [null, Validators.required],
       type: [null, Validators.required],
       numero: null,
-      membre: null,
+      client: new FormControl({value: null, disabled: true}),
       ville: null
     })
   }
@@ -49,7 +50,10 @@ export class UserAdressAddComponent implements OnInit{
 
   saveAdresse(){
     if(this.addressForm.valid){
+      this.addressForm.value.client = this.authService.getUser()
+      this.addressForm.value.ville = this.villes.find(v => v.id == this.addressForm.value.ville)
       const adresse = this.addressForm.value
+      console.log(adresse)
       console.log(adresse)
       this.adresseService.create(adresse).subscribe({
         next: response => {

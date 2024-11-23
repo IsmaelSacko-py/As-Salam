@@ -75,9 +75,9 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label>Ville</label>
-                  <select [disabled]="!villes || villes.length === 0" class="select form-control">
+                  <select [disabled]="!villes || villes.length === 0" class="select form-control" formControlName="ville">
                     <option disabled selected>Sélectionner une ville</option>
-                    <option *ngFor="let ville of villes" [value]="ville">{{ ville.nom }}</option>
+                    <option *ngFor="let ville of villes" [value]="ville.id">{{ ville.nom }}</option>
                   </select>
                 </div>
               </div>

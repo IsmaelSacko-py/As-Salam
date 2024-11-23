@@ -6,12 +6,12 @@
     ></div>
     <div class="container">
       <div class="site-breadcrumb-wrap">
-        <h4 class="breadcrumb-title">Shop Cart</h4>
+        <h4 class="breadcrumb-title">Panier</h4>
         <ul class="breadcrumb-menu">
           <li>
-            <a href="index.html"><i class="far fa-home"></i> Home</a>
+            <a href="index.html"><i class="far fa-home"></i> Accueil</a>
           </li>
-          <li class="active">Shop Cart</li>
+          <li class="active">Panier</li>
         </ul>
       </div>
     </div>
@@ -31,7 +31,7 @@
                     <th>Libellé</th>
                     <th>Prix</th>
                     <th>Quantité</th>
-                    <th>Sub Total</th>
+                    <th>Sous-Total</th>
                     <th></th>
                   </tr>
                   </thead>
@@ -78,7 +78,14 @@
                     </td>
                     <td>
                       <div class="shop-cart-subtotal">
-                        <span>{{ details.montant * details.quantite | number: '1.0-0'}} F</span>
+<!--                        <span>{{ details.montant * details.quantite | number: '1.0-0'}} F</span>-->
+                        <div class="">
+                          <span class="text-black">{{ details.montant * details.quantite - (details.montant * details.quantite * details.produit.remise)/100 | number: '1.0-0' }} FCFA</span>
+                          <div style="margin-top: -6px" *ngIf="details.produit.remise">
+                            <del class="me-2" style="font-size: small">{{ details.montant * details.quantite | number: '1.0-0' }}</del>
+                            <span class="opacity-75 bg-opacity-75 text-bg-warning" style="font-size: small">-{{details.produit.remise}}%</span>
+                          </div>
+                        </div>
                       </div>
                     </td>
                     <td>
@@ -99,10 +106,10 @@
                       <input
                         type="text"
                         class="form-control"
-                        placeholder="Your Coupon Code"
+                        placeholder="Code du coupon..."
                       />
                       <button class="theme-btn" type="submit">
-                        Apply Coupon
+                        Valider le coupon
                       </button>
                     </div>
                   </div>
