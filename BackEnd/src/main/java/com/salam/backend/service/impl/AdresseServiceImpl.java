@@ -43,14 +43,6 @@ public class AdresseServiceImpl implements AdresseService {
 
         String numAdresse = UUID.randomUUID().toString();
 
-        Optional<Client> client = clientServiceImpl.findOne(50);
-        Optional<Ville> ville = villeServiceImpl.findOne(1);
-
-        log.info("client : {}", client);
-        log.info("ville : {}", ville);
-
-        adresse.setClient(client.get());
-        adresse.setVille(ville.get());
         adresse.setNumero(numAdresse);
 
         return adresseRepository.save(adresse);

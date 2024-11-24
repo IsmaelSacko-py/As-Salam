@@ -15,7 +15,7 @@ spring:
       name: admin
       password: admin
   datasource:
-    url: jdbc:postgresql://${SPRING_DATASOURCE_HOST:localhost}:${SPRING_DATASOURCE_PORT:5433}/AsSalam
+    url: jdbc:postgresql://${SPRING_DATASOURCE_HOST:localhost}:${SPRING_DATASOURCE_PORT:5432}/AsSalam
     username: ${SPRING_DATASOURCE_USERNAME:postgres}
     password: ${SPRING_DATASOURCE_PASSWORD:passer}
 
@@ -32,6 +32,10 @@ spring:
     web:
       pageable:
         default-page-size: 3
+
+  paytech:
+    api_key: bc3c8c3a2a4e05fdda43d1fc991de79e7af2806a4d428afd3d0177774100f341
+    api_secret: 47b8600441a09538c60c5f24eac7a7855d33e7c0fd4ae4ac23a8666a4735f91d
 
 
 
