@@ -189,7 +189,7 @@
                             <span class="fas fa-arrow-left"></span>panier
                           </button>
                           <button type="submit" class="theme-btn">
-                            suivante<i class="fas fa-arrow-right"></i>
+                            suivant<i class="fas fa-arrow-right"></i>
                           </button>
                         </div>
                       </div>
@@ -287,7 +287,7 @@
                         précédent
                       </button>
                       <button type="submit" class="theme-btn">
-                        suivante<i class="fas fa-arrow-right"></i>
+                        suivant<i class="fas fa-arrow-right"></i>
                       </button>
                     </div>
                   </div>
@@ -305,24 +305,47 @@
                       id="pills-tab"
                       role="tablist"
                     >
-                      <li class="nav-item" role="presentation" *ngFor="let paiement of modesPaiement; let i = index">
+                      <li class="nav-item" role="presentation">
                         <a
-                          class="nav-link {{i === 0? 'active' : ''}}"
-                          id="pills-tab-{{paiement.id}}"
+                          class="nav-link active"
+                          id="pills-tab-1"
                           data-bs-toggle="pill"
-                          [attr.data-bs-target]="'#pills-' + (paiement.id)"
+                          data-bs-target="#pills-1"
                           type="button"
                           role="tab"
-                          [attr.aria-controls]="'pills-' + (paiement.id)"
+                          aria-controls="pills-1"
                           aria-selected="true"
                         >
-                          <div class="checkout-card-img" style="width: 150px; height: 50px">
+                          <div class="checkout-card-img">
                             <img
-                              src="app/client/assets/img/payment/{{paiement.image}}"
+                              src="app/client/assets/img/payment/mastercard.svg"
+                              alt
+                            />
+                            <img src="app/client/assets/img/payment/visa.svg" alt />
+                            <img src="app/client/assets/img/payment/amex.svg" alt />
+                            <img
+                              src="app/client/assets/img/payment/discover.svg"
                               alt
                             />
                           </div>
-                          <span>{{ paiement.libelle }}</span>
+                          <span>Payer maintenant</span>
+                        </a>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                        <a
+                          class="nav-link"
+                          id="pills-tab-4"
+                          data-bs-toggle="pill"
+                          data-bs-target="#pills-4"
+                          type="button"
+                          role="tab"
+                          aria-controls="pills-4"
+                          aria-selected="false"
+                        >
+                          <div class="checkout-payment-img cod">
+                            <img src="app/client/assets/img/payment/cod-3.svg" alt />
+                          </div>
+                          <span>Payer à la livraison</span>
                         </a>
                       </li>
                     </ul>
@@ -339,113 +362,31 @@
                             <div class="row">
                               <div class="col-lg-6">
                                 <div class="form-group">
-                                  <label>Numéro de téléphone</label>
+                                  <label>Card Holder Name</label>
                                   <input
                                     type="text"
                                     class="form-control"
-                                    placeholder="téléphone.."
+                                    placeholder="Name On Card"
                                   />
                                 </div>
                               </div>
                               <div class="col-lg-6">
                                 <div class="form-group">
-                                  <label>Code de paiement</label>
-                                  <input
-                                    type="password"
-                                    class="form-control"
-                                    placeholder="code"
-                                  />
-                                </div>
-                              </div>
-                              <div class="col-lg-6">
-                                <button type="submit" class="theme-btn">
-                                  Login Account<i
-                                  class="fas fa-arrow-right"
-                                ></i>
-                                </button>
-                              </div>
-                            </div>
-                          </form>
-                        </div>
-                      </div>
-                      <div
-                        class="tab-pane fade"
-                        id="pills-2"
-                        role="tabpanel"
-                        aria-labelledby="pills-tab-2"
-                        tabindex="0"
-                      >
-                        <div class="shop-checkout-form">
-                          <form action="#">
-                            <div class="row">
-                              <div class="col-lg-6">
-                                <div class="form-group">
-                                  <label>Numéro de téléphone</label>
+                                  <label>Card Number</label>
                                   <input
                                     type="text"
                                     class="form-control"
-                                    placeholder="téléphone.."
+                                    placeholder="Your Card Number"
                                   />
                                 </div>
                               </div>
                               <div class="col-lg-6">
                                 <div class="form-group">
-                                  <label>Code de paiement</label>
-                                  <input
-                                    type="password"
-                                    class="form-control"
-                                    placeholder="code"
-                                  />
-                                </div>
-                              </div>
-                              <div class="col-lg-6">
-                                <button type="submit" class="theme-btn">
-                                  Login Account<i
-                                  class="fas fa-arrow-right"
-                                ></i>
-                                </button>
-                              </div>
-                            </div>
-                          </form>
-                        </div>
-                      </div>
-                      <div
-                        class="tab-pane fade"
-                        id="pills-3"
-                        role="tabpanel"
-                        aria-labelledby="pills-tab-3"
-                        tabindex="0"
-                      >
-                        <div class="shop-checkout-form">
-                          <form action="#">
-                            <div class="row">
-                              <div class="col-lg-6">
-                                <div class="form-group">
-                                  <label>Nom du titulaire de la carte</label>
+                                  <label>Expire Date</label>
                                   <input
                                     type="text"
                                     class="form-control"
-                                    placeholder="Nom..."
-                                  />
-                                </div>
-                              </div>
-                              <div class="col-lg-6">
-                                <div class="form-group">
-                                  <label>Numéro de la carte</label>
-                                  <input
-                                    type="text"
-                                    class="form-control"
-                                    placeholder="Numéro"
-                                  />
-                                </div>
-                              </div>
-                              <div class="col-lg-6">
-                                <div class="form-group">
-                                  <label>Date d'expiration</label>
-                                  <input
-                                    type="text"
-                                    class="form-control"
-                                    placeholder="Date..."
+                                    placeholder="Expire"
                                   />
                                 </div>
                               </div>
@@ -455,7 +396,7 @@
                                   <input
                                     type="text"
                                     class="form-control"
-                                    placeholder="CVV..."
+                                    placeholder="CVV"
                                   />
                                 </div>
                               </div>
@@ -465,10 +406,12 @@
                                   class="theme-btn theme-btn2"
                                 >
                                       <span class="fas fa-arrow-left"></span
-                                      >Previous
+                                      >Précédent
                                 </button>
                                 <button type="submit" class="theme-btn">
-                                  Pay Now<i class="fas fa-arrow-right"></i>
+                                  Commander<i
+                                  class="fas fa-arrow-right"
+                                ></i>
                                 </button>
                               </div>
                             </div>

@@ -74,10 +74,17 @@ export class HeaderComponent implements OnInit, OnDestroy{
   }
 
   calculateTotalPanier(detailsPanier: any){
-    return detailsPanier.reduce((total: any, item: any) => {
+    const totalBrut = detailsPanier.reduce((total: any, item: any) => {
       return total + (item.produit.prix * item.quantite);
     }, 0);
 
+    const remise = detailsPanier.reduce((total: any, item: any) =>{
+      let totalProduit = item.montant * item.quantite
+      total += totalProduit * item.produit.remise/100
+      return total
+    }, 0)
+
+    return totalBrut - remise
   }
 
 }

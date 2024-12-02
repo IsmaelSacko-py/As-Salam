@@ -44,10 +44,10 @@ public class PanierController {
     }
 
     @PostMapping("/validate")
-    public ResponseEntity<?> validatePanier(@RequestBody Client client) {
+    public ResponseEntity<Commande> validatePanier(@RequestBody Client client) {
         log.debug("REST to validat client panier: {}", client);
         System.out.println("termine");
-        int result = panierService.validerPanier(client);
+        Commande result = panierService.validerPanier(client);
         return ResponseEntity.ok().body(result);
     }
 

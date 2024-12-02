@@ -14,7 +14,6 @@ import { ShopComponent } from './client/shop/shop.component';
 import { AuthComponent } from './auth/auth.component';
 import {FormsModule} from "@angular/forms";
 import { CheckoutCompletComponent } from './client/checkout/checkout-complet/checkout-complet.component';
-import { CommandeComponent } from './service/commande/commande.component';
 import { SingleSliderComponent } from './client/home/single-slider/single-slider.component';
 
 @NgModule({
@@ -27,7 +26,6 @@ import { SingleSliderComponent } from './client/home/single-slider/single-slider
     ShopComponent,
     AuthComponent,
     CheckoutCompletComponent,
-    CommandeComponent,
     SingleSliderComponent
   ],
     imports: [

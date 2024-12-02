@@ -43,7 +43,8 @@ public class ModePaiementServiceImpl implements ModePaiementService {
 
     @Override
     public Optional<ModePaiement> findOne(Integer id) {
-        return Optional.empty();
+        log.debug("Request to get ModePaiement: {}", id);
+        return modePaiementRepository.findById(id);
     }
 
     @Override

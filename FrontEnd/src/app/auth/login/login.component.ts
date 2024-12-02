@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit{
         localStorage.setItem("type", response.type)
         localStorage.setItem("user", JSON.stringify(response.user))
         console.log(response)
-        this.router.navigate(['/'])
+        window.location.href = '/'
       },
       error: err => {
         console.log(err)

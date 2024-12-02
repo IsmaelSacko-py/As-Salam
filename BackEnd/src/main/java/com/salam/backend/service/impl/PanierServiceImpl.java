@@ -1,13 +1,9 @@
 package com.salam.backend.service.impl;
 
-import ch.qos.logback.core.testUtil.RandomUtil;
-import com.salam.backend.dto.DetailPanierDTO;
 import com.salam.backend.dto.PanierDTO;
 import com.salam.backend.enumeration.EtatCommande;
 import com.salam.backend.model.*;
-import com.salam.backend.repository.DetailCommandeRepository;
 import com.salam.backend.repository.PanierRepository;
-import com.salam.backend.service.DetailCommandeService;
 import com.salam.backend.service.PanierService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
-import java.util.Random;
 import java.util.UUID;
 
 @Slf4j
@@ -26,10 +21,9 @@ import java.util.UUID;
 public class PanierServiceImpl implements PanierService {
 
     private final PanierRepository panierRepository;
-    private final DetailCommandeServiceImpl detailCommandeService;
-    private final CommandeServiceImpl commandeService;
     private final CommandeServiceImpl commandeServiceImpl;
     private final DetailCommandeServiceImpl detailCommandeServiceImpl;
+    private final DetailPanierServiceImpl detailPanierServiceImpl;
 
 
     /***
@@ -38,7 +32,7 @@ public class PanierServiceImpl implements PanierService {
      * @return le résultat de l'opération. 1 : succès / 0 : échec
      */
     @Override
-    public int validerPanier(Client client) {
+    public Commande validerPanier(Client client) {
 
 
         Panier panier = client.getPanier();
@@ -52,30 +46,35 @@ public class PanierServiceImpl implements PanierService {
             commande = commandeServiceImpl.save(commande);
 
             double montantTotal = 0;
+            double prixBrut, prixNet, remise;
             for (DetailPanier item : panier.getDetailsPanier()) {
                 DetailCommande detail = new DetailCommande();
 
+                prixBrut = item.getProduit().getPrix() * item.getQuantite();
+                remise =  prixBrut * item.getProduit().getRemise() /100;
+                prixNet = prixBrut - remise;
+
                 detail.setProduit(item.getProduit());
-                detail.setMontant(item.getMontant());
+                detail.setMontant(prixNet);
                 detail.setQuantite(item.getQuantite());
                 detail.setCommande(commande);
 
                 detailCommandeServiceImpl.save(detail);
 
-                montantTotal+= item.getMontant() * item.getQuantite();
+                montantTotal+= prixNet;
             }
             commande.setTotalPrix(montantTotal);
-            commandeServiceImpl.update(commande);
-            return 1;
+            return commandeServiceImpl.update(commande);
         }catch (Exception e) {
             log.error(e.getMessage());
-            return 0;
+            return null;
         }
     }
 
     @Override
-    public int viderPanier(PanierDTO panierDTO) {
-        return 0;
+    public void viderPanier(Panier panier) {
+        log.info("Request to empty cart {}", panier.getId());
+        detailPanierServiceImpl.deleteByPanierId(panier.getId());
     }
 
     @Override

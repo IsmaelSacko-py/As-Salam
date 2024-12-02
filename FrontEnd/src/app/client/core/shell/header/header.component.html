@@ -115,7 +115,7 @@
             <form action="#">
               <div class="search-content">
                 <select class="select">
-                  <option value>Toutes les categories</option>
+                  <option value>Toutes les catégories</option>
                   <option value="1">Today's Hot Deals</option>
                   <option value="2">Fashion & Accessories</option>
                   <option value="3">Electronics</option>
@@ -199,43 +199,60 @@
                 >
               </li>
               <li class="dropdown-cart" *ngIf="user">
-                <a href="#" class="shop-cart list-item"
-                ><i class="far fa-shopping-bag"></i> <span>{{user.panier.detailsPanier.length}}</span></a
-                >
-                <div *ngIf="user" class="dropdown-cart-menu">
-                  <div class="dropdown-cart-header">
-                    <span>{{user.panier.detailsPanier.length}} Items</span>
-                    <a href="/cart">Voir le panier</a>
-                  </div>
-                  <ul class="dropdown-cart-list">
-                    <li *ngFor="let details of user.panier.detailsPanier">
-                      <div class="dropdown-cart-item">
-                        <div class="cart-img">
-                          <a href="#"
-                          ><img src="app/client/assets/img/product/new_products/{{details.produit.images[0].url}}" alt="#"
-                          /></a>
-                        </div>
-                        <div class="cart-info">
-                          <h4><a href="#">{{ details.produit.libelle }}</a></h4>
-                          <p class="cart-qty">
-                            {{details.quantite}}x - <span class="cart-amount">{{ details.montant | number: '1.0-0' }} FCFA</span>
-                          </p>
-                        </div>
-                        <a
-                          href="#"
-                          class="cart-remove"
-                          title="Remove this item"
-                        ><i class="far fa-times-circle"></i
-                        ></a>
-                      </div>
-                    </li>
-                  </ul>
-                  <div class="dropdown-cart-bottom">
-                    <div class="dropdown-cart-total">
-                      <span>Total</span>
-                      <span class="total-amount">{{ calculateTotalPanier(user.panier.detailsPanier) | number: '1.0-0' }} FCFA</span>
+                <div *ngIf="user.panier.detailsPanier.length">
+                  <a href="#" class="shop-cart list-item"
+                  ><i class="far fa-shopping-bag"></i> <span>{{user.panier.detailsPanier.length}}</span></a
+                  >
+                  <div class="dropdown-cart-menu">
+                    <div class="dropdown-cart-header">
+                      <span>{{user.panier.detailsPanier.length}} Items</span>
+                      <a href="/cart">Voir le panier</a>
                     </div>
-                    <a href="/checkout" class="theme-btn">Commander</a>
+                    <ul class="dropdown-cart-list">
+                      <li *ngFor="let details of user.panier.detailsPanier">
+                        <div class="dropdown-cart-item">
+                          <div class="cart-img">
+                            <a href="#"
+                            ><img src="app/client/assets/img/product/new_products/{{details.produit.images[0].url}}" alt="#"
+                            /></a>
+                          </div>
+                          <div class="cart-info">
+                            <h4><a href="#">{{ details.produit.libelle }}</a></h4>
+                            <p class="cart-qty">
+                              {{details.quantite}}x - <span class="cart-amount">{{ details.montant | number: '1.0-0' }}
+                              <span class="opacity-75 bg-opacity-75 text-bg-warning" style="font-size: small" *ngIf="details.produit.remise">-{{details.produit.remise}}%</span>
+                            </span>
+                            </p>
+                          </div>
+                          <a
+                            href="#"
+                            class="cart-remove"
+                            title="Remove this item"
+                          ><i class="far fa-times-circle"></i
+                          ></a>
+                        </div>
+                      </li>
+                    </ul>
+                    <div class="dropdown-cart-bottom">
+                      <div class="dropdown-cart-total">
+                        <span>Total</span>
+                        <span class="total-amount">{{ calculateTotalPanier(user.panier.detailsPanier) | number: '1.0-0' }} FCFA</span>
+                      </div>
+                      <a href="/checkout" class="theme-btn">Commander</a>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="!user.panier.detailsPanier.length">
+                  <a href="#" class="shop-cart list-item"
+                  ><i class="far fa-shopping-bag"></i> <span>0</span></a
+                  >
+                  <div class="dropdown-cart-menu">
+                    <div class="dropdown-cart-bottom">
+                      <div class="dropdown-cart-total">
+                        <span class="justify-content-center">Votre panier est vide!</span>
+                      </div>
+                      <a href="/shop" class="theme-btn">Commencez vos achats</a>
+                    </div>
                   </div>
                 </div>
               </li>
@@ -244,33 +261,6 @@
                 ><i class="far fa-shopping-bag"></i> <span>0</span></a
                 >
                 <div class="dropdown-cart-menu">
-<!--                  <div class="dropdown-cart-header">-->
-<!--                    <span>{{user.panier.detailsPanier.length}} Items</span>-->
-<!--                    <a href="/cart">Voir le panier</a>-->
-<!--                  </div>-->
-                  <ul class="dropdown-cart-list">
-<!--                    <li *ngFor="let details of user.panier.detailsPanier">-->
-<!--                      <div class="dropdown-cart-item">-->
-<!--                        <div class="cart-img">-->
-<!--                          <a href="#"-->
-<!--                          ><img src="app/client/assets/img/product/new_products/{{details.produit.images[0].url}}" alt="#"-->
-<!--                          /></a>-->
-<!--                        </div>-->
-<!--                        <div class="cart-info">-->
-<!--                          <h4><a href="#">{{ details.produit.libelle }}</a></h4>-->
-<!--                          <p class="cart-qty">-->
-<!--                            {{details.quantite}}x - <span class="cart-amount">{{ details.montant }} FCFA</span>-->
-<!--                          </p>-->
-<!--                        </div>-->
-<!--                        <a-->
-<!--                          href="#"-->
-<!--                          class="cart-remove"-->
-<!--                          title="Remove this item"-->
-<!--                        ><i class="far fa-times-circle"></i-->
-<!--                        ></a>-->
-<!--                      </div>-->
-<!--                    </li>-->
-                  </ul>
                   <div class="dropdown-cart-bottom">
                     <div class="dropdown-cart-total">
                       <span class="justify-content-center">Votre panier est vide!</span>
@@ -298,7 +288,7 @@
         </a>
         <div class="category-all">
           <button class="category-btn" type="button">
-            <i class="far fa-grid-2-plus"></i><span>Nos Categories</span>
+            <i class="far fa-grid-2-plus"></i><span>Nos Catégories</span>
           </button>
           <ul class="main-category {{hideCategoryDropDown}}">
             <li *ngFor="let categorie of productCategories; let i = index">

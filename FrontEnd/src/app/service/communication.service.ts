@@ -12,7 +12,7 @@ export class CommunicationService {
   // Observable que d'autres composants peuvent écouter
   action$ = this.actionSubject.asObservable();
 
-  // Méthode pour émettre l'action
+  // Méthode pour émettre l'action signifiant que les données de l'utilisateur ont changées
   triggerAction() {
     this.actionSubject.next();  // L'événement est émis sans données (void)
   }

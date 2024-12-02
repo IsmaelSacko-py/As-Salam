@@ -4,6 +4,7 @@ import com.salam.backend.model.DetailPanier;
 import com.salam.backend.model.Panier;
 import com.salam.backend.repository.DetailPanierRepository;
 import com.salam.backend.service.DetailPanierService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,15 +15,10 @@ import java.util.Optional;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class DetailPanierServiceImpl implements DetailPanierService {
 
     private final DetailPanierRepository detailPanierRepository;
-    private final PanierServiceImpl panierService;
-
-    public DetailPanierServiceImpl(DetailPanierRepository detailPanierRepository, PanierServiceImpl panierService) {
-        this.detailPanierRepository = detailPanierRepository;
-        this.panierService = panierService;
-    }
 
     @Override
     public DetailPanier save(DetailPanier detailPanier) {
@@ -58,5 +54,12 @@ public class DetailPanierServiceImpl implements DetailPanierService {
     public void delete(Integer id) {
         log.debug("Request to delete DetailPanier : {}", id);
         detailPanierRepository.deleteById(id);
+    }
+
+
+    @Override
+    public void deleteByPanierId(int id) {
+        log.debug("Request to delete DetailPanier by panierId : {}", id);
+        detailPanierRepository.deleteByPanierId(id);
     }
 }
