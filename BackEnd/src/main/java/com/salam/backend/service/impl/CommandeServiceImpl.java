@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -35,6 +36,13 @@ public class CommandeServiceImpl implements CommandeService {
     public double calculerMontantTotal(Commande commande) {
         return 0;
     }
+
+    @Override
+    public Page<Commande> getCommandeByClientId(int clientId, Pageable pageable) {
+        log.debug("Request to get commandes client by id : {}", clientId);
+        return commandeRepository.getCommandeByClientIdOrderByDateDesc(clientId, pageable);
+    }
+
 
     @Override
     public Commande save(Commande commande) {

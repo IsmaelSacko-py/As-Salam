@@ -4,6 +4,7 @@ import {AuthService} from "../../../../service/auth.service";
 import {CommunicationService} from "../../../../service/communication.service";
 import { Subscription } from 'rxjs';
 import {CategorieProduitService} from "../../../../service/categorie-produit.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -35,7 +36,7 @@ export class HeaderComponent implements OnInit, OnDestroy{
     { icon: 'app/client/assets/img/icon/automotive.svg', label: 'Automotive' }
   ];
 
-  constructor(private comService: CommunicationService, private authService: AuthService, private categorieService: CategorieProduitService) {
+  constructor(private comService: CommunicationService, private authService: AuthService, private categorieService: CategorieProduitService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -85,6 +86,11 @@ export class HeaderComponent implements OnInit, OnDestroy{
     }, 0)
 
     return totalBrut - remise
+  }
+
+  logout(){
+    this.authService.logout()
+    this.router.navigate(['/'])
   }
 
 }

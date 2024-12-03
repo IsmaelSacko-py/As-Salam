@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ProduitService} from "../../../service/produit.service";
 import {Produit} from "../../../model/Produit.model";
 import {UserService} from "../../../service/user.service";
+import {AuthService} from "../../../service/auth.service";
 
 @Component({
   selector: 'app-shop-grid',

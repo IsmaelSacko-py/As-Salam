@@ -28,7 +28,7 @@
             <h3>Merci pour votre commande!.</h3>
             <p>
               Votre commande a été passée et sera traitée dans les plus brefs délais.
-              Assurez-vous de noter votre numéro de commande, qui est <b>{{ numCommande?? '38HF654DWR' }}</b> .
+              Assurez-vous de noter votre numéro de commande, qui est <b>{{ numCommande || '38HF654DWR' }}</b> .
               Vous recevrez sous peu un e-mail de confirmation de votre commande.
             </p>
             <a href="/shop" class="theme-btn"

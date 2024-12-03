@@ -34,7 +34,8 @@ public class WebSecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf(AbstractHttpConfigurer::disable)
                    .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/api/auth").permitAll()
+                        .requestMatchers("/api/auth/*").permitAll()
+                        .requestMatchers("/api/commandes/").permitAll()
                         .anyRequest().permitAll()
                    )
                    .addFilterBefore(new JwtFilter(customUserDetailsService, jwtUtils), UsernamePasswordAuthenticationFilter.class)

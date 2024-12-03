@@ -22,7 +22,7 @@ public class Client extends Utilisateur{
     protected List<Adresse> adresses;
 
     @OneToMany(mappedBy = "client")
-    @JsonIgnoreProperties(value = {"client"}, allowSetters = true)
+    @JsonIgnoreProperties(value = {"client", "vendeur"}, allowSetters = true)
     protected List<Commande> commandes;
 
     @OneToMany(mappedBy = "client")

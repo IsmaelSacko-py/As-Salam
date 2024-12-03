@@ -25,7 +25,7 @@ public class DetailCommande {
 
     @ManyToOne
     @JoinColumn(name = "produit_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_produit_detailscommande"))
-    @JsonIgnoreProperties(value = {"detailsCommande", "detailsPanier"}, allowSetters = true)
+    @JsonIgnoreProperties(value = {"detailsCommande", "detailsPanier", "vendeur"}, allowSetters = true)
     private Produit produit;
 
     @ManyToOne

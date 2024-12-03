@@ -71,4 +71,9 @@ public class Produit {
     @JoinColumn(name = "categorie_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_produit_categorie"))
     @JsonIgnoreProperties(value = {"produits", "sousCategories"}, allowSetters = true)
     private Categorie categorie;
+
+    @ManyToOne
+    @JoinColumn(name = "vendeur_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_produit_commande"))
+    @JsonIgnoreProperties(value = {"produits"})
+    private Vendeur vendeur;
 }

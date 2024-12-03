@@ -9,7 +9,7 @@ import {CoreModule} from "./client/core/core.module";
 import {SharedModule} from "./client/shared/shared.module";
 import { CartComponent } from './client/cart/cart.component';
 import { CheckoutComponent } from './client/checkout/checkout.component';
-import {provideHttpClient} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, provideHttpClient} from "@angular/common/http";
 import { ShopComponent } from './client/shop/shop.component';
 import { AuthComponent } from './auth/auth.component';
 import {FormsModule} from "@angular/forms";
@@ -28,14 +28,16 @@ import { SingleSliderComponent } from './client/home/single-slider/single-slider
     CheckoutCompletComponent,
     SingleSliderComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        CoreModule,
-        SharedModule,
-        FormsModule
-    ],
-  providers: [provideHttpClient()],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    CoreModule,
+    SharedModule,
+    FormsModule
+  ],
+  providers: [
+    provideHttpClient()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

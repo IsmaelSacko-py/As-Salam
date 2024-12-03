@@ -42,7 +42,7 @@
                   <a href="#"><i class="far fa-user-vneck"></i> Compte</a>
                 </li>
                 <li class="login">
-                  <a href="/auth/login"
+                  <a href="#" (click)="logout()"
                   ><i class="far fa-arrow-right-to-arc"></i> Déconnexion</a
                   >
                 </li>
@@ -200,7 +200,7 @@
               </li>
               <li class="dropdown-cart" *ngIf="user">
                 <div *ngIf="user.panier.detailsPanier.length">
-                  <a href="#" class="shop-cart list-item"
+                  <a href="/cart" class="shop-cart list-item"
                   ><i class="far fa-shopping-bag"></i> <span>{{user.panier.detailsPanier.length}}</span></a
                   >
                   <div class="dropdown-cart-menu">

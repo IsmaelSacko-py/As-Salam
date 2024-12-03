@@ -32,8 +32,13 @@ public class Commande {
     private double totalPrix;
 
     @ManyToOne
+    @JoinColumn(name = "vendeur_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_commande_vendeur"))
+    @JsonIgnoreProperties(value = {"commandes", "adresses", "conversationsChatBot", "produits", "panier"}, allowSetters = true)
+    private Vendeur vendeur;
+
+    @ManyToOne
     @JoinColumn(name = "client_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_commande_client"))
-    @JsonIgnoreProperties(value = {"commandes"}, allowSetters = true)
+    @JsonIgnoreProperties(value = {"commandes", "adresses", "conversationsChatBot", "produits", "panier"}, allowSetters = true)
     private Client client;
 
     @OneToMany(mappedBy = "commande", cascade = CascadeType.REMOVE)
@@ -48,4 +53,6 @@ public class Commande {
     @JoinColumn(name = "adresse_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_commande_adresse"))
     @JsonIgnoreProperties(value = {"commandes"}, allowSetters = true)
     private Adresse adresse;
+
+
 }

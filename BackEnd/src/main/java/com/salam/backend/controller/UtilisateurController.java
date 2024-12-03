@@ -42,13 +42,10 @@ public class UtilisateurController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Utilisateur> getUser(@PathVariable(value = "id") int id) {
+        log.debug("Rest to get utilisateur with id {}", id);
         Optional<Utilisateur> utilisateur = utilisateurService.findOne(id);
-        return utilisateur.map( user ->
-            ResponseEntity.ok().body(user)
-        ).orElseGet( ()  ->
-            ResponseEntity.notFound().build()
-        );
-
+        return utilisateur.map(ResponseEntity::ok)
+                .orElseGet( () -> ResponseEntity.notFound().build());
     }
 
 

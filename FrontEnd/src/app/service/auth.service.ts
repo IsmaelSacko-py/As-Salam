@@ -21,7 +21,13 @@ export class AuthService {
   }
 
   logout(){
+    localStorage.removeItem("user")
+    localStorage.removeItem("token")
+    localStorage.removeItem("type")
+  }
 
+  isLoggedIn(){
+    return !!this.getUser()
   }
 
   getUser(){
