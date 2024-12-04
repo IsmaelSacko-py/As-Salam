@@ -19,7 +19,7 @@
   </div>
   <ul class="sidebar-list">
     <li *ngFor="let item of sideBar; let i = index">
-      <app-user-account-sidebar-item [item]="item"></app-user-account-sidebar-item>
+      <app-user-account-sidebar-item [item]="item" *ngIf="(isClient && item.isClient) || (!isClient && !item.isClient) || item.isClient == null"></app-user-account-sidebar-item>
     </li>
   </ul>
 </div>

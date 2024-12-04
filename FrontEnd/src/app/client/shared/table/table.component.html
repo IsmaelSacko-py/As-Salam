@@ -1,0 +1,78 @@
+<table class="table table-borderless text-nowrap">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Date</th>
+    <th>Total</th>
+    <th>Status</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let commande of commandes">
+    <td>
+      <span class="table-list-code">{{commande.numero}}</span>
+    </td>
+    <td>{{commande.date | date:'dd/MM/yyyy'}}</td>
+    <td>{{commande.totalPrix | number: '1.0-0'}} FCFA</td>
+    <td>
+      <span class="badge" [ngClass]="getBadgeClass(commande.statut)">
+        {{ commande.statut }}
+      </span>
+    </td>
+    <td *ngIf="!isVendor">
+      <a
+        class="btn btn-outline-secondary btn-sm rounded-2"
+        data-tooltip="tooltip"
+        title="Details"
+        (click)="detailCommnade(commande.id)"
+      ><i class="far fa-eye"></i
+      ></a>
+    </td>
+    <td *ngIf="isVendor">
+      <div class="user-action-dropdown dropdown">
+        <button
+          class="btn btn-sm btn-outline-secondary"
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <i class="far fa-ellipsis"></i>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li>
+            <button class="dropdown-item" (click)="detailCommnade(commande.id)">
+              <i class="far fa-eye"></i>
+              details
+            </button>
+          </li>
+          <li>
+            <button class="dropdown-item" (click)="updateOrder('En attente', commande)">
+              <i class="far fa-pen-swirl"></i>
+              en attente
+            </button>
+          </li>
+          <li>
+            <button class="dropdown-item" (click)="updateOrder('En cours', commande)">
+              <i class="far fa-circle-dashed"></i>
+              en cours
+            </button>
+          </li>
+          <li>
+            <button class="dropdown-item" (click)="updateOrder('Livrée', commande)">
+              <i class="far fa-check-circle"></i>
+              livrer
+            </button>
+          </li>
+          <li>
+            <button class="dropdown-item" (click)="updateOrder('Annulée', commande)">
+              <i class="far fa-xmark-circle"></i>
+              annuler
+            </button>
+          </li>
+        </ul>
+      </div>
+    </td>
+  </tr>
+  </tbody>
+</table>

@@ -1,5 +1,4 @@
 <a routerLink="{{item.href}}" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
   <i [ngClass]="item.icon"></i>{{ item.label }}
-  <span *ngIf="item.label === 'Mes Commandes' && user.commandes.length" class="badge badge-danger">{{ user.commandes.length | number: '2.0' }}</span>
-
+  <span *ngIf="item.label === 'Mes Commandes' && user.commandes && user.commandes.length" class="badge badge-danger">{{ user.commandes.length | number: '2.0' }}</span>
 </a>

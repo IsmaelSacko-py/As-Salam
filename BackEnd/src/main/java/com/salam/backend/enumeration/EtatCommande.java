@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Getter
 public enum EtatCommande {
+    EN_ATTENTE("En attente"),
     EN_COURS("En cours"),
     LIVREE("Livrée"),
     ANNULEE("Annulée");

@@ -4,6 +4,7 @@ import { ModalQuickviewComponent } from './modal-quickview/modal-quickview.compo
 import { ProductItemComponent } from './product-item/product-item.component';
 import {FormsModule} from "@angular/forms";
 import { CartSummaryComponent } from './cart-summary/cart-summary.component';
+import { TableComponent } from './table/table.component';
 
 
 
@@ -11,12 +12,14 @@ import { CartSummaryComponent } from './cart-summary/cart-summary.component';
   declarations: [
     ModalQuickviewComponent,
     ProductItemComponent,
-    CartSummaryComponent
+    CartSummaryComponent,
+    TableComponent
   ],
     exports: [
         ModalQuickviewComponent,
         ProductItemComponent,
-        CartSummaryComponent
+        CartSummaryComponent,
+        TableComponent
     ],
     imports: [
         CommonModule,

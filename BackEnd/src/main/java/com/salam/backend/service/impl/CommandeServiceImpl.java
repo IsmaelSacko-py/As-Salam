@@ -43,17 +43,27 @@ public class CommandeServiceImpl implements CommandeService {
         return commandeRepository.getCommandeByClientIdOrderByDateDesc(clientId, pageable);
     }
 
+    @Override
+    public Page<Commande> getCommandeByVendeurId(int clientId, Pageable pageable) {
+        log.debug("Request to get commandes vendeur by id : {}", clientId);
+        return commandeRepository.getCommandeByVendeurIdOrderByDateDesc(clientId, pageable);
+    }
+
 
     @Override
     public Commande save(Commande commande) {
         log.debug("Request to save commande {}", commande);
+        log.debug("Request to paiement {}", commande.getPaiement());
         return commandeRepository.save(commande);
     }
 
     @Override
     public Commande update(Commande commande) {
+        Commande commande1 = commandeRepository.findById(commande.getId()).orElse(null);
+        assert commande1 != null;
+        commande1.setStatut(commande.getStatut());
         log.debug("Request to update commande {}", commande);
-        return commandeRepository.save(commande);
+        return commandeRepository.save(commande1);
     }
 
     @Override
@@ -68,7 +78,8 @@ public class CommandeServiceImpl implements CommandeService {
 
     @Override
     public Optional<Commande> findOne(Integer id) {
-        return Optional.empty();
+        log.debug("Request to get commande : {}", id);
+        return commandeRepository.findById(id);
     }
 
     @Override

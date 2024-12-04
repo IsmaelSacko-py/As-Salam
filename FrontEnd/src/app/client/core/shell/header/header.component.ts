@@ -14,7 +14,12 @@ import {Router} from "@angular/router";
 export class HeaderComponent implements OnInit, OnDestroy{
   @Input() hideCategoryDropDown = ''
   @Input() hideHeader = false
-  user!: any
+  user: any = null
+  // détermine s'il s'agit d'un client
+  isClient!: boolean
+  // détermine si un utilisateur est connecté
+  isLoggedIn!: boolean
+
 
   productCategories!: any
 
@@ -56,6 +61,8 @@ export class HeaderComponent implements OnInit, OnDestroy{
 
   findUser(){
     this.user = this.authService.getUser()
+    this.isClient = this.user?.profil.nom === 'client' || this.user?.profil.nom === 'both'
+    this.isLoggedIn = !!this.user
     console.log(this.user)
   }
 
@@ -90,7 +97,8 @@ export class HeaderComponent implements OnInit, OnDestroy{
 
   logout(){
     this.authService.logout()
-    this.router.navigate(['/'])
+    window.location.href = '/'
+    this.comService.triggerAction()
   }
 
 }

@@ -27,13 +27,14 @@ public class CommandeController {
 
     @GetMapping
     public ResponseEntity<PagedModel<EntityModel<Commande>>> getCommandes(Pageable pageable) {
-        log.debug("REST request to get a page of Commandes");
+        log.debug("Rest request to get a page of Commandes");
         Page<Commande> adresses = commandeService.findAll(pageable);
         return ResponseEntity.ok(pagedResourcesAssembler.toModel(adresses));
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Commande> getCommandeById(@PathVariable int id) {
+        log.debug("Rest request to get Commande : {}", id);
         return commandeService.findOne(id)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
@@ -41,22 +42,31 @@ public class CommandeController {
 
     @GetMapping("/client/{id}")
     public ResponseEntity<PagedModel<EntityModel<Commande>>> getCommandeByClientId(@PathVariable int id, Pageable pageable) {
-        log.debug("REST request to get client commandes");
+        log.debug("Rest request to get client commandes");
         Page<Commande> commandes = commandeService.getCommandeByClientId(id, pageable);
+        return ResponseEntity.ok(pagedResourcesAssembler.toModel(commandes));
+    }
+
+    @GetMapping("/vendeur/{id}")
+    public ResponseEntity<PagedModel<EntityModel<Commande>>> getCommandeByVendeurId(@PathVariable int id, Pageable pageable) {
+        log.debug("Rest request to get vendeur commandes");
+        Page<Commande> commandes = commandeService.getCommandeByVendeurId(id, pageable);
         return ResponseEntity.ok(pagedResourcesAssembler.toModel(commandes));
     }
 
 
     @PostMapping
     public ResponseEntity<Commande> createCommande(@RequestBody Commande adresse) {
-        log.debug("REST to save adresse: {}", adresse);
+        log.debug("Rest to save adresse: {}", adresse);
         adresse = commandeService.save(adresse);
         return ResponseEntity.ok().body(adresse);
     }
 
-    @PutMapping("/update")
-    public Commande updateCommande(@RequestBody Commande adresse) {
-        return null;
+    @PutMapping
+    public Commande updateCommande(@RequestBody Commande commande) {
+        log.debug("Rest to update commande: {}", commande);
+        log.debug("Paiment commande {}", commande.getPaiement());
+        return commandeService.update(commande);
     }
 
     @DeleteMapping("/{id}")

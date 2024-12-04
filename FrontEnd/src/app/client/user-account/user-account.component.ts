@@ -1,9 +1,5 @@
 import { Component } from '@angular/core';
-import {UserDashboardComponent} from "./user-dashboard/user-dashboard.component";
-import {VendorDashboardComponent} from "./user-dashboard/vendor-dashboard/vendor-dashboard.component";
-import {ClientDashboardComponent} from "./user-dashboard/client-dashboard/client-dashboard.component";
 import {NavigationEnd, Router} from "@angular/router";
-import {filter} from "rxjs";
 
 @Component({
   selector: 'app-user-account',
@@ -20,84 +16,128 @@ export class UserAccountComponent {
       icon: 'far fa-gauge-high',
       href: '/user-account/user-dashboard',
       badge: null,
-      isActive: true
+      isActive: true,
+      isClient: null
     },
     {
       label: 'Mon profil',
       icon: 'far fa-user',
       href: '/user-account/user-profile',
       badge: null,
-      isActive: false
+      isActive: false,
+      isClient: null
+    },
+    {
+      label: 'Mes produits',
+      icon: 'far fa-layer-group',
+      href: '/user-account/user-profile',
+      badge: null,
+      isActive: false,
+      isClient: false
+    },
+    {
+      label: 'Ajouter un nouveau produit',
+      icon: 'far fa-upload',
+      href: '/user-account/user-profile',
+      badge: null,
+      isActive: false,
+      isClient: false
     },
     {
       label: 'Mes Commandes',
       icon: 'far fa-shopping-bag',
       href: '/user-account/user-order',
       badge: '02',
-      isActive: false
+      isActive: false,
+      isClient: null
     },
     {
       label: 'Ma liste d\'envies',
       icon: 'far fa-heart',
       href: '/user-account/user-wishlist',
       badge: '02',
-      isActive: false
+      isActive: false,
+      isClient: true
     },
     {
       label: 'Mes adresses',
       icon: 'far fa-location-dot',
       href: '/user-account/user-address',
       badge: null,
-      isActive: false
+      isActive: false,
+      isClient: true
     },
     {
       label: 'Coupons',
       icon: 'far fa-headset',
       href: '/user-account/user-support-ticket',
       badge: '02',
-      isActive: false
+      isActive: false,
+      isClient: true
     },
     {
       label: 'Suivre ma commande',
       icon: 'far fa-map-location-dot',
       href: '/user-account/user-track-order',
       badge: null,
-      isActive: false
+      isActive: false,
+      isClient: true
     },
     {
       label: 'Modes de paiement',
       icon: 'far fa-wallet',
       href: '/user-account/user-payment-method',
       badge: null,
-      isActive: false
+      isActive: false,
+      isClient: true
+    },
+    {
+      label: 'Paiements',
+      icon: 'far fa-wallet',
+      href: '/user-account/user-payment-method',
+      badge: null,
+      isActive: false,
+      isClient: false
+    },
+    {
+      label: 'Transactions',
+      icon: 'far fa-credit-card',
+      href: '/user-account/user-payment-method',
+      badge: null,
+      isActive: false,
+      isClient: false
     },
     {
       label: 'Notification',
       icon: 'far fa-bell',
       href: '/user-account/user-notification',
       badge: '02',
-      isActive: false
+      isActive: false,
+      isClient: null
     },
     {
       label: 'Messages',
       icon: 'far fa-envelope',
       href: '/user-account/user-message',
       badge: '02',
-      isActive: false
+      isActive: false,
+      isClient: null
     },
     {
       label: 'Paramètres',
       icon: 'far fa-gear',
       href: '/user-account/user-setting',
       badge: null,
-      isActive: false
+      isActive: false,
+      isClient: null
     },
     {
       label: 'Déconnexion',
       icon: 'far fa-sign-out',
       href: '#',
       badge: null,
-      isActive: false
+      isActive: false,
+      isClient: null
     }
   ];
   vendorSidebarList = [
@@ -205,6 +245,4 @@ export class UserAccountComponent {
     }
   }
 
-
-  protected readonly alert = alert;
 }

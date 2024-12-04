@@ -6,7 +6,7 @@
         <div class="dashboard-widget color-1">
           <div class="dashboard-widget-info">
             <h1>{{ commandesEnCours | number: '2.0' }}</h1>
-            <span>Commandes en cours</span>
+            <span>Commandes en attente</span>
           </div>
           <div class="dashboard-widget-icon">
             <i class="fal fa-list"></i>
@@ -20,7 +20,7 @@
             <span>Commandes livrées</span>
           </div>
           <div class="dashboard-widget-icon">
-            <i class="fal fa-layer-group"></i>
+            <i class="fal fa-box-check"></i>
           </div>
         </div>
       </div>
@@ -35,6 +35,40 @@
           </div>
         </div>
       </div>
+      <div class="col-md-6 col-lg-6 col-xl-4" *ngIf="isVendor">
+        <div class="dashboard-widget color-4">
+          <div class="dashboard-widget-info">
+            <h1>1,500</h1>
+            <span>Bénéfice total (FCFA)</span>
+          </div>
+          <div class="dashboard-widget-icon">
+            <i class="fal fa-sack-dollar"></i>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-6 col-xl-4" *ngIf="isVendor">
+        <div class="dashboard-widget color-2">
+          <div class="dashboard-widget-info">
+            <h1>350</h1>
+            <span>Ventes totales</span>
+          </div>
+          <div class="dashboard-widget-icon">
+            <i class="fal fa-credit-card"></i>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-6 col-xl-4" *ngIf="isVendor">
+        <div class="dashboard-widget color-2">
+          <div class="dashboard-widget-info">
+            <h1>230k</h1>
+            <span>Nombre total de visiteurs</span>
+          </div>
+          <div class="dashboard-widget-icon">
+            <i class="fal fa-globe"></i>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
   <div class="row">
@@ -49,38 +83,7 @@
           </div>
         </div>
         <div class="table-responsive">
-          <table class="table table-borderless text-nowrap">
-            <thead>
-            <tr>
-              <th>ID</th>
-              <th>Date</th>
-              <th>Total</th>
-              <th>Status</th>
-              <th>Action</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let commande of clientCommandes">
-              <td>
-                <span class="table-list-code">{{commande.numero}}</span>
-              </td>
-              <td>{{commande.date | date:'dd/MM/yyyy'}}</td>
-              <td>{{commande.totalPrix | number: '1.0-0'}} FCFA</td>
-              <td>
-                <span class="badge badge-info">{{commande.statut}}</span>
-              </td>
-              <td>
-                <a
-                  class="btn btn-outline-secondary btn-sm rounded-2"
-                  data-tooltip="tooltip"
-                  title="Details"
-                  (click)="detailCommnade(commande.id)"
-                ><i class="far fa-eye"></i
-                ></a>
-              </td>
-            </tr>
-            </tbody>
-          </table>
+          <app-table [commandes]="clientCommandes"></app-table>
         </div>
       </div>
     </div>

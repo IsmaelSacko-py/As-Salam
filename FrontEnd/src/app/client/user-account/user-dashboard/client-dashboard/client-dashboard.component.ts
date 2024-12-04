@@ -15,22 +15,26 @@ export class ClientDashboardComponent implements OnInit{
   clientCommandes!: any
   commandesEnCours!: number
   commandesLivrees!: number
+  isVendor!: boolean
+  user!: any
 
   constructor(private commandeService: CommandeService, private authService: AuthService, private route: Router) {
   }
 
   ngOnInit() {
+    this.user = this.authService.getUser()
     this.getCommandesRecentes(0, 7)
+    this.isVendor = this.user.profil.nom === 'vendeur'
   }
 
   getCommandesRecentes(page?: number, size?: number){
-    const clientId = this.authService.getUser().id
-    this.commandeService.clientCommandes(clientId, page, size).subscribe({
+    const userId = this.user.id
+    this.commandeService.userCommandes(userId, page, size).subscribe({
       next: response => {
         this.clientCommandes = response._embedded.commandeList
 
         // Compter les commandes "En cours"
-        this.commandesEnCours = this.clientCommandes.filter((commande: any) => commande.statut === "En cours").length;
+        this.commandesEnCours = this.clientCommandes.filter((commande: any) => commande.statut === "En attente").length;
 
         // Compter les commandes "Livrée"
         this.commandesLivrees = this.clientCommandes.filter((commande: any) => commande.statut === "Livrée").length;
@@ -42,7 +46,4 @@ export class ClientDashboardComponent implements OnInit{
     })
   }
 
-  detailCommnade(id: number){
-    this.route.navigate(['/user-account/user-order-details', id]);
-  }
 }

@@ -3,6 +3,7 @@ import {environment} from "../../environments/environment.development";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {UserService} from "./user.service";
+import {CommunicationService} from "./communication.service";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import {UserService} from "./user.service";
 export class AuthService {
 
   resourceUrl = environment.apiUrl
-  constructor(private httpClient: HttpClient, private userService: UserService) { }
+  constructor(private httpClient: HttpClient, private comService: CommunicationService) { }
 
   register(user: any): Observable<any>{
     return this.httpClient.post<any>(`${this.resourceUrl}/auth/register`, user)

@@ -14,4 +14,5 @@ public interface CommandeService extends CentralRepositoryService<Commande>{
     Commande mettreAJourStatus(Commande commande);
     double calculerMontantTotal(Commande commande);
     Page<Commande> getCommandeByClientId(int clientId, Pageable pageable);
+    Page<Commande> getCommandeByVendeurId(int clientId, Pageable pageable);
 }

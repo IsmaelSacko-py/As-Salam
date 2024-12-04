@@ -13,5 +13,6 @@ import java.util.Optional;
 @Repository
 public interface CommandeRepository extends JpaRepository<Commande, Integer> {
     Page<Commande> getCommandeByClientIdOrderByDateDesc(int clientId, Pageable pageable);
+    Page<Commande> getCommandeByVendeurIdOrderByDateDesc(int clientId, Pageable pageable);
 
 }

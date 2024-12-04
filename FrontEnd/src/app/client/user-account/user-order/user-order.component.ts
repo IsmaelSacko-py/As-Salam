@@ -16,9 +16,10 @@ export class UserOrderComponent implements OnInit{
   ]
 
   user!: any
+  isAnVendor!: boolean
 
-  clientCommandes!: any
-  clientCommandesLinks!: any
+  userCommandes!: any
+  userCommandesLinks!: any
   page!: any
 
   constructor(private authService: AuthService, private route: Router, private commandeService: CommandeService) {
@@ -26,20 +27,18 @@ export class UserOrderComponent implements OnInit{
 
   ngOnInit(): void {
     this.user = this.authService.getUser()
-    this.clientOrders(0, 10)
+    this.userOrders(0, 10)
   }
 
-  detailCommnade(id: number){
-    this.route.navigate(['/user-account/user-order-details', id]);
-  }
-
-  clientOrders(page?: number, size?: number){
-    const clientId = this.authService.getUser().id
-    this.commandeService.clientCommandes(clientId, page, size).subscribe({
+  userOrders(page?: number, size?: number){
+    const user = this.authService.getUser()
+    const userId = user.id
+    this.isAnVendor = user.profil.nom === 'vendeur'
+    this.commandeService.userCommandes(userId, page, size).subscribe({
       next: response => {
         console.log(response)
-        this.clientCommandes = response._embedded.commandeList
-        this.clientCommandesLinks = response._links
+        this.userCommandes = response._embedded.commandeList
+        this.userCommandesLinks = response._links
         this.page = response.page
         console.log(this.page)
       },
@@ -49,9 +48,6 @@ export class UserOrderComponent implements OnInit{
     })
   }
 
-  // changePage(page: number, size: number){
-  //   this.commandeService.clientCommandes(clientId)
-  // }
 
   range(totalPages: number): number[] {
     return Array(totalPages).fill(0).map((_, index) => index);
