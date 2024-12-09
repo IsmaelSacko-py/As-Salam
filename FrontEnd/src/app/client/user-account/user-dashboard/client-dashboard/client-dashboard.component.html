@@ -5,7 +5,7 @@
       <div class="col-md-6 col-lg-4">
         <div class="dashboard-widget color-1">
           <div class="dashboard-widget-info">
-            <h1>{{ commandesEnCours | number: '2.0' }}</h1>
+            <h1>{{ commandesEnAttente | number: '2.0' }}</h1>
             <span>Commandes en attente</span>
           </div>
           <div class="dashboard-widget-icon">
@@ -83,7 +83,7 @@
           </div>
         </div>
         <div class="table-responsive">
-          <app-table [commandes]="clientCommandes"></app-table>
+          <app-table [commandes]="clientCommandes" [isVendor]="isVendor"></app-table>
         </div>
       </div>
     </div>

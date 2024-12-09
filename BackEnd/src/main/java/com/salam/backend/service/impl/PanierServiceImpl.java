@@ -1,6 +1,5 @@
 package com.salam.backend.service.impl;
 
-import com.salam.backend.dto.PanierDTO;
 import com.salam.backend.enumeration.EtatCommande;
 import com.salam.backend.model.*;
 import com.salam.backend.repository.PanierRepository;

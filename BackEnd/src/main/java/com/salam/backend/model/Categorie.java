@@ -1,14 +1,11 @@
 package com.salam.backend.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.salam.backend.enumeration.EtatCommande;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
-import java.io.Serial;
-import java.io.Serializable;
 import java.util.List;
 
 @Data

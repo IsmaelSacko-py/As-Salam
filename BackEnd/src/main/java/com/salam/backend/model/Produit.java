@@ -1,13 +1,13 @@
 package com.salam.backend.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.salam.backend.enumeration.EtatProduit;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
 import jakarta.validation.constraints.Size;
 import lombok.*;
-import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -47,6 +47,9 @@ public class Produit {
 
     @Column(nullable = false)
     private LocalDateTime dateAjout;
+
+    @Column(nullable = false, columnDefinition = "SMALLINT DEFAULT  0")
+    private EtatProduit statut;
 
     @Column(nullable = false)
     private boolean disponible = true;

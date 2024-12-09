@@ -2,7 +2,9 @@ package com.salam.backend.controller;
 
 
 import com.salam.backend.model.Produit;
+import com.salam.backend.service.impl.DetailCommandeServiceImpl;
 import com.salam.backend.service.impl.ProduitServiceImpl;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,18 +20,16 @@ import static org.springframework.web.servlet.function.RequestPredicates.content
 @Slf4j
 @RestController
 @RequestMapping("/api/produits")
+@RequiredArgsConstructor
 //@CrossOrigin(origins = "http://localhost:4200")
 public class ProduitController {
 
     private final ProduitServiceImpl produitService;
+    private final DetailCommandeServiceImpl detailCommandeService;
 
     private final PagedResourcesAssembler<Produit> pagedResourcesAssembler;
 //    private static final Logger logger = LoggerFactory.getLogger(ProduitController.class);
 
-    public ProduitController(ProduitServiceImpl produitService, PagedResourcesAssembler<Produit> pagedResourcesAssembler) {
-        this.produitService = produitService;
-        this.pagedResourcesAssembler = pagedResourcesAssembler;
-    }
 
     @GetMapping
     public ResponseEntity<PagedModel<EntityModel<Produit>>> getProduits(Pageable pageable) {
@@ -62,5 +62,19 @@ public class ProduitController {
     @DeleteMapping("/{id}")
     public void deleteProduit(@PathVariable int id) {
 
+    }
+
+    @GetMapping("/vendeur-produit/{id}")
+    public ResponseEntity<PagedModel<EntityModel<Produit>>> vendeurProduits(@PathVariable int id, Pageable pageable) {
+        log.debug("REST request to find vendeur products with vendeur id : {}", id);
+        Page<Produit> produits = produitService.vendeurProducts(id, pageable);
+        return ResponseEntity.ok(pagedResourcesAssembler.toModel(produits));
+    }
+
+    @GetMapping("/vendeur-produit-vendu/{id}")
+    public ResponseEntity<PagedModel<EntityModel<Produit>>> vendeurProduitsVendus(@PathVariable int id, Pageable pageable) {
+        log.debug("REST request to find vendeur products with vendeur id : {}", id);
+        Page<Produit> produits = detailCommandeService.vendeurProduitsVendus(id, pageable);
+        return ResponseEntity.ok(pagedResourcesAssembler.toModel(produits));
     }
 }

@@ -13,7 +13,7 @@ export class ClientDashboardComponent implements OnInit{
   sideBarType = 'client'
 
   clientCommandes!: any
-  commandesEnCours!: number
+  commandesEnAttente!: number
   commandesLivrees!: number
   isVendor!: boolean
   user!: any
@@ -34,8 +34,8 @@ export class ClientDashboardComponent implements OnInit{
         this.clientCommandes = response._embedded.commandeList
 
         // Compter les commandes "En cours"
-        this.commandesEnCours = this.clientCommandes.filter((commande: any) => commande.statut === "En attente").length;
-
+        this.commandesEnAttente = this.clientCommandes.filter((commande: any) => commande.statut === "En attente").length;
+        console.log(this.commandesEnAttente)
         // Compter les commandes "Livrée"
         this.commandesLivrees = this.clientCommandes.filter((commande: any) => commande.statut === "Livrée").length;
 

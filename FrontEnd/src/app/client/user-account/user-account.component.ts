@@ -30,7 +30,7 @@ export class UserAccountComponent {
     {
       label: 'Mes produits',
       icon: 'far fa-layer-group',
-      href: '/user-account/user-profile',
+      href: '/user-account/user-product',
       badge: null,
       isActive: false,
       isClient: false
@@ -38,7 +38,7 @@ export class UserAccountComponent {
     {
       label: 'Ajouter un nouveau produit',
       icon: 'far fa-upload',
-      href: '/user-account/user-profile',
+      href: '/user-account/user-add-product',
       badge: null,
       isActive: false,
       isClient: false
@@ -94,7 +94,7 @@ export class UserAccountComponent {
     {
       label: 'Paiements',
       icon: 'far fa-wallet',
-      href: '/user-account/user-payment-method',
+      href: '/user-account/user-payment',
       badge: null,
       isActive: false,
       isClient: false
@@ -102,7 +102,7 @@ export class UserAccountComponent {
     {
       label: 'Transactions',
       icon: 'far fa-credit-card',
-      href: '/user-account/user-payment-method',
+      href: '/user-account/user-transaction',
       badge: null,
       isActive: false,
       isClient: false

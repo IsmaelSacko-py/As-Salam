@@ -16,7 +16,7 @@ export class UserOrderComponent implements OnInit{
   ]
 
   user!: any
-  isAnVendor!: boolean
+  isVendor!: boolean
 
   userCommandes!: any
   userCommandesLinks!: any
@@ -33,7 +33,7 @@ export class UserOrderComponent implements OnInit{
   userOrders(page?: number, size?: number){
     const user = this.authService.getUser()
     const userId = user.id
-    this.isAnVendor = user.profil.nom === 'vendeur'
+    this.isVendor = user.profil.nom === 'vendeur'
     this.commandeService.userCommandes(userId, page, size).subscribe({
       next: response => {
         console.log(response)

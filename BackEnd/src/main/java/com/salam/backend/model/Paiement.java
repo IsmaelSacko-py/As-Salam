@@ -1,13 +1,12 @@
 package com.salam.backend.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.salam.backend.enumeration.EtatPaiement;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.io.Serial;
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Data
@@ -30,6 +29,9 @@ public class Paiement {
 
     @Column(nullable = false)
     protected boolean etat;
+
+    @Column(nullable = false, columnDefinition = "SMALLINT DEFAULT 0")
+    protected EtatPaiement statut;
 
     @OneToOne(mappedBy = "paiement")
     @JsonIgnoreProperties(value = {"paiement"}, allowSetters = true)

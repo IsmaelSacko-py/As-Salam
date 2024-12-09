@@ -1,6 +1,7 @@
 package com.salam.backend.service.impl;
 
 import com.salam.backend.model.DetailCommande;
+import com.salam.backend.model.Produit;
 import com.salam.backend.repository.DetailCommandeRepository;
 import com.salam.backend.service.DetailCommandeService;
 import lombok.RequiredArgsConstructor;
@@ -31,6 +32,12 @@ public class DetailCommandeServiceImpl implements DetailCommandeService {
     @Override
     public void appliquerRemise(DetailCommande detailCommande, double remise) {
 
+    }
+
+    @Override
+    public Page<Produit> vendeurProduitsVendus(int vendeurId, Pageable pageable) {
+        log.debug("Request to get vendeur produits vendus with vendeur id{}", vendeurId);
+        return detailCommandeRepository.vendeurProduitsVendus(vendeurId, pageable);
     }
 
     @Override

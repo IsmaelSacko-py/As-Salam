@@ -23,4 +23,12 @@ export class ProduitService {
   findAll(): Observable<any>{
     return this.httpClient.get<any>(`${this.resourceUrl}/produits`)
   }
+
+  userProducts(user: any): Observable<any>{
+    return this.httpClient.get<any>(`${this.resourceUrl}/produits/${user.profil.nom}-produit/${user.id}`)
+  }
+
+  vendeurProduitsVendus(vendeurId: number): Observable<any>{
+    return this.httpClient.get<any>(`${this.resourceUrl}/produits/vendeur-produit-vendu/${vendeurId}`)
+  }
 }

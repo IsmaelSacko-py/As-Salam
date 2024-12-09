@@ -27,15 +27,15 @@
           </div>
         </div>
         <div class="table-responsive">
-          <app-table [commandes]="userCommandes" [isVendor]="isAnVendor"></app-table>
+          <app-table [commandes]="userCommandes" [isVendor]="isVendor"></app-table>
         </div>
-        <div *ngIf="page.totalPages > 1" class="pagination-area mt-4 mb-3">
+        <div *ngIf="page?.totalPages > 1" class="pagination-area mt-4 mb-3">
           <div aria-label="Page navigation example">
             <ul class="pagination">
               <li class="page-item">
                 <button
                   class="page-link"
-                  (click)="userOrders(0, page.size)"
+                  (click)="userOrders(0, page?.size)"
                   aria-label="Previous"
                 >
                   <span aria-hidden="true"
@@ -43,11 +43,11 @@
                   ></span>
                 </button>
               </li>
-              <li class="page-item" *ngFor="let item of range(page.totalPages)">
-                <button class="page-link" (click)="userOrders(item, page.size)">{{ item + 1 }}</button>
+              <li class="page-item" *ngFor="let item of range(page?.totalPages)">
+                <button class="page-link" (click)="userOrders(item, page?.size)">{{ item + 1 }}</button>
               </li>
               <li class="page-item">
-                <button class="page-link"  (click)="userOrders(page.totalPages-1, page.size)" aria-label="Next">
+                <button class="page-link"  (click)="userOrders(page?.totalPages-1, page?.size)" aria-label="Next">
                   <span aria-hidden="true"
                   ><i class="far fa-angle-double-right"></i
                   ></span>

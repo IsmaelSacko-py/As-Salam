@@ -1,4 +1,4 @@
-<table class="table table-borderless text-nowrap">
+<table *ngIf="commandes; else emptie" class="table table-borderless text-nowrap">
   <thead>
   <tr>
     <th>ID</th>
@@ -76,3 +76,9 @@
   </tr>
   </tbody>
 </table>
+
+<ng-template #emptie>
+  <div class="d-flex justify-content-center align-items-center" style="height: 200px">
+    <div class="text-center">Aucune commande trouvée !</div>
+  </div>
+</ng-template>

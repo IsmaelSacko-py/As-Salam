@@ -1,1 +1,136 @@
-<p>user-product works!</p>
+<div class="user-wrapper">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="user-card user-product">
+        <div class="user-card-header">
+          <h4 class="user-card-title">Products</h4>
+          <div class="user-card-header-right">
+            <div class="user-card-filter">
+              <select class="select">
+                <option value>Default</option>
+                <option value="1">Active</option>
+                <option value="2">Pending</option>
+                <option value="3">Hidden</option>
+              </select>
+            </div>
+            <div class="user-card-search">
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Rechercher..."
+                />
+                <i class="far fa-search"></i>
+              </div>
+            </div>
+            <a href="/user-account/add-product" class="theme-btn">
+              <span class="far fa-plus-circle"></span>
+              Ajouter un produit
+            </a>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-borderless text-nowrap">
+            <thead>
+            <tr>
+              <th>Produit</th>
+              <th>Stock</th>
+              <th>Prix</th>
+              <th>Remise</th>
+              <th>Ventes</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let product of products">
+                <td>
+                  <div class="table-list-info">
+                    <a href="#">
+                      <div class="table-list-img">
+                        <img
+                          src="app/client/assets/img/product/{{product.images[0].url}}"
+                          alt
+                        />
+                      </div>
+                      <div class="table-list-content">
+                        <h6>{{ product.libelle }}</h6>
+                        <span>ID: {{ product.numero }}</span>
+                      </div>
+                    </a>
+                  </div>
+                </td>
+                <td>{{ product.quantite | number: '2.0' }} Pcs</td>
+                <td>{{ product.prix | number: '1.0-0' }} CFA</td>
+                <td>{{ product.remise }}%</td>
+                <td>{{ countVentes(product.id) }} </td>
+                <td>
+                  <span class="badge" [ngClass]="getBadgeClass(product.statut)">
+                    {{ product.statut }}
+                  </span>
+                </td>
+                <td>
+                  <a
+                    href="#"
+                    class="btn btn-outline-secondary btn-sm rounded-2"
+                    data-tooltip="tooltip"
+                    title="Details"
+                  ><i class="far fa-eye"></i
+                  ></a>
+                  <a
+                    href="#"
+                    class="btn btn-outline-secondary btn-sm rounded-2"
+                    data-tooltip="tooltip"
+                    title="Edit"
+                  ><i class="far fa-pen"></i
+                  ></a>
+                  <a
+                    href="#"
+                    class="btn btn-outline-danger btn-sm rounded-2"
+                    data-tooltip="tooltip"
+                    title="Delete"
+                  ><i class="far fa-trash-can"></i
+                  ></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="pagination-area mt-4 mb-3">
+          <div aria-label="Page navigation example">
+            <ul class="pagination">
+              <li class="page-item">
+                <a
+                  class="page-link"
+                  href="#"
+                  aria-label="Previous"
+                >
+                  <span aria-hidden="true">
+                    <i class="far fa-angle-double-left"></i>
+                  </span>
+                </a>
+              </li>
+              <li class="page-item active">
+                <a class="page-link" href="#">1</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="#">2</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="#">3</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                  <span aria-hidden="true">
+                    <i class="far fa-angle-double-right"></i>
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

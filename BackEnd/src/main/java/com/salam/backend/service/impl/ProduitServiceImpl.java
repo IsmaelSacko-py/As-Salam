@@ -98,4 +98,11 @@ public class ProduitServiceImpl implements ProduitService {
     public void delete(Integer id) {
 
     }
+
+
+    @Override
+    public Page<Produit> vendeurProducts(int vendeurId, Pageable pageable) {
+        log.debug("Request to find all vendeur products");
+        return produitRepository.findByVendeurId(vendeurId, pageable);
+    }
 }
