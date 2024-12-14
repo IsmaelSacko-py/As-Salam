@@ -23,6 +23,7 @@ export class TableComponent {
     const badgeClasses: any = {
       'En attente': 'badge-info',
       'En cours': 'badge-primary',
+      'Expédiée': 'badge-warning',
       'Livrée': 'badge-success',
       'Annulée': 'badge-danger'
     };

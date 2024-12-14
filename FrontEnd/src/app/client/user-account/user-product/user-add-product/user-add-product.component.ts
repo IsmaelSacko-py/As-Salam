@@ -34,7 +34,7 @@ export class UserAddProductComponent implements OnInit{
       images: [null, Validators.required],
       remise: [null],
       description: [null, Validators.required],
-      disponible: [null, Validators.required],
+      statut: [null, Validators.required],
     })
 
     this.getAllCategories()

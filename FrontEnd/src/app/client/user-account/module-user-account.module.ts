@@ -30,6 +30,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { UserAdressListComponent } from './user-address/user-adress-list/user-adress-list.component';
 import { UserAdressAddComponent } from './user-address/user-adress-add/user-adress-add.component';
 import { UserOrderDetailsComponent } from './user-order/user-order-details/user-order-details.component';
+import {NgSelectComponent} from "@ng-select/ng-select";
 
 @NgModule({
   declarations: [
@@ -58,12 +59,13 @@ import { UserOrderDetailsComponent } from './user-order/user-order-details/user-
     UserAdressAddComponent,
     UserOrderDetailsComponent
   ],
-  imports: [
-    CommonModule,
-    ModuleUserAccountRoutingModule,
-    SharedModule,
-    FormsModule,
-    ReactiveFormsModule
-  ]
+    imports: [
+        CommonModule,
+        ModuleUserAccountRoutingModule,
+        SharedModule,
+        FormsModule,
+        ReactiveFormsModule,
+        NgSelectComponent
+    ]
 })
 export class ModuleUserAccountModule { }

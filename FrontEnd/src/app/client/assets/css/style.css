@@ -5321,6 +5321,10 @@ span::before {
   background: #f3e8ff;
   color: #a855f7;
 }
+.user-area .badge-warning {
+  background: #dbfaf5;
+  color: #00f4cf;
+}
 .user-area .badge-primary {
   background: #dbf7fd;
   color: #0dcaf0;

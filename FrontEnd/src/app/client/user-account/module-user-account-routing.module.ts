@@ -39,7 +39,7 @@ const routes: Routes = [
   {path: 'user-track-order', component: UserTrackOrderComponent},
   {path: 'user-transaction', component: UserTransactionComponent},
   {path: 'user-wishlist', component: UserWishlistComponent},
-  {path: 'vendor-add-product', component: UserAddProductComponent},
+  {path: 'user-add-product', component: UserAddProductComponent},
 ];
 
 @NgModule({

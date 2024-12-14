@@ -48,7 +48,7 @@ public class Produit {
     @Column(nullable = false)
     private LocalDateTime dateAjout;
 
-    @Column(nullable = false, columnDefinition = "SMALLINT DEFAULT  0")
+    @Column(columnDefinition = "SMALLINT DEFAULT  0")
     private EtatProduit statut;
 
     @Column(nullable = false)

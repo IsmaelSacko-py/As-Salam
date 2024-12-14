@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 public enum EtatCommande {
     EN_ATTENTE("En attente"),
     EN_COURS("En cours"),
+    EXPEDIEE("Expédiée"),
     LIVREE("Livrée"),
     ANNULEE("Annulée");
 
