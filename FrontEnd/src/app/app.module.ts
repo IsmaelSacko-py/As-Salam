@@ -15,6 +15,7 @@ import { AuthComponent } from './auth/auth.component';
 import {FormsModule} from "@angular/forms";
 import { CheckoutCompletComponent } from './client/checkout/checkout-complet/checkout-complet.component';
 import { SingleSliderComponent } from './client/home/single-slider/single-slider.component';
+import {NgOptimizedImage} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -28,13 +29,14 @@ import { SingleSliderComponent } from './client/home/single-slider/single-slider
     CheckoutCompletComponent,
     SingleSliderComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    CoreModule,
-    SharedModule,
-    FormsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        CoreModule,
+        SharedModule,
+        FormsModule,
+        NgOptimizedImage
+    ],
   providers: [
     provideHttpClient()
   ],

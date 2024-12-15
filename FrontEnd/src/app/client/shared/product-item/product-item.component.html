@@ -1,5 +1,5 @@
 <div class="product-img">
-  <a href="/product-details"
+  <a (click)="goToProduitDetails(produit.id)"
   ><img src="app/client/assets/img/product/{{produit.images[0].url}}" alt
   /></a>
   <div class="product-action-wrap">
@@ -30,7 +30,7 @@
 </div>
 <div class="product-content">
   <h3 class="product-title">
-    <a href="/product-details">{{ produit.libelle }}</a>
+    <a [routerLink]="['/product-details', produit.id]">{{ produit.libelle }}</a>
   </h3>
   <div class="product-bottom">
     <div class="">

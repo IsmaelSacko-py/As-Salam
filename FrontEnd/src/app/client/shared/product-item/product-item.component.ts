@@ -114,4 +114,8 @@ export class ProductItemComponent implements OnInit{
   }
 
 
+  goToProduitDetails(produitId: number){
+    window.location.href = `/product-details/${produitId}`
+  }
+
 }

@@ -14,7 +14,7 @@ import {accessGuard} from "./client/core/guard/access.guard";
 
 const routes: Routes = [
   {path: '', component: HomeComponent, canActivate: [accessGuard]},
-  {path: 'product-details', component: ProductDetailsComponent},
+  {path: 'product-details/:id', component: ProductDetailsComponent},
   {path: 'cart', component: CartComponent, canActivate: [authGuard, accessGuard]},
   {path: 'checkout', component: CheckoutComponent, canActivate: [authGuard, accessGuard]},
   {path: 'checkout-complete', component: CheckoutCompletComponent, canActivate: [authGuard, accessGuard]},

@@ -5,6 +5,7 @@ import { ProductItemComponent } from './product-item/product-item.component';
 import {FormsModule} from "@angular/forms";
 import { CartSummaryComponent } from './cart-summary/cart-summary.component';
 import { TableComponent } from './table/table.component';
+import {RouterLink} from "@angular/router";
 
 
 
@@ -23,7 +24,8 @@ import { TableComponent } from './table/table.component';
     ],
     imports: [
         CommonModule,
-        FormsModule
+        FormsModule,
+        RouterLink
     ]
 })
 export class SharedModule { }
