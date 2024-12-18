@@ -5,6 +5,7 @@ import { ShopModuleRoutingModule } from './shop-module-routing.module';
 import { ShopGridComponent } from './shop-grid/shop-grid.component';
 import { ShopListComponent } from './shop-list/shop-list.component';
 import {SharedModule} from "../shared/shared.module";
+import {CoreModule} from "../core/core.module";
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import {SharedModule} from "../shared/shared.module";
     imports: [
         CommonModule,
         ShopModuleRoutingModule,
-        SharedModule
+        SharedModule,
+        CoreModule
     ]
 })
 export class ShopModuleModule { }
