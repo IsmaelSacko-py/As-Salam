@@ -42,14 +42,22 @@ public class ClientController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Client> getClient(@PathVariable(value = "id") int id) {
-        log.debug("Rest request to get Client {}", id);
+    public ResponseEntity<Client> getClientById(@PathVariable(value = "id") int id) {
+        log.debug("Rest request to get Client by id {}", id);
         Optional<Client> client = clientService.findOne(id);
         return client.map( user ->
             ResponseEntity.ok().body(user)
         ).orElseGet( ()  ->
             ResponseEntity.notFound().build()
         );
+
+    }
+
+    @GetMapping("/login/{login}")
+    public ResponseEntity<Client> getClientByLogin(@PathVariable(value = "login") String login) {
+        log.debug("Rest request to get Client by login {}", login);
+        Client client = clientService.findByTelephone(login);
+        return ResponseEntity.ok(client);
 
     }
 
