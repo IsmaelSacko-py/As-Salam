@@ -15,6 +15,8 @@ export class ShopGridComponent implements OnInit{
 
   produits!: Produit[]
   productCategories!: any
+  productsLinks!: any
+  page!: any
 
   constructor(private produitService: ProduitService, private categorieProduitService: CategorieProduitService) {
 
@@ -27,9 +29,11 @@ export class ShopGridComponent implements OnInit{
   }
 
   getProducts(){
-    this.produitService.findAll().subscribe({
+    this.produitService.findAll(0, 9).subscribe({
       next: response => {
         this.produits = response._embedded.produitList
+        this.productsLinks = response._links
+        this.page = response.page
         console.log(response)
       },
       error: err => {
@@ -48,6 +52,29 @@ export class ShopGridComponent implements OnInit{
         console.log(err)
       }
     })
+  }
+
+  products(page?: number, size?: number){
+    // const user = this.authService.getUser()
+    // const userId = user.id
+    // this.isVendor = user.profil.nom === 'vendeur'
+    this.produitService.findAll(page, size).subscribe({
+      next: response => {
+        console.log(response)
+        this.produits = response._embedded.produitList
+        this.productsLinks = response._links
+        this.page = response.page
+        console.log(this.page)
+      },
+      error: err => {
+        console.log(err)
+      }
+    })
+  }
+
+
+  range(totalPages: number): number[] {
+    return Array(totalPages).fill(0).map((_, index) => index);
   }
 
 }

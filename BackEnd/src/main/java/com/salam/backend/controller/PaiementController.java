@@ -8,10 +8,7 @@ import com.salam.backend.model.Client;
 import com.salam.backend.model.Commande;
 import com.salam.backend.model.ModePaiement;
 import com.salam.backend.model.Paiement;
-import com.salam.backend.service.impl.ClientServiceImpl;
-import com.salam.backend.service.impl.ModePaiementServiceImpl;
-import com.salam.backend.service.impl.PaiementServiceImpl;
-import com.salam.backend.service.impl.PanierServiceImpl;
+import com.salam.backend.service.impl.*;
 import io.jsonwebtoken.Header;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -36,6 +33,7 @@ public class PaiementController {
 
     private final PanierServiceImpl panierServiceImpl;
     private final ClientServiceImpl<Client> clientServiceImpl;
+    private final CommandeServiceImpl commandeServiceImpl;
     @Value("${spring.paytech.url}")
     private String payTechUrl;
 
@@ -103,9 +101,13 @@ public class PaiementController {
         paiement.setDate(LocalDateTime.now());
         paiement.setEtat(true);
         paiement.setCommande(commande);
-        paiement.setStatut(EtatPaiement.EN_ATTENTE);
+        paiement.setStatut(EtatPaiement.PAYE);
 
         paiement = paiementService.save(paiement);
+
+        commande.setPaiement(paiement);
+
+        commandeServiceImpl.save(commande);
         log.debug("Payment method: {}", response.get("payment_method"));
         return ResponseEntity.ok(paiement);
     }

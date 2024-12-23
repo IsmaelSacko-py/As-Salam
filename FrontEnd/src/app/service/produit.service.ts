@@ -20,8 +20,8 @@ export class ProduitService {
   }
 
   //recupere tous les produits
-  findAll(): Observable<any>{
-    return this.httpClient.get<any>(`${this.resourceUrl}/produits`)
+  findAll(page?: number, size?: number): Observable<any>{
+    return this.httpClient.get<any>(`${this.resourceUrl}/produits?page=${page}&size=${size}`)
   }
 
   findOne(produitId: number): Observable<any>{

@@ -97,34 +97,29 @@
             </div>
           </div>
 
-          <div class="pagination-area mb-0">
+          <div *ngIf="page?.totalPages > 1" class="pagination-area mt-4 mb-3">
             <div aria-label="Page navigation example">
               <ul class="pagination">
                 <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true"
-                        ><i class="far fa-arrow-left"></i
-                        ></span>
-                  </a>
+                  <button
+                    class="page-link"
+                    (click)="products(0, page?.size)"
+                    aria-label="Previous"
+                  >
+                  <span aria-hidden="true"
+                  ><i class="far fa-angle-double-left"></i
+                  ></span>
+                  </button>
                 </li>
-                <li class="page-item active">
-                  <a class="page-link" href="#">1</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="#">2</a>
-                </li>
-                <li class="page-item">
-                  <span class="page-link">...</span>
+                <li class="page-item" *ngFor="let item of range(page?.totalPages)">
+                  <button class="page-link" (click)="products(item, page?.size)">{{ item + 1 }}</button>
                 </li>
                 <li class="page-item">
-                  <a class="page-link" href="#">10</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Next">
-                        <span aria-hidden="true"
-                        ><i class="far fa-arrow-right"></i
-                        ></span>
-                  </a>
+                  <button class="page-link"  (click)="products(page?.totalPages-1, page?.size)" aria-label="Next">
+                  <span aria-hidden="true"
+                  ><i class="far fa-angle-double-right"></i
+                  ></span>
+                  </button>
                 </li>
               </ul>
             </div>

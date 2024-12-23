@@ -24,6 +24,7 @@ export class UserOrderDetailsComponent implements OnInit{
         this.commandeService.getCommande(params.id).subscribe({
           next: response => {
             this.commande = response
+            console.log(this.commande)
           },
           error: err => {
             console.log(err)
