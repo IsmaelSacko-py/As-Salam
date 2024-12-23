@@ -6,6 +6,8 @@ import {Categorie} from "../../../../model/Categorie.model";
 import {Image} from "../../../../model/Image.model";
 import {CategorieProduitService} from "../../../../service/categorie-produit.service";
 import Swal from "sweetalert2";
+import {AuthService} from "../../../../service/auth.service";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -22,7 +24,7 @@ export class UserAddProductComponent implements OnInit{
   productImage!: Image[]
   productCategories!: any
 
-  constructor(private formBuilder: FormBuilder, private produitService: ProduitService, private categorieService: CategorieProduitService) {
+  constructor(private formBuilder: FormBuilder, private produitService: ProduitService, private categorieService: CategorieProduitService, private authService: AuthService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -35,6 +37,7 @@ export class UserAddProductComponent implements OnInit{
       remise: [null],
       description: [null, Validators.required],
       statut: [null, Validators.required],
+      vendeur: []
     })
 
     this.getAllCategories()
@@ -43,6 +46,7 @@ export class UserAddProductComponent implements OnInit{
   createProduct(){
     const categorie = this.productCategories.find((cat: any) => cat.id == this.productForm.value.categorie)
     this.productForm.value.categorie = categorie
+    this.productForm.value.vendeur = this.authService.getUser()
     this.produitService.create(this.productForm.value).subscribe({
       next: response => {
         this.productForm.reset()
@@ -51,6 +55,7 @@ export class UserAddProductComponent implements OnInit{
           'Produit enregistré avec succès.',
           'success'
         )
+        this.router.navigate(['/user-account/user-product'])
       },
       error: err => {
         console.log(err)

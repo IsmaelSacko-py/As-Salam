@@ -5,8 +5,12 @@
       <div class="col-md-7 col-lg-5 mx-auto">
         <div class="login-form">
           <div class="login-header">
-            <img src="app/client/assets/img/logo/logo.png" alt />
-            <p>Login with your goemart account</p>
+            <div class="header-middle-logo">
+              <a class="navbar-brand" href="/" style="height: 30%; width: 25%">
+                <img src="app/client/assets/img/logo/salam-logo.png" alt="logo" />
+              </a>
+            </div>
+            <p>Connectez-vous à votre compte</p>
           </div>
           <form [formGroup]="loginForm" (ngSubmit)="login()">
             <div class="form-group">
@@ -36,7 +40,7 @@
                   id="remember"
                 />
                 <label class="form-check-label" for="remember">
-                  Remember Me
+                  Se souvenir de moi
                 </label>
               </div>
               <a href="forgot-password.html" class="forgot-pass"
@@ -54,8 +58,8 @@
               Vous n'avez pas de compte? <a href="/auth/register">S'inscrire.</a>
             </p>
             <div class="social-login">
-              <span class="social-divider">or</span>
-              <p>Continue with social media</p>
+              <span class="social-divider">ou</span>
+              <p>Se connecter avec </p>
               <div class="social-login-list">
                 <a href="#" class="fb-auth"
                 ><i class="fab fa-facebook-f"></i> Facebook</a

@@ -1,7 +1,10 @@
 package com.salam.backend.controller;
 
+import com.salam.backend.enumeration.EtatCommande;
+import com.salam.backend.enumeration.EtatPaiement;
 import com.salam.backend.model.Vendeur;
 import com.salam.backend.model.Profil;
+import com.salam.backend.service.impl.CommandeServiceImpl;
 import com.salam.backend.service.impl.VendeurServiceImpl;
 import com.salam.backend.service.impl.ProfilServiceImpl;
 import com.salam.backend.service.impl.VendeurServiceImpl;
@@ -16,6 +19,8 @@ import org.springframework.hateoas.PagedModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 @Slf4j
@@ -25,6 +30,7 @@ import java.util.Optional;
 public class VendeurController {
     private final VendeurServiceImpl vendeurService;
     private final ProfilServiceImpl profilService;
+    private final CommandeServiceImpl commandeService;
     private final PagedResourcesAssembler<Vendeur> pagedResourcesAssembler;
 
 
@@ -77,5 +83,32 @@ public class VendeurController {
         }catch (EntityNotFoundException e){
             return ResponseEntity.notFound().build();
         }
+    }
+
+
+    @GetMapping("/stats/{id}")
+    public ResponseEntity<Map<String, Object>> vendorStats(@PathVariable("id") int id){
+
+        EtatPaiement etatPaiement = EtatPaiement.fromString("Payé");
+        EtatCommande etatCommande = EtatCommande.fromString("Annulée");
+
+        Map<String, Object> vendorStats = new HashMap<>();
+
+        vendorStats.put("nombreVentes", commandeService.countSalesByMonth(id, etatPaiement));
+        vendorStats.put("produitsVendus", commandeService.countProductSalesByMonth(id, etatPaiement));
+        vendorStats.put("commandesAnnulees", commandeService.countOrderCancelByMonth(id, etatCommande));
+
+        return ResponseEntity.ok(vendorStats);
+    }
+
+    @GetMapping("/current-month-sales/{id}")
+    public ResponseEntity<Long> currentMonthSales(@PathVariable("id") int id){
+
+        EtatPaiement etatPaiement = EtatPaiement.fromString("Payé");
+
+        Long totalSalesInCurrentMonth = this.commandeService.countProductSalesInCurrentMonth(id, etatPaiement);
+
+        log.debug("total sales in current month: {}", totalSalesInCurrentMonth);
+        return ResponseEntity.ok(totalSalesInCurrentMonth);
     }
 }

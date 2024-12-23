@@ -30,8 +30,10 @@ public class DetailPanierServiceImpl implements DetailPanierService {
 
     @Override
     public DetailPanier update(DetailPanier detailPanier) {
+        DetailPanier detailPanier1 = detailPanierRepository.findById(detailPanier.getId()).get();
         log.debug("Request to update DetailPanier : {}", detailPanier);
-        return detailPanierRepository.save(detailPanier);
+        detailPanier1.setQuantite(detailPanier.getQuantite());
+        return detailPanierRepository.save(detailPanier1);
     }
 
     @Override

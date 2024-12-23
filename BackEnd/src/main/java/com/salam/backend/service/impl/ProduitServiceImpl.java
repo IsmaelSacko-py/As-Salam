@@ -1,5 +1,6 @@
 package com.salam.backend.service.impl;
 
+import com.salam.backend.enumeration.EtatProduit;
 import com.salam.backend.mapper.ImageMapper;
 import com.salam.backend.mapper.ProduitMapper;
 import com.salam.backend.model.Image;
@@ -47,11 +48,13 @@ public class ProduitServiceImpl implements ProduitService {
     @Override
     public Produit save(Produit produit) {
         log.debug("Request to save Produit : {}", produit);
-        String numProduit = UUID.randomUUID().toString();
+        String numProduit = UUID.randomUUID().toString().replace("-", "").substring(0, 10).toUpperCase();
+
 
         LocalDateTime instant= LocalDateTime.now();
         produit.setDateAjout(instant);
         produit.setNumero(numProduit);
+        produit.setStatut(EtatProduit.ACTIF);
 
         produit = produitRepository.save(produit);
 

@@ -4,7 +4,7 @@
       <div class="user-card user-order-detail">
         <div class="user-card-header">
           <h4 class="user-card-title">
-            Details commande ({{commande.numero}})
+            Details commande ({{commande?.numero}})
           </h4>
           <div class="user-card-header-right">
             <a href="/user-account/user-order" class="theme-btn"
@@ -16,19 +16,19 @@
             <thead>
             <tr>
               <th>Produit</th>
-              <th>Categorie</th>
-              <th>Quantity</th>
+              <th>Catégorie</th>
+              <th>Quantité</th>
               <th>Total</th>
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let details of commande.detailsCommande">
+            <tr *ngFor="let details of commande?.detailsCommande">
               <td>
                 <div class="table-list-info">
                   <a href="#">
                     <div class="table-list-img">
                       <img
-                        src="app/client/assets/img/product/new_products/{{details.produit.images[0].url}}"
+                        src="app/client/assets/img/product/{{details.produit.images[0].url}}"
                         alt
                       />
                     </div>
@@ -41,7 +41,7 @@
               </td>
               <td>{{ details.produit.categorie.libelle }}</td>
               <td>{{ details.quantite }} Pcs</td>
-              <td>{{ details.montant }}</td>
+              <td>{{ details.montant | number: '1.0-0' }} FCFA</td>
             </tr>
             </tbody>
           </table>
@@ -51,8 +51,8 @@
             <div class="order-detail-content">
               <h5>Adresse de livraison</h5>
               <p>
-                <i class="far fa-location-dot"></i> 25/B Milford
-                Road, Richison Drive, New York, USA
+                <i class="far fa-location-dot"></i>
+                {{commande?.adresse.nom}}, {{commande?.adresse.ville.nom}}
               </p>
             </div>
           </div>
@@ -60,13 +60,13 @@
             <div class="order-detail-content">
               <h5>Résumé de la commande</h5>
               <ul>
-                <li>Sous-total<span>{{ commande.totalPrix | number:"1.0-0" }} FCFA</span></li>
+                <li>Sous-total<span>{{ commande?.totalPrix | number:"1.0-0" }} FCFA</span></li>
                 <li>Livraison<span>Gratuite</span></li>
                 <li>Remise<span>0 FCFA</span></li>
                 <li>Taxe<span>0 FCFA</span></li>
-                <li>Total<span>{{ commande.totalPrix | number:"1.0-0" }} FCFA</span></li>
+                <li>Total<span>{{ commande?.totalPrix | number:"1.0-0" }} FCFA</span></li>
               </ul>
-              <p class="mt-4">Payé par Credit/Debit Card</p>
+              <p class="mt-4" *ngIf="commande?.paiement">Payé par {{ commande?.paiement.libelle }}</p>
             </div>
           </div>
         </div>

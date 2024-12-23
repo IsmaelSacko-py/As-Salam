@@ -4,6 +4,7 @@ import {DetailPanier} from "../../model/DetailPanier.model";
 import {DetailsPanierService} from "../../service/details-panier.service";
 import {UserService} from "../../service/user.service";
 import {Router} from "@angular/router";
+import {CommunicationService} from "../../service/communication.service";
 
 @Component({
   selector: 'app-cart',
@@ -16,7 +17,7 @@ export class CartComponent implements OnInit{
 
   user!: any
 
-  constructor(private router: Router, private authService: AuthService, private userService: UserService, private detailsPanierService: DetailsPanierService) {
+  constructor(private router: Router, private authService: AuthService, private comService: CommunicationService, private detailsPanierService: DetailsPanierService) {
   }
   ngOnInit(): void {
     this.user = this.authService.getUser()
@@ -52,6 +53,8 @@ export class CartComponent implements OnInit{
         this.router.navigate(['/cart']).then(result => {
           if(result){
             this.user = this.authService.getUser()
+            this.authService.setUser(this.user)
+            this.comService.triggerAction()
             console.log(this.user)
           }
         })

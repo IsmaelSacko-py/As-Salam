@@ -1,0 +1,1401 @@
+<!-- Start Sidebar -->
+<div id="application-sidebar" class="hs-overlay fixed inset-y-0 start-0 z-60 hidden w-64 -translate-x-full transform overflow-y-auto border-e border-default-200 bg-white transition-all duration-300 hs-overlay-open:translate-x-0 dark:bg-default-50 lg:bottom-0 lg:end-auto lg:z-30 lg:block lg:translate-x-0 rtl:translate-x-full rtl:hs-overlay-open:translate-x-0 rtl:lg:translate-x-0 print:hidden">
+  <div class="sticky top-0 flex h-18 items-center justify-start px-6">
+    <a href="admin-dashboard.html">
+      <img src="assets/logo-dark-1caee452.png" alt="logo" class="flex h-10 dark:hidden" />
+      <img src="assets/logo-50f51c55.png" alt="logo" class="hidden h-10 dark:flex" />
+    </a>
+  </div>
+
+  <div class="hs-accordion-group h-[calc(100%-72px)] p-4" data-simplebar>
+    <ul class="admin-menu flex w-full flex-col gap-1.5">
+      <li class="menu-item">
+        <a class="flex items-center gap-x-3.5 rounded-full px-5 py-3 text-sm font-medium text-default-700 transition-all hover:bg-default-100 hs-accordion-active:bg-default-100" href="admin-dashboard.html">
+          <i class="ti ti-smart-home text-xl"></i>
+          Dashboard
+          <span class="ms-auto inline-block rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">9+</span>
+        </a>
+      </li>
+
+      <li class="menu-item">
+        <a class="flex items-center gap-x-3.5 rounded-full px-5 py-3 text-sm font-medium text-default-700 transition-all hover:bg-default-100 hs-accordion-active:bg-default-100" href="admin-chat.html">
+          <i class="ti ti-brand-hipchat text-xl"></i>
+          Chat
+        </a>
+      </li>
+
+      <li class="menu-item">
+        <a class="flex items-center gap-x-3.5 rounded-full px-5 py-3 text-sm font-medium text-default-700 transition-all hover:bg-default-100 hs-accordion-active:bg-default-100" href="admin-calender.html">
+          <i class="ti ti-calendar text-xl"></i>
+          Calender
+        </a>
+      </li>
+
+      <li class="px-6 py-2 text-sm font-medium text-default-600">Manage</li>
+
+      <li class="menu-item">
+        <a class="flex items-center gap-x-3.5 rounded-full px-5 py-3 text-sm font-medium text-default-700 transition-all hover:bg-default-100 hs-accordion-active:bg-default-100" href="admin-wallet.html">
+          <i class="ti ti-wallet text-xl"></i>
+          Wallet
+          <span class="ms-auto inline-block rounded-full bg-red-500/10 px-2.5 py-0.5 text-xs font-medium text-red-500">4+</span>
+        </a>
+      </li>
+
+      <li class="menu-item hs-accordion">
+        <a href="javascript:void(0)" class="hs-accordion-toggle flex items-center gap-x-3.5 rounded-full px-5 py-3 text-sm font-medium text-default-700 transition-all hover:bg-default-100 hs-accordion-active:bg-default-100">
+          <i class="ti ti-ticket text-xl"></i>
+          Coupons
+          <i class="ti ti-chevron-right ms-auto text-sm transition-all hs-accordion-active:rotate-90"></i>
+        </a>
+
+        <div id="menuCoupons" class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300">
+          <ul class="mt-2 flex flex-col gap-2">
+            <li class="menu-item">
+              <a href="admin-coupons-list.html" class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Coupons List
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="admin-coupons-add.html" class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Add Coupon
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="admin-coupons-edit.html" class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Edit Coupon
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="menu-item hs-accordion">
+        <a href="javascript:void(0)" class="hs-accordion-toggle flex items-center gap-x-3.5 rounded-full px-5 py-3 text-sm font-medium text-default-700 transition-all hover:bg-default-100 hs-accordion-active:bg-default-100">
+          <i class="ti ti-list-check text-xl"></i>
+          Order
+          <i class="ti ti-chevron-right ms-auto text-sm transition-all hs-accordion-active:rotate-90"></i>
+        </a>
+
+        <div id="menuOrder" class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300">
+          <ul class="mt-2 flex flex-col gap-2">
+            <li class="menu-item">
+              <a href="admin-order-list.html" class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Orders List
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="admin-order-details.html" class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Order Details
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="menu-item hs-accordion">
+        <a href="javascript:void(0)" class="hs-accordion-toggle flex items-center gap-x-3.5 rounded-full px-5 py-3 text-sm font-medium text-default-700 transition-all hover:bg-default-100 hs-accordion-active:bg-default-100">
+          <i class="ti ti-users text-xl"></i>
+          Customers
+          <i class="ti ti-chevron-right ms-auto text-sm transition-all hs-accordion-active:rotate-90"></i>
+        </a>
+
+        <div id="menuCustomer" class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300">
+          <ul class="mt-2 flex flex-col gap-2">
+            <li class="menu-item">
+              <a href="admin-customer-list.html" class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Customers List
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="admin-customer-detail.html" class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Customer Details
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="admin-customer-add.html" class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Add Customer
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="admin-customer-edit.html" class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Edit Customer
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="menu-item hs-accordion">
+        <a href="javascript:void(0)" class="hs-accordion-toggle flex items-center gap-x-3.5 rounded-full px-5 py-3 text-sm font-medium text-default-700 transition-all hover:bg-default-100 hs-accordion-active:bg-default-100">
+          <i class="ti ti-building-store text-xl"></i>
+          Shops
+          <i class="ti ti-chevron-right ms-auto text-sm transition-all hs-accordion-active:rotate-90"></i>
+        </a>
+
+        <div id="menuShops" class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300">
+          <ul class="mt-2 flex flex-col gap-2">
+            <li class="menu-item">
+              <a href="admin-shops-list.html" class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Shops List
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="admin-shops-detail.html" class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Shop Details
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="admin-shops-add.html" class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Add Shop
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="admin-shops-edit.html" class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Edit Shop
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="menu-item hs-accordion">
+        <a href="javascript:void(0)" class="hs-accordion-toggle flex items-center gap-x-3.5 rounded-full px-5 py-3 text-sm font-medium text-default-700 transition-all hover:bg-default-100 hs-accordion-active:bg-default-100">
+          <i class="ti ti-cheese text-xl"></i>
+          Product
+          <i class="ti ti-chevron-right ms-auto text-sm transition-all hs-accordion-active:rotate-90"></i>
+        </a>
+
+        <div id="menuProduct" class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300">
+          <ul class="mt-2 flex flex-col gap-2">
+            <li class="menu-item">
+              <a href="admin-product-list.html" class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Products List
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="admin-product-add.html" class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Add Product
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="admin-product-edit.html" class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Edit Product
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="menu-item hs-accordion">
+        <a href="javascript:void(0)" class="hs-accordion-toggle flex items-center gap-x-3.5 rounded-full px-5 py-3 text-sm font-medium text-default-700 transition-all hover:bg-default-100 hs-accordion-active:bg-default-100">
+          <i class="ti ti-shopping-bag text-xl"></i>
+          Sellers
+          <i class="ti ti-chevron-right ms-auto text-sm transition-all hs-accordion-active:rotate-90"></i>
+        </a>
+
+        <div id="menuSellers" class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300">
+          <ul class="mt-2 flex flex-col gap-2">
+            <li class="menu-item">
+              <a href="admin-sellers-list.html" class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Sellers List
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="admin-sellers-detail.html" class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Seller Details
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="admin-sellers-add.html" class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Add Seller
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="admin-sellers-edit.html" class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Edit Seller
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="menu-item hs-accordion">
+        <a href="javascript:void(0)" class="hs-accordion-toggle flex items-center gap-x-3.5 rounded-full px-5 py-3 text-sm font-medium text-default-700 transition-all hover:bg-default-100 hs-accordion-active:bg-default-100">
+          <i class="ti ti-file-invoice text-xl"></i>
+          Invoice
+          <i class="ti ti-chevron-right ms-auto text-sm transition-all hs-accordion-active:rotate-90"></i>
+        </a>
+
+        <div id="menuInvoice" class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300">
+          <ul class="mt-2 flex flex-col gap-2">
+            <li class="menu-item">
+              <a href="admin-invoice-list.html" class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Invoices List
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="admin-invoice-detail.html" class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Invoice Details
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="admin-invoice-add.html" class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Add Invoice
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="menu-item hs-accordion">
+        <a href="javascript:void(0)" class="hs-accordion-toggle flex items-center gap-x-3.5 rounded-full px-5 py-3 text-sm font-medium text-default-700 transition-all hover:bg-default-100 hs-accordion-active:bg-default-100">
+          <i class="ti ti-license text-xl"></i>
+          Blog
+          <i class="ti ti-chevron-right ms-auto text-sm transition-all hs-accordion-active:rotate-90"></i>
+        </a>
+
+        <div id="menuBlog" class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300">
+          <ul class="mt-2 flex flex-col gap-2">
+            <li class="menu-item">
+              <a href="admin-blog-list.html" class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Blogs List
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="admin-blog-detail.html" class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Blog Details
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="admin-blog-add.html" class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Add Blog
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="admin-blog-edit.html" class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Edit Blog
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="px-6 py-2 text-sm font-medium text-default-600">Pages</li>
+
+      <li class="menu-item hs-accordion">
+        <a href="javascript:void(0)" class="hs-accordion-toggle flex items-center gap-x-3.5 rounded-full px-5 py-3 text-sm font-medium text-default-700 hover:bg-default-100">
+          <i class="ti ti-notebook text-xl"></i>
+          Extra Pages
+          <i class="ti ti-chevron-right ms-auto text-sm transition-all hs-accordion-active:rotate-90"></i>
+        </a>
+
+        <div id="menuPages" class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300">
+          <ul class="mt-2 space-y-2">
+            <li class="menu-item">
+              <a class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100" href="pages-starter.html">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Starter
+              </a>
+            </li>
+            <li class="menu-item">
+              <a class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100" href="pages-gallery.html">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Gallery
+              </a>
+            </li>
+            <li class="menu-item">
+              <a class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100" href="pages-pricing.html">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Pricing
+              </a>
+            </li>
+            <li class="menu-item">
+              <a class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100" href="pages-timeline.html">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Timeline
+              </a>
+            </li>
+            <li class="menu-item">
+              <a class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100" href="pages-maintenance.html">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Maintenance
+              </a>
+            </li>
+            <li class="menu-item">
+              <a class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100" href="pages-coming-soon.html">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Coming Soon
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="menu-item hs-accordion">
+        <a href="javascript:void(0)" class="hs-accordion-toggle flex items-center gap-x-3.5 rounded-full px-5 py-3 text-sm font-medium text-default-700 hover:bg-default-100">
+          <i class="ti ti-login-2 text-xl"></i>
+          Authentication
+          <i class="ti ti-chevron-right ms-auto text-sm transition-all hs-accordion-active:rotate-90"></i>
+        </a>
+
+        <div class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300">
+          <ul class="mt-2 space-y-2">
+            <li class="menu-item">
+              <a class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100" href="auth-login.html">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Login
+              </a>
+            </li>
+            <li class="menu-item">
+              <a class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100" href="auth-register.html">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Register
+              </a>
+            </li>
+            <li class="menu-item">
+              <a class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100" href="auth-logout.html">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Logout
+              </a>
+            </li>
+            <li class="menu-item">
+              <a class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100" href="auth-recoverpw.html">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Password Forgot
+              </a>
+            </li>
+            <li class="menu-item">
+              <a class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100" href="auth-reset-password.html">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Password Reset
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="px-6 py-2 text-sm font-medium text-default-600">Components</li>
+
+      <li class="menu-item hs-accordion">
+        <a href="javascript:void(0)" class="hs-accordion-toggle fill-hover flex items-center gap-x-3.5 rounded-full px-5 py-3 text-sm font-medium text-default-700 hover:bg-default-100">
+          <i class="ti ti-briefcase text-xl"></i>
+          Base UI
+          <i class="ti ti-chevron-right ms-auto text-sm transition-all hs-accordion-active:rotate-90"></i>
+        </a>
+
+        <div id="menuBaseUI" class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300">
+          <ul class="mt-2 space-y-2">
+            <li class="menu-item">
+              <a class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100" href="ui-accordion.html">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Accordion
+              </a>
+            </li>
+            <li class="menu-item">
+              <a class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100" href="ui-alert.html">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Alert
+              </a>
+            </li>
+            <li class="menu-item">
+              <a class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100" href="ui-avatars.html">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Avatars
+              </a>
+            </li>
+            <li class="menu-item">
+              <a class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100" href="ui-buttons.html">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Buttons
+              </a>
+            </li>
+            <li class="menu-item">
+              <a class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100" href="ui-badges.html">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Badges
+              </a>
+            </li>
+            <li class="menu-item">
+              <a class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100" href="ui-breadcrumbs.html">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Breadcrumbs
+              </a>
+            </li>
+            <li class="menu-item">
+              <a class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100" href="ui-cards.html">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Cards
+              </a>
+            </li>
+            <li class="menu-item">
+              <a class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100" href="ui-collapse.html">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Collapse
+              </a>
+            </li>
+            <li class="menu-item">
+              <a class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100" href="ui-dropdowns.html">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Dropdowns
+              </a>
+            </li>
+            <li class="menu-item">
+              <a class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100" href="ui-progress.html">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Progress
+              </a>
+            </li>
+            <li class="menu-item">
+              <a class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100" href="ui-spinners.html">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Spinners
+              </a>
+            </li>
+            <li class="menu-item">
+              <a class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100" href="ui-list-group.html">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                List Group
+              </a>
+            </li>
+            <li class="menu-item">
+              <a class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100" href="ui-ratio.html">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Ratio
+              </a>
+            </li>
+            <li class="menu-item">
+              <a class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100" href="ui-tabs.html">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Tabs
+              </a>
+            </li>
+            <li class="menu-item">
+              <a class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100" href="ui-modals.html">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Modals
+              </a>
+            </li>
+            <li class="menu-item">
+              <a class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100" href="ui-offcanvas.html">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Offcanvas
+              </a>
+            </li>
+            <li class="menu-item">
+              <a class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100" href="ui-popovers.html">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Popovers
+              </a>
+            </li>
+            <li class="menu-item">
+              <a class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100" href="ui-tooltips.html">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Tooltips
+              </a>
+            </li>
+            <li class="menu-item">
+              <a class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100" href="ui-typography.html">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Typography
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="menu-item hs-accordion">
+        <a href="javascript:void(0)" class="hs-accordion-toggle flex items-center gap-x-3.5 rounded-full px-5 py-3 text-sm font-medium text-default-700 hover:bg-default-100">
+          <i class="ti ti-layout-2 text-xl"></i>
+          Advance UI
+          <span class="ms-auto inline-block rounded-full bg-cyan-500/10 px-2.5 py-0.5 text-xs font-medium text-cyan-500">Hot</span>
+        </a>
+
+        <div id="menuAdvanceUI" class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300">
+          <ul class="mt-2 space-y-2">
+            <li class="menu-item">
+              <a class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100" href="ui-advance-swiper.html">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Swiper
+              </a>
+            </li>
+            <li class="menu-item">
+              <a class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100" href="ui-advance-sweetalert.html">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Sweet Alert
+              </a>
+            </li>
+            <li class="menu-item">
+              <a class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100" href="ui-advance-rating.html">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Ratings
+              </a>
+            </li>
+            <li class="menu-item">
+              <a class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100" href="ui-advance-tour.html">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Tour
+              </a>
+            </li>
+            <li class="menu-item">
+              <a class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100" href="ui-advance-lightbox.html">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                GlightBox
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="menu-item hs-accordion">
+        <a href="javascript:void(0)" class="hs-accordion-toggle flex items-center gap-x-3.5 rounded-full px-5 py-3 text-sm font-medium text-default-700 hover:bg-default-100">
+          <i class="ti ti-news text-xl"></i>
+          Form
+          <i class="ti ti-chevron-right ms-auto text-sm transition-all hs-accordion-active:rotate-90"></i>
+        </a>
+
+        <div id="menuForm" class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300">
+          <ul class="mt-2 space-y-2">
+            <li class="menu-item">
+              <a class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100" href="ui-form-elements.html">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Basic Elements
+              </a>
+            </li>
+            <li class="menu-item">
+              <a class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100" href="ui-form-select.html">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Select
+              </a>
+            </li>
+            <li class="menu-item">
+              <a class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100" href="ui-form-range.html">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Range
+              </a>
+            </li>
+            <li class="menu-item">
+              <a class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100" href="ui-form-editor.html">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Editor
+              </a>
+            </li>
+            <li class="menu-item">
+              <a class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100" href="ui-form-upload.html">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Upload
+              </a>
+            </li>
+            <li class="menu-item">
+              <a class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100" href="ui-form-picker.html">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Picker
+              </a>
+            </li>
+            <li class="menu-item">
+              <a class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100" href="ui-form-validation.html">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Validation
+              </a>
+            </li>
+            <li class="menu-item">
+              <a class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100" href="ui-form-layout.html">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Layout
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="menu-item hs-accordion">
+        <a href="javascript:void(0)" class="hs-accordion-toggle flex items-center gap-x-3.5 rounded-full px-5 py-3 text-sm font-medium text-default-700 hover:bg-default-100">
+          <i class="ti ti-table text-xl"></i>
+          Table
+          <i class="ti ti-chevron-right ms-auto text-sm transition-all hs-accordion-active:rotate-90"></i>
+        </a>
+
+        <div id="menuTable" class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300">
+          <ul class="mt-2 space-y-2">
+            <li class="menu-item">
+              <a class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100" href="ui-table-basic.html">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Basic Table
+              </a>
+            </li>
+            <li class="menu-item">
+              <a class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100" href="ui-table-datatable.html">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Data Table
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="menu-item hs-accordion">
+        <a href="javascript:void(0)" class="hs-accordion-toggle flex items-center gap-x-3.5 rounded-full px-5 py-3 text-sm font-medium text-default-700 hover:bg-default-100">
+          <i class="ti ti-icons text-xl"></i>
+          Icon
+          <i class="ti ti-chevron-right ms-auto text-sm transition-all hs-accordion-active:rotate-90"></i>
+        </a>
+
+        <div id="menuIcon" class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300">
+          <ul class="mt-2 space-y-2">
+            <li class="menu-item">
+              <a class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100" href="ui-icons-lucide.html">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Lucide
+              </a>
+            </li>
+            <li class="menu-item">
+              <a class="flex items-center gap-x-3.5 rounded-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100" href="ui-icons-tabler.html">
+                <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                Tabler
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="menu-item">
+        <a href="ui-maps-vector.html" class="flex items-center gap-x-3.5 rounded-full px-5 py-3 text-sm font-medium text-default-700 hover:bg-default-100">
+          <i class="ti ti-map text-xl"></i>
+          Vector Maps
+        </a>
+      </li>
+
+      <li class="menu-item">
+        <a class="flex items-center gap-x-3.5 rounded-full px-5 py-3 text-sm font-medium text-default-700 transition-all hover:bg-default-100 hs-accordion-active:bg-default-100" href="ui-chart-apex.html">
+          <i class="ti ti-chart-histogram text-xl"></i>
+          Apex Charts
+        </a>
+      </li>
+    </ul>
+
+    <div class="mt-2">
+      <div class="-mb-4 flex flex-col items-center justify-center rounded-t-full border border-b-0 border-dashed border-primary-500/40 bg-primary-500/20 bg-cover bg-no-repeat px-4 pb-4 pt-10 text-center text-sm text-default-700" href="javascript:void(0)">
+        <div class="relative inline-flex h-16 w-16 items-center justify-center rounded-full border border-dashed border-primary bg-primary/20">
+          <img src="assets/favicon-712e565d.ico" alt="" class="absolute start-1/2 top-1/2 h-8 w-8 -translate-x-1/2 -translate-y-1/2" />
+        </div>
+        <p class="my-4 text-sm font-semibold text-primary-700">
+          🔥 Upgrade Your Plan. Find Out here
+        </p>
+        <a href="#" target="_blank" class="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-medium text-white transition-all hover:bg-primary-600"><i class="ti ti-brand-cashapp text-xl"></i> Upgrade
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Sidebar -->
+<!-- Start Content -->
+<div class="min-h-screen flex flex-col lg:ps-64 w-full">
+
+  <!-- Start Header -->
+  <header class="sticky top-0 z-40 flex h-18 w-full border-b border-default-200/95 bg-white/95 backdrop-blur-sm dark:bg-default-50/95 print:hidden">
+    <nav class="flex w-full items-center gap-4 px-6">
+      <!-- Navigation Toggle (in Small Screen) -->
+      <div class="flex lg:hidden">
+        <button type="button" class="text-default-500 hover:text-default-600" data-hs-overlay="#application-sidebar" aria-controls="application-sidebar" aria-label="Toggle navigation">
+          <i data-lucide="align-justify" class="h-6 w-6"></i>
+        </button>
+      </div>
+
+      <!-- Logo -->
+      <div class="flex lg:hidden">
+        <a href="admin-dashboard.html">
+          <img src="assets/logo-dark-1caee452.png" alt="logo" class="flex h-10 w-full dark:hidden" />
+          <img src="assets/logo-50f51c55.png" alt="logo" class="hidden h-10 w-full dark:flex" />
+        </a>
+      </div>
+
+      <!-- Search Input -->
+      <div class="hidden lg:flex">
+        <label for="icon" class="sr-only">Search</label>
+        <div class="relative hidden lg:flex">
+          <input type="search" class="block rounded-full border-default-200 bg-default-50 py-2.5 pe-4 ps-12 text-sm text-default-800 focus:border-primary focus:ring-primary lg:w-64" placeholder="Search for items..." />
+          <i class="ti ti-search absolute start-4 top-1/2 -translate-y-1/2 text-lg text-default-600"></i>
+        </div>
+      </div>
+
+      <!-- Topbar Link and Dropdown Button -->
+      <div class="ms-auto flex items-center gap-4">
+        <button class="relative inline-flex h-10 w-10 flex-shrink-0 items-center justify-center gap-2 overflow-hidden rounded-full bg-default-100 align-middle font-medium text-default-700 transition-all hover:text-primary">
+          <i class="ti ti-sun text-xl after:absolute after:inset-0" id="light-theme"></i>
+          <i class="ti ti-moon text-xl after:absolute after:inset-0" id="dark-theme"></i>
+        </button>
+
+        <!-- Language -->
+        <div class="hidden lg:flex">
+          <div class="hs-dropdown relative inline-flex [--placement:bottom-right]">
+            <button id="hs-dropdown-with-header" type="button" class="hs-dropdown-toggle inline-flex h-10 w-10 flex-shrink-0 items-center justify-center gap-2 rounded-full bg-default-100 align-middle font-medium text-default-700 transition-all hover:text-primary">
+              <i class="ti ti-language text-xl"></i>
+            </button>
+
+            <div class="hs-dropdown-menu duration mt-2 hidden min-w-[12rem] rounded-lg border border-default-200 bg-white p-2 opacity-0 shadow-md transition-[opacity,margin] hs-dropdown-open:opacity-100 dark:bg-default-50">
+              <a class="flex items-center gap-x-3.5 rounded px-3 py-2 text-sm font-medium transition-all hover:bg-default-100" href="javascript:void(0)">
+                <img src="data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAAA8AAD/4QMpaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjAtYzA2MCA2MS4xMzQ3NzcsIDIwMTAvMDIvMTItMTc6MzI6MDAgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzUgV2luZG93cyIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpENEQyQjUxRTYxM0IxMUU3QThGRDlFNzgyMDM4RjBCQyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpENEQyQjUxRjYxM0IxMUU3QThGRDlFNzgyMDM4RjBCQyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkQ0RDJCNTFDNjEzQjExRTdBOEZEOUU3ODIwMzhGMEJDIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkQ0RDJCNTFENjEzQjExRTdBOEZEOUU3ODIwMzhGMEJDIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+/+4ADkFkb2JlAGTAAAAAAf/bAIQABgQEBAUEBgUFBgkGBQYJCwgGBggLDAoKCwoKDBAMDAwMDAwQDA4PEA8ODBMTFBQTExwbGxscHx8fHx8fHx8fHwEHBwcNDA0YEBAYGhURFRofHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8f/8AAEQgAKgBAAwERAAIRAQMRAf/EAHkAAQEBAAMAAAAAAAAAAAAAAAABBgIFBwEBAAIDAQAAAAAAAAAAAAAAAAEFAgQGBxAAAQIBDQADAQAAAAAAAAAAAAECAzFRkRKi0qPjVAVVFhchQYEyEQEAAAMHBQEAAAAAAAAAAAAA4WKiUaGx0QJSFgEDBBQVMf/aAAwDAQACEQMRAD8A82fFive573uc9yqrnKqqqqvyqqqmwhKzp1JCs6dQFZ06gKzp1AVnTqArOnUCsixWPa9j3Ne1UVrkVUVFT5RUVCB2XWd701uHeNb3O1biuePebsq05nWd701uHeHudq3E495uyrTmdZ3vTW4d4e52rcTj3m7KtOZ1ne9Nbh3h7natxOPebsq05nWd701uHeHudq3E495uyrTmdZ3vTW4d4e52rcTj3m7KtOZ1ne9Nbh3h7natxOPebsq05nWd701uHeHudq3E495uyrTm3RRvTgAAAAAAADd+XpyeBmFJ9iS+Dm+QyVQPL05PAzB9iS+ByGSqB5enJ4GYPsSXwOQyVQPL05PAzB9iS+ByGSqB5enJ4GYPsSXwOQyVQPL05PAzB9iS+ByGSqB5enJ4GYPsSXwOQyVQPL05PAzB9iS+ByGSqDdlI5sAAAAAAAA5O/pZJfqT8M9f71/EdEoMQoAUAKAFACgCt/pJJfuT9MtH70/Dq//Z" alt="user-image" class="h-4" />
+                <span class="align-middle">German</span>
+              </a>
+              <a class="flex items-center gap-x-3.5 rounded px-3 py-2 text-sm font-medium transition-all hover:bg-default-100" href="javascript:void(0)">
+                <img src="data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAAA8AAD/4QMpaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjAtYzA2MCA2MS4xMzQ3NzcsIDIwMTAvMDIvMTItMTc6MzI6MDAgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzUgV2luZG93cyIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDowMUM1QUQyRDYxM0MxMUU3QTE2RkM2RkVEMTY1NUZGQiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDowMUM1QUQyRTYxM0MxMUU3QTE2RkM2RkVEMTY1NUZGQiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjAxQzVBRDJCNjEzQzExRTdBMTZGQzZGRUQxNjU1RkZCIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjAxQzVBRDJDNjEzQzExRTdBMTZGQzZGRUQxNjU1RkZCIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+/+4ADkFkb2JlAGTAAAAAAf/bAIQABgQEBAUEBgUFBgkGBQYJCwgGBggLDAoKCwoKDBAMDAwMDAwQDA4PEA8ODBMTFBQTExwbGxscHx8fHx8fHx8fHwEHBwcNDA0YEBAYGhURFRofHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8f/8AAEQgAKgBAAwERAAIRAQMRAf/EAHsAAAMBAQEBAAAAAAAAAAAAAAAGBwQBAgMBAAIDAQEBAAAAAAAAAAAAAAAGBAUHAwECEAABAwEGBAYDAAAAAAAAAAAAAQIDBxExsTN0NiFRMrJhQpI0RBZxcgQRAQABAwUBAAMAAAAAAAAAAAABwTI0coIDBAYxEYEC/9oADAMBAAIRAxEAPwDc573OVznKrlW1VVbVVVMnmZlWuWrzAHKlKr9mk4/Fk72F/wCcyJ0zR24LldHlMABGqsqv2pOPxo8XFZ272ieYxd00Jdq8yKYvw6172uRzXK1zVtRUWxUVAeTES0CIwgADnSnc0mlk72F95zInTNHbguV0ekwAEZqzutNNHi4rO3e0TzGLumhMIpiABpERg4AHOlO5pNLJ3sL7zmROmaO3Bcro9JgAIzVndaaaPFxWdu9onmMXdNCYRTEADSIjBwAOdKdzSaWTvYX3nMidM0duC5XR6TAARmrO6000eLis7d7RPMYu6aEwimIAGkRGDgAc6U7mk0snewvvOZE6Zo7cFyuj0mAAjNWd1ppo8XFZ272ieYxd00JhFMQAN8+fJl9S5fRf5fDkI/8Af2fjB5ePSfIONKtzSXe2ku/ZhfecyJ0zR24LldHlMABGqsbqS720d/5cVnbvaH5jF3TQmekimF9P58+PL6m5nRf5vDmew+f7tn7+vr//2Q==" alt="user-image" class="h-4" />
+                <span class="align-middle">Italian</span>
+              </a>
+              <a class="flex items-center gap-x-3.5 rounded px-3 py-2 text-sm font-medium transition-all hover:bg-default-100" href="javascript:void(0)">
+                <img src="data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAAA8AAD/4QMpaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjAtYzA2MCA2MS4xMzQ3NzcsIDIwMTAvMDIvMTItMTc6MzI6MDAgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzUgV2luZG93cyIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDoyODQ3Mjc2MTYxM0MxMUU3ODJENDgwMDE3MDIxNjRGOCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDoyODQ3Mjc2MjYxM0MxMUU3ODJENDgwMDE3MDIxNjRGOCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjI4NDcyNzVGNjEzQzExRTc4MkQ0ODAwMTcwMjE2NEY4IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjI4NDcyNzYwNjEzQzExRTc4MkQ0ODAwMTcwMjE2NEY4Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+/+4ADkFkb2JlAGTAAAAAAf/bAIQABgQEBAUEBgUFBgkGBQYJCwgGBggLDAoKCwoKDBAMDAwMDAwQDA4PEA8ODBMTFBQTExwbGxscHx8fHx8fHx8fHwEHBwcNDA0YEBAYGhURFRofHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8f/8AAEQgAKgBAAwERAAIRAQMRAf/EAI4AAQACAgMAAAAAAAAAAAAAAAAEBQEDAgYHAQEAAgMBAQAAAAAAAAAAAAAAAgYDBAUBBxAAAQMBBgMFCAMAAAAAAAAAAQIDBAAREpMFVQZR0RYyktIzFTFBIkJiExQ0YXGREQACAQEGBQMDBQAAAAAAAAAAAQIDETGRUhMUIUFREgRxoSJhgTLwscHRBf/aAAwDAQACEQMRAD8ApFOOLUVKUVKUbVKJJJJ95rln0xIxeVxNALyuJoBeVxNALyuJoBeVxNALyuJoDKXHEKCkqKVJNqVAkEEe8UDR7x6BkWnRcFvw1R9zVzSxZXdafV4nFeS7babW7Ihw2GGkqW46tlsJSlItJPw1m8edarNRU2rfqzx1qnJybKyBL2JNnrhNxGmXb9xhciGGkOKtu3bxT8JvggBVnD2105+FUsfbVeN/D1/SJz14xUndzslbYWvoGRadFwW/DXG3NXNLFkdafV4j0DItOi4LfhpuauaWLGtPq8R6BkWnRcFvw03NXNLFjWn1eI9AyLTouC34abmrmlixrT6vEegZFp0XBb8NNzVzSxY1p9XiT6wGM6vuF8QkFMWJLiflvoVmMlX47iS2oFF5KG1POAKCRZeb/wAqwLxYqEJW2vstSfX6Xe7Njxvm+Li+26/+bFgzOxsz2q4p9qQuL+XFlqBelXY6xHKQEFJIZBVeCrRZaKsFD/LhoRlWj+azP+zR8rynOpKFNy+KuSt+XuXMERVyHpbUKQw7IN2Q+6uOptZaN1ASGnHFAhJ+YCqr53jqnRptO3jL0v5cLfW37Gbul+LaaXrbx9V+xOrkgUAoBQCgKSREczGG9CGVpyq8QtUkfaV91YcCiVhtRUSeJrt1/JppU7JqXarOCljxSRHx6s1NuSl92vYhP7FQiOlMaW0VvtluaS0oG0qcsWiwi8brtnxe8A/xWat51Hsj8pSceXLl1uuNil5Vkm3CzD3LmKsmXc9ITF+2lSDmFrRW6kKF0KuEr/q2tTy6sJUIRU4uUeSUrePHmrOF15pwlPudttnqrPtx5k+uSZhQCgFAeFdUbj1OVjL51dtnRyRwLDoU8qHVG49TlYy+dNnRyRwGhTyodUbj1OVjL502dHJHAaFPKh1RuPU5WMvnTZ0ckcBoU8qHVG49TlYy+dNnRyRwGhTyodUbj1OVjL502dHJHAaFPKh1RuPU5WMvnTZ0ckcBoU8qHVG49TlYy+dNnRyRwGhTyohyf2XfK7avK7Ht+T6eFbTJRuV5r7teEh3aAd2gHdoB3aAd2gNkb9lryu2nzex7fn+njXqIyud5/9k=" alt="user-image" class="h-4" />
+                <span class="align-middle">Spanish</span>
+              </a>
+              <a class="flex items-center gap-x-3.5 rounded px-3 py-2 text-sm font-medium transition-all hover:bg-default-100" href="javascript:void(0)">
+                <img src="data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAAA8AAD/4QMpaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjAtYzA2MCA2MS4xMzQ3NzcsIDIwMTAvMDIvMTItMTc6MzI6MDAgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzUgV2luZG93cyIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0MjI1RDJEQjYxM0MxMUU3ODE3M0YwMkM1MjgyRTVFMiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0MjI1RDJEQzYxM0MxMUU3ODE3M0YwMkM1MjgyRTVFMiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjQyMjVEMkQ5NjEzQzExRTc4MTczRjAyQzUyODJFNUUyIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjQyMjVEMkRBNjEzQzExRTc4MTczRjAyQzUyODJFNUUyIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+/+4ADkFkb2JlAGTAAAAAAf/bAIQABgQEBAUEBgUFBgkGBQYJCwgGBggLDAoKCwoKDBAMDAwMDAwQDA4PEA8ODBMTFBQTExwbGxscHx8fHx8fHx8fHwEHBwcNDA0YEBAYGhURFRofHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8f/8AAEQgAKgBAAwERAAIRAQMRAf/EAHUAAQEBAQAAAAAAAAAAAAAAAAADBggBAQADAQEAAAAAAAAAAAAAAAABAgYEAxAAAQAHBwUBAAAAAAAAAAAAAAHio9MEVKQykjNVFgcXMVFhAkIDEQEAAAQHAQADAAAAAAAAAAAAAaLiY6HRUgMTFRYxgQIy/9oADAMBAAIRAxEAPwDpwAAAAAAAABiOats85pop0dnX72nGGanJA5q2zzmminQ6/e04wzOSBzVtnnNNFOh1+9pxhmckDmrbPOaaKdDr97TjDM5IHNW2ec00U6HX72nGGZyQOats85pop0Ov3tOMMzkgc1bZ5zTRTodfvacYZnJA5q2zzmminQ6/e04wzOSDlg0rnAAAAAAAANHpFE0zWMx6O3NS3HjLslRpFE0zWHo7c1J4y7JUaRRNM1h6O3NSeMuyVGkUTTNYejtzUnjLslRpFE0zWHo7c1J4y7JUaRRNM1h6O3NSeMuyVGkUTTNYejtzUnjLslRpFE0zWHo7c1J4y7JU0RmG5AAAAAAAALRGP+mHa9sOx1+fHYmLz/T+Yffz9TukLF0BdAXQF0BdApD4/wCeHa9cSx1+vHcmCv7/AMx+/j6//9k=" alt="user-image" class="h-4" />
+                <span class="align-middle">Russian</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fullscreen Button -->
+        <div class="hidden lg:flex">
+          <button data-toggle="fullscreen" class="inline-flex h-10 w-10 flex-shrink-0 items-center justify-center gap-2 rounded-full bg-default-100 align-middle font-medium text-default-700 transition-all hover:text-primary">
+            <i class="ti ti-maximize flex text-xl group-[-fullscreen]:hidden"></i>
+            <i class="ti ti-minimize hidden text-xl group-[-fullscreen]:flex"></i>
+          </button>
+        </div>
+
+        <!-- Notification Dropdown -->
+        <div class="hidden md:flex">
+          <div class="hs-dropdown relative inline-flex [--placement:bottom-right]">
+            <button id="hs-dropdown-with-header" type="button" class="hs-dropdown-toggle inline-flex h-10 w-10 flex-shrink-0 items-center justify-center gap-2 rounded-full bg-default-100 align-middle text-xs font-medium text-default-700 transition-all hover:text-primary">
+              <i class="ti ti-bell animate-ring text-xl"></i>
+              <!-- <span class="absolute top-0 end-1 h-4 w-4 bg-red-500 rounded-full animate-ping"></span> -->
+              <!-- <span class="absolute top-0 end-1 h-4 w-4 flex justify-center items-center bg-red-500 text-[11px] font-semibold text-white rounded-full">2</span> -->
+            </button>
+
+            <div class="hs-dropdown-menu duration mt-2 hidden min-w-[20rem] rounded-lg border border-default-200 bg-white opacity-0 shadow-md transition-[opacity,margin] hs-dropdown-open:opacity-100 dark:bg-default-50">
+              <div class="flex items-center justify-between px-4 py-2">
+                <h6 class="text-sm font-medium">Notification</h6>
+                <a href="javascript: void(0);" class="text-default-500">
+                  <small>Clear All</small>
+                </a>
+              </div>
+
+              <div class="h-80 border-y border-dashed border-default-200 p-4" data-simplebar>
+                <h5 class="mb-2 text-xs text-default-700">Today</h5>
+
+                <a href="javascript:void(0);" class="mb-4 flex items-center">
+                  <img src="assets/1-f1564e7c.png" class="h-10 w-10 rounded-full" />
+                  <div class="ms-2 flex-grow truncate">
+                    <div class="flex items-center justify-between">
+                      <h5 class="text-sm font-medium text-default-800">
+                        Datacorp
+                      </h5>
+                      <small class="inline-flex text-xs text-default-500">1 min ago</small>
+                    </div>
+                    <small class="text-default-400">Caleb Flakelar commented on Admin</small>
+                  </div>
+                </a>
+
+                <a href="javascript:void(0);" class="mb-4 flex items-center">
+                  <div class="flex-shrink-0">
+                    <img src="assets/2-cb0540ba.png" class="h-10 w-10 rounded-full" />
+                  </div>
+                  <div class="ms-2 flex-grow truncate">
+                    <div class="flex items-center justify-between">
+                      <h5 class="text-sm font-medium text-default-800">Admin</h5>
+                      <small class="inline-flex text-xs text-default-500">1 hr ago</small>
+                    </div>
+                    <small class="text-default-400">New user registered</small>
+                  </div>
+                </a>
+
+                <a href="javascript:void(0);" class="mb-4 flex items-center">
+                  <div class="flex-shrink-0">
+                    <img src="assets/3-7b02f585.png" class="h-10 w-10 rounded-full" />
+                  </div>
+                  <div class="ms-2 flex-grow truncate">
+                    <div class="flex items-center justify-between">
+                      <h5 class="text-sm font-medium text-default-800">
+                        Cristina Pride
+                      </h5>
+                      <small class="inline-flex text-xs text-default-500">1 day ago</small>
+                    </div>
+                    <small class="text-default-400">Hi, How are you? What about our next meeting</small>
+                  </div>
+                </a>
+
+                <h5 class="mb-2 text-xs text-default-700">Yesterday</h5>
+
+                <a href="javascript:void(0);" class="mb-4 flex items-center">
+                  <div class="flex-shrink-0">
+                    <img src="assets/4-2345eb04.png" class="h-10 w-10 rounded-full" />
+                  </div>
+                  <div class="ms-2 flex-grow truncate">
+                    <h5 class="mb-1 text-sm font-semibold">Datacorp</h5>
+                    <small class="text-default-400">Caleb Flakelar commented on Admin</small>
+                  </div>
+                </a>
+
+                <a href="javascript:void(0);" class="flex">
+                  <div class="flex-shrink-0">
+                    <img src="assets/5-0368e7b5.png" class="h-10 w-10 rounded-full" />
+                  </div>
+                  <div class="ms-2 flex-grow truncate">
+                    <h5 class="mb-1 text-sm font-semibold">Karen Robinson</h5>
+                    <small class="text-default-400">Wow ! this admin looks good and awesome design</small>
+                  </div>
+                </a>
+              </div>
+
+              <a href="javascript:void(0);" class="block px-4 py-2 text-center text-sm font-medium text-primary">
+                View All
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Profile Dropdown -->
+        <div class="flex">
+          <div class="hs-dropdown relative inline-flex">
+            <button id="hs-dropdown-with-header" type="button" class="hs-dropdown-toggle inline-flex flex-shrink-0 items-center justify-center gap-2 rounded-md align-middle text-xs font-medium text-default-700 transition-all">
+              <img class="inline-block h-10 w-10 rounded-full" src="assets/7-37b455da.png" />
+              <div class="hidden text-start lg:block">
+                <p class="text-xs font-semibold text-default-700">Mary Hopkins</p>
+                <p class="mt-1 text-xs text-default-500">Admin</p>
+              </div>
+            </button>
+
+            <div class="hs-dropdown-menu duration mt-2 hidden min-w-[12rem] rounded-lg border border-default-200 bg-white p-2 opacity-0 shadow-md transition-[opacity,margin] hs-dropdown-open:opacity-100 dark:bg-default-50">
+              <a class="flex items-center gap-x-3.5 rounded-md px-3 py-2 text-sm font-medium text-default-800 transition-all hover:bg-default-100" href="admin-wallet.html">
+                <i class="ti ti-wallet text-base"></i>
+                Wallet
+              </a>
+              <a class="flex items-center gap-x-3.5 rounded-md px-3 py-2 text-sm font-medium text-default-800 transition-all hover:bg-default-100" href="home.html" target="_blank">
+                <i class="ti ti-browser text-base"></i>
+                Landing
+              </a>
+
+              <hr class="-mx-2 my-2 border-default-200" />
+
+              <a class="flex items-center gap-x-3.5 rounded-md px-3 py-2 text-sm font-medium text-red-500 hover:bg-red-400/10" href="auth-login.html">
+                <i class="h-4 w-4" data-lucide="log-out"></i>
+                Log out
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <!-- End Header -->
+  <div class="space-y-6 p-6">
+
+    <div class="flex w-full items-center justify-between print:hidden">
+      <h4 class="text-lg font-semibold text-default-900">Dashboard</h4>
+
+      <ol aria-label="Breadcrumb" class="hidden min-w-0 items-center gap-2 whitespace-nowrap md:flex">
+        <li class="text-sm">
+          <a class="flex items-center gap-2 align-middle font-medium text-default-800 transition-all hover:text-primary" href="javascript:void(0)">
+            GreenCart
+            <i class="h-4 w-4" data-lucide="chevron-right"></i>
+          </a>
+        </li>
+
+        <li class="text-sm">
+          <a class="flex items-center gap-2 align-middle font-medium text-default-800 transition-all hover:text-primary" href="javascript:void(0)">
+            Admin
+            <i class="h-4 w-4" data-lucide="chevron-right"></i>
+          </a>
+        </li>
+
+        <li aria-current="page" class="truncate text-sm font-medium text-primary-600 hover:text-primary">
+          Dashboard
+        </li>
+      </ol>
+    </div>
+    <div class="grid lg:grid-cols-4 sm:grid-cols-2 gap-6">
+      <div class="rounded-lg border border-default-200 bg-white dark:bg-default-50 overflow-hidden">
+        <div class="p-5">
+          <div class="flex gap-4">
+            <div class="grow">
+              <h6 class="text-base font-medium text-default-600s">Orders</h6>
+              <h4 class="my-3 text-2xl font-semibold text-default-900">14.8K</h4>
+              <p class="text-sm font-medium text-primary"><i class="ti ti-trending-up text-base align-middle"></i> 50% Increase</p>
+            </div>
+            <div class="shrink h-14 w-14 inline-flex items-center justify-center bg-blue-500/20 text-blue-500 rounded-md">
+              <i class="ti ti-shopping-bag text-3xl"></i>
+            </div>
+          </div>
+        </div>
+      </div><!-- end grid-col -->
+
+      <div class="rounded-lg border border-default-200 bg-white dark:bg-default-50 overflow-hidden">
+        <div class="p-5">
+          <div class="flex gap-4">
+            <div class="grow">
+              <h6 class="text-base font-medium text-default-600s">Total Products</h6>
+              <h4 class="my-3 text-2xl font-semibold text-default-900">996</h4>
+              <p class="text-sm font-medium text-red-500"><i class="ti ti-trending-down text-base align-middle"></i> 2% Decrease</p>
+            </div>
+            <div class="shrink h-14 w-14 inline-flex items-center justify-center bg-primary/20 text-primary rounded-md">
+              <i class="ti ti-cheese text-3xl"></i>
+            </div>
+          </div>
+        </div>
+      </div><!-- end grid-col -->
+
+      <div class="rounded-lg border border-default-200 bg-white dark:bg-default-50 overflow-hidden">
+        <div class="p-5">
+          <div class="flex gap-4">
+            <div class="grow">
+              <h6 class="text-base font-medium text-default-600s">Total Customers</h6>
+              <h4 class="my-3 text-2xl font-semibold text-default-900">912.68K</h4>
+              <p class="text-sm font-medium text-primary"><i class="ti ti-trending-up text-base align-middle"></i> 50% Increase</p>
+            </div>
+            <div class="shrink h-14 w-14 inline-flex items-center justify-center bg-yellow-500/20 text-yellow-500 rounded-md">
+              <i class="ti ti-users text-3xl"></i>
+            </div>
+          </div>
+        </div>
+      </div><!-- end grid-col -->
+
+      <div class="rounded-lg border border-default-200 bg-white dark:bg-default-50 overflow-hidden">
+        <div class="p-5">
+          <div class="flex gap-4">
+            <div class="grow">
+              <h6 class="text-base font-medium text-default-600s">Reviews</h6>
+              <h4 class="my-3 text-2xl font-semibold text-default-900">858.72K</h4>
+              <p class="text-sm font-medium text-primary"><i class="ti ti-trending-up text-base align-middle"></i> 44% Increase</p>
+            </div>
+            <div class="shrink h-14 w-14 inline-flex items-center justify-center bg-cyan-500/20 text-cyan-500 rounded-md">
+              <i class="ti ti-star text-3xl"></i>
+            </div>
+          </div>
+        </div>
+      </div><!-- end grid-col -->
+    </div><!-- end grid -->
+
+    <div class="grid xl:grid-cols-3 gap-6">
+      <div class="xl:col-span-2">
+        <div class="rounded-lg border border-default-200 bg-white dark:bg-default-50">
+          <div class="px-6 py-4 flex items-center justify-between gap-4">
+            <h5 class="grow text-lg font-medium text-default-900">Revenue</h5>
+            <div class="relative">
+              <select id="all-select-categories" data-hs-select='{
+                                    "toggleTag": "<button type=\"button\"></button>",
+                                    "toggleClasses": "hs-select-disabled:pointer-events-none hs-select-disabled:opacity-50 block w-full rounded-full py-2 ps-4 pe-10 text-default-900 text-sm focus:ring-transparent border border-default-200 transition-all duration-300 hover:bg-default-100 before:absolute before:inset-0 before:z-[1]",
+                                    "dropdownClasses": "mt-2 z-50 min-w-[200px] max-h-[300px] p-1.5 space-y-0.5 bg-white border border-default-200 rounded-lg overflow-hidden overflow-y-auto end-0 dark:bg-default-50",
+                                    "optionClasses": "py-2 px-3 w-full text-sm text-default-800 cursor-pointer rounded-md hover:bg-default-100 focus:outline-none focus:bg-default-100",
+                                    "optionTemplate": "<div class=\"flex justify-between items-center w-full\"><span data-title></span><span class=\"hidden hs-selected:block\"><i class=\"ti ti-checks text-lg flex-shrink-0 text-primary\" /></i></span></div>"
+                                    }' class="hidden">
+                <option>Today</option>
+                <option>Yesterday</option>
+                <option>Last 7 Days</option>
+                <option>Last 30 Days</option>
+                <option>This Month</option>
+                <option>Last Month</option>
+              </select>
+
+              <div class="absolute -inset-y-0 start-auto end-3 flex items-center">
+                <i class="ti ti-chevron-down shrink text-base/none"></i>
+              </div>
+            </div><!-- End Select -->
+          </div>
+          <div class="bg-default-100 px-5 py-3 border-y border-dashed border-default-200">
+            <div class="grid grid-cols-2 gap-4">
+              <div class="text-center">
+                <div class="inline-flex items-center justify-center gap-2">
+                  <i class="ti ti-chart-bar text-base text-primary"></i>
+                  <p class="text-default-600 font-medium">Net Profit</p>
+                </div>
+                <h3 class="text-default-900 text-xl font-semibold mt-2">$41,512k</h3>
+              </div>
+              <div class="text-center">
+                <div class="inline-flex items-center justify-center gap-2">
+                  <i class="ti ti-playstation-circle text-base text-primary"></i>
+                  <p class="text-default-600 font-medium">Net Profit</p>
+                </div>
+                <h3 class="text-default-900 text-xl font-semibold mt-2">$41,512k</h3>
+              </div>
+            </div>
+          </div>
+          <div class="px-5 pb-5">
+            <div id="revenue_report" class="apex-charts"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rounded-lg border border-default-200 bg-white dark:bg-default-50 overflow-hidden">
+        <div class="px-6 py-4 flex items-center justify-between gap-4">
+          <h5 class="grow text-lg font-medium text-default-900">Total Sales</h5>
+          <div class="shrink hs-dropdown relative [--placement:bottom-right] group">
+            <button type="button" class="hs-dropdown-toggle h-8 w-8 inline-flex items-center justify-center bg-default-950/5 border border-default-200 rounded-full text-base group-[&.open]:rotate-90 transition-all duration-500"><i class="ti ti-dots-vertical"></i></button>
+
+            <div class="hs-dropdown-menu hs-dropdown-open:opacity-100 min-w-[180px] transition-[opacity,margin] mt-4 opacity-0 z-10 bg-white dark:bg-default-50 shadow-lg rounded-lg border border-default-100 p-1.5 hidden">
+              <ul class="flex flex-col gap-1">
+                <li>
+                  <a class="flex items-center font-normal text-default-600 py-2 px-3 transition-all hover:text-default-700 hover:bg-default-400/10 rounded" href="#">Action</a>
+                </li>
+                <li>
+                  <a class="flex items-center font-normal text-default-600 py-2 px-3 transition-all hover:text-default-700 hover:bg-default-400/10 rounded" href="#">Another Action</a>
+                </li>
+                <li>
+                  <a class="flex items-center font-normal text-default-600 py-2 px-3 transition-all hover:text-default-700 hover:bg-default-400/10 rounded" href="#">Something else here</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="p-5 border-t border-dashed border-default-200">
+          <div id="ana_device" class="apex-charts py-3.5"></div>
+        </div>
+        <div class="flex flex-col">
+          <div class="overflow-x-auto -mb-2">
+            <div class="inline-block min-w-full">
+              <div class="overflow-hidden">
+                <table class="min-w-full border-t border-dashed border-default-200">
+                  <tbody>
+                  <!-- Product 1 -->
+                  <tr class="bg-white border-b border-dashed border-default-200 dark:bg-default-50">
+                    <td class="px-2 py-2.5 text-sm font-medium text-default-900 whitespace-nowrap">
+                      Nuts & Berries
+                    </td>
+                    <td class="px-2 py-2.5 text-sm text-default-500 whitespace-nowrap">
+                      1843
+                    </td>
+                    <td class="px-2 py-2.5 text-sm text-default-500 whitespace-nowrap">
+                      -3
+                    </td>
+                    <td class="px-2 py-2.5 text-sm text-default-500 whitespace-nowrap">
+                      -12
+                    </td>
+                  </tr>
+                  <!-- Product 2 -->
+                  <tr class="bg-white border-b border-dashed border-default-200 dark:bg-default-50">
+                    <td class="px-2 py-2.5 text-sm font-medium text-default-900 whitespace-nowrap">
+                      Vegetables
+                    </td>
+                    <td class="px-2 py-2.5 text-sm text-default-500 whitespace-nowrap">
+                      2543
+                    </td>
+                    <td class="px-2 py-2.5 text-sm text-default-500 whitespace-nowrap">
+                      -5
+                    </td>
+                    <td class="px-2 py-2.5 text-sm text-default-500 whitespace-nowrap">
+                      -2
+                    </td>
+                  </tr>
+                  <!-- Product 2 -->
+                  <tr class="bg-white dark:bg-default-50">
+                    <td class="px-2 py-2.5 text-sm font-medium text-default-900 whitespace-nowrap">
+                      Fruits
+                    </td>
+                    <td class="px-2 py-2.5 text-sm text-default-500 whitespace-nowrap">
+                      3654
+                    </td>
+                    <td class="px-2 py-2.5 text-sm text-default-500 whitespace-nowrap">
+                      -5
+                    </td>
+                    <td class="px-2 py-2.5 text-sm text-default-500 whitespace-nowrap">
+                      -6
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- end grid -->
+
+    <div class="flex items-center justify-between gap-6">
+      <h2 class="text-xl font-semibold text-default-900">Top Selling Products</h2>
+      <a href="admin-product-list.html" class="py-[5px] px-4 inline-block font-semibold tracking-wide align-middle duration-500 text-sm text-center bg-primary hover:bg-primary-700 border-primary hover:border-primary-700 text-white rounded">View All <i class="ti ti-chevron-right"></i></a>
+    </div>
+
+    <div class="grid xl:grid-cols-6 md:grid-cols-2 grid-cols-1 gap-6">
+      <div class="border border-default-200 rounded-lg">
+        <div class="p-5 relative">
+          <div class="absolute top-4 end-4">
+            <a href="#" class="inline-flex items-center justify-center bg-default-100 text-default-900 rounded-full h-10 w-10"><i class="ti ti-shopping-cart text-lg"></i></a>
+          </div>
+
+          <div class="text-center">
+            <img src="assets/1-2ca96552.png" alt="" class="flex mx-auto my-4">
+            <h6 class="font-semibold text-xl text-default-900 mb-1">Banana</h6>
+            <h4 class="font-medium text-base text-primary mb-2">$14.99 <span class="text-default-600 text-sm line-through">$20.99</span> </h4>
+          </div>
+
+          <div class="flex items-center justify-center gap-2">
+            <button><i class="ti ti-star-filled text-lg text-yellow-400"></i></button>
+            <button><i class="ti ti-star-filled text-lg text-yellow-400"></i></button>
+            <button><i class="ti ti-star-filled text-lg text-yellow-400"></i></button>
+            <button><i class="ti ti-star-filled text-lg text-yellow-400"></i></button>
+            <button><i class="ti ti-star-half-filled text-lg text-yellow-400"></i></button>
+          </div>
+        </div>
+      </div><!-- end grid-cols -->
+
+      <div class="border border-default-200 rounded-lg">
+        <div class="p-5 relative">
+          <div class="absolute top-4 end-4">
+            <a href="#" class="inline-flex items-center justify-center bg-default-100 text-default-900 rounded-full h-10 w-10"><i class="ti ti-shopping-cart text-lg"></i></a>
+          </div>
+
+          <div class="text-center">
+            <img src="assets/2-423cfe2a.png" alt="" class="flex mx-auto my-4">
+            <h6 class="font-semibold text-xl text-default-900 mb-1">Cashew Nut</h6>
+            <h4 class="font-medium text-base text-primary mb-2">$18.96 <span class="text-default-600 text-sm line-through">$32.86</span> </h4>
+          </div>
+
+          <div class="flex items-center justify-center gap-2">
+            <button><i class="ti ti-star-filled text-lg text-yellow-400"></i></button>
+            <button><i class="ti ti-star-filled text-lg text-yellow-400"></i></button>
+            <button><i class="ti ti-star-filled text-lg text-yellow-400"></i></button>
+            <button><i class="ti ti-star-filled text-lg text-yellow-400"></i></button>
+            <button><i class="ti ti-star-filled text-lg text-yellow-400"></i></button>
+          </div>
+        </div>
+      </div><!-- end grid-cols -->
+
+      <div class="border border-default-200 rounded-lg">
+        <div class="p-5 relative">
+          <div class="absolute top-4 end-4">
+            <a href="#" class="inline-flex items-center justify-center bg-default-100 text-default-900 rounded-full h-10 w-10"><i class="ti ti-shopping-cart text-lg"></i></a>
+          </div>
+
+          <div class="text-center">
+            <img src="assets/3-eb4bb056.png" alt="" class="flex mx-auto my-4">
+            <h6 class="font-semibold text-xl text-default-900 mb-1">Grapes</h6>
+            <h4 class="font-medium text-base text-primary mb-2">$29.48 <span class="text-default-600 text-sm line-through">$36.72</span> </h4>
+          </div>
+
+          <div class="flex items-center justify-center gap-2">
+            <button><i class="ti ti-star-filled text-lg text-yellow-400"></i></button>
+            <button><i class="ti ti-star-filled text-lg text-yellow-400"></i></button>
+            <button><i class="ti ti-star-filled text-lg text-yellow-400"></i></button>
+            <button><i class="ti ti-star-filled text-lg text-yellow-400"></i></button>
+            <button><i class="ti ti-star-filled text-lg text-yellow-400"></i></button>
+          </div>
+        </div>
+      </div><!-- end grid-cols -->
+
+      <div class="border border-default-200 rounded-lg">
+        <div class="p-5 relative">
+          <div class="absolute top-4 end-4">
+            <a href="#" class="inline-flex items-center justify-center bg-default-100 text-default-900 rounded-full h-10 w-10"><i class="ti ti-shopping-cart text-lg"></i></a>
+          </div>
+
+          <div class="text-center">
+            <img src="assets/4-84c13641.png" alt="" class="flex mx-auto my-4">
+            <h6 class="font-semibold text-xl text-default-900 mb-1">Banana Chips</h6>
+            <h4 class="font-medium text-base text-primary mb-2">$20.68 <span class="text-default-600 text-sm line-through">$40.88</span> </h4>
+          </div>
+
+          <div class="flex items-center justify-center gap-2">
+            <button><i class="ti ti-star-filled text-lg text-yellow-400"></i></button>
+            <button><i class="ti ti-star-filled text-lg text-yellow-400"></i></button>
+            <button><i class="ti ti-star-filled text-lg text-yellow-400"></i></button>
+            <button><i class="ti ti-star-filled text-lg text-yellow-400"></i></button>
+            <button><i class="ti ti-star-half-filled text-lg text-yellow-400"></i></button>
+          </div>
+        </div>
+      </div><!-- end grid-cols -->
+
+      <div class="border border-default-200 rounded-lg">
+        <div class="p-5 relative">
+          <div class="absolute top-4 end-4">
+            <a href="#" class="inline-flex items-center justify-center bg-default-100 text-default-900 rounded-full h-10 w-10"><i class="ti ti-shopping-cart text-lg"></i></a>
+          </div>
+
+          <div class="text-center">
+            <img src="assets/5-6588f4cc.png" alt="" class="flex mx-auto my-4">
+            <h6 class="font-semibold text-xl text-default-900 mb-1">Protinex Powder</h6>
+            <h4 class="font-medium text-base text-primary mb-2">$68.66 <span class="text-default-600 text-sm line-through">$96.34</span> </h4>
+          </div>
+
+          <div class="flex items-center justify-center gap-2">
+            <button><i class="ti ti-star-filled text-lg text-yellow-400"></i></button>
+            <button><i class="ti ti-star-filled text-lg text-yellow-400"></i></button>
+            <button><i class="ti ti-star-filled text-lg text-yellow-400"></i></button>
+            <button><i class="ti ti-star-filled text-lg text-yellow-400"></i></button>
+            <button><i class="ti ti-star-half-filled text-lg text-yellow-400"></i></button>
+          </div>
+        </div>
+      </div><!-- end grid-cols -->
+
+      <div class="border border-default-200 rounded-lg">
+        <div class="p-5 relative">
+          <div class="absolute top-4 end-4">
+            <a href="#" class="inline-flex items-center justify-center bg-default-100 text-default-900 rounded-full h-10 w-10"><i class="ti ti-shopping-cart text-lg"></i></a>
+          </div>
+
+          <div class="text-center">
+            <img src="assets/6-fc45c68a.png" alt="" class="flex mx-auto my-4">
+            <h6 class="font-semibold text-xl text-default-900 mb-1">Nuts And Berries</h6>
+            <h4 class="font-medium text-base text-primary mb-2">$48.96 <span class="text-default-600 text-sm line-through">$38.49</span> </h4>
+          </div>
+
+          <div class="flex items-center justify-center gap-2">
+            <button><i class="ti ti-star-filled text-lg text-yellow-400"></i></button>
+            <button><i class="ti ti-star-filled text-lg text-yellow-400"></i></button>
+            <button><i class="ti ti-star-filled text-lg text-yellow-400"></i></button>
+            <button><i class="ti ti-star-filled text-lg text-yellow-400"></i></button>
+            <button><i class="ti ti-star-half-filled text-lg text-yellow-400"></i></button>
+          </div>
+        </div>
+      </div><!-- end grid-cols -->
+    </div><!-- end grid -->
+
+    <div class="border border-default-200 rounded-lg bg-white dark:bg-default-50 h-fit">
+      <div class="flex items-center justify-between py-4 px-5">
+        <h4 class="text-lg font-medium text-default-950 capitalize">Recent Order</h4>
+
+        <div class="relative">
+          <select id="all-select-categories" data-hs-select='{
+                            "toggleTag": "<button type=\"button\"></button>",
+                            "toggleClasses": "hs-select-disabled:pointer-events-none hs-select-disabled:opacity-50 block w-full rounded-full py-2 ps-4 pe-10 text-default-900 text-sm focus:ring-transparent border border-default-200 transition-all duration-300 hover:bg-default-100 before:absolute before:inset-0 before:z-[1]",
+                            "dropdownClasses": "mt-2 z-50 min-w-[200px] max-h-[300px] p-1.5 space-y-0.5 bg-white border border-default-200 rounded-lg overflow-hidden overflow-y-auto end-0 dark:bg-default-50",
+                            "optionClasses": "py-2 px-3 w-full text-sm text-default-800 cursor-pointer rounded-md hover:bg-default-100 focus:outline-none focus:bg-default-100",
+                            "optionTemplate": "<div class=\"flex justify-between items-center w-full\"><span data-title></span><span class=\"hidden hs-selected:block\"><i class=\"ti ti-checks text-lg flex-shrink-0 text-primary\" /></i></span></div>"
+                            }' class="hidden">
+            <option>Today</option>
+            <option>Yesterday</option>
+            <option>Last 7 Days</option>
+            <option>Last 30 Days</option>
+            <option>This Month</option>
+            <option>Last Month</option>
+          </select>
+
+          <div class="absolute -inset-y-0 start-auto end-3 flex items-center">
+            <i class="ti ti-chevron-down shrink text-base/none"></i>
+          </div>
+        </div><!-- End Select -->
+      </div>
+      <div class="border-t border-dashed border-default-200">
+        <div class="overflow-x-auto">
+          <div class="min-w-full inline-block align-middle">
+            <div class="overflow-hidden">
+              <table class="min-w-full divide-y divide-default-200">
+                <thead class="bg-default-100">
+                <tr>
+                  <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-default-600 uppercase">Order Number</th>
+                  <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-default-600 uppercase">Product Name</th>
+                  <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-default-600 uppercase">Order Date</th>
+                  <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-default-600 uppercase">Price</th>
+                  <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-default-600 uppercase">Action</th>
+                </tr>
+                </thead>
+                <tbody class="divide-y divide-default-200">
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-default-800">#CT0023</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-default-800">Nuts And Berries</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-default-800">28 Mar 2023</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-default-800">$12.23</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                    <span class="px-3 py-1 text-xs font-medium rounded-md bg-amber-500/20 text-amber-500">Pending</span>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-default-800">#CT0023</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-default-800">Protinex Powder</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-default-800">27 Apr 2023</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-default-800">$42.36</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                    <span class="px-3 py-1 text-xs font-medium rounded-md bg-primary/10 text-primary">Shipped</span>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-default-800">#CT0024</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-default-800">Banana Chips</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-default-800">31 Jan 2023</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-default-800">$62.12</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                    <span class="px-3 py-1 text-xs font-medium rounded-md bg-red-500/10 text-red-500">Cancel</span>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-default-800">#CT0025</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-default-800">Grapes</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-default-800">16 Feb 2023</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-default-800">$74.46</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                    <span class="px-3 py-1 text-xs font-medium rounded-md bg-primary/10 text-primary">Shipped</span>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-default-800">#CT0026</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-default-800">Cashew Nut</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-default-800">45 Feb 2023</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-default-800">$52.12</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                    <span class="px-3 py-1 text-xs font-medium rounded-md bg-blue-500/10 text-blue-500">Processing</span>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div><!-- end card-body -->
+    </div><!-- end card -->
+  </div>
+
+  <footer class="mt-auto w-full border-t border-default-200 bg-white p-6 dark:bg-default-50 print:hidden">
+    <div class="flex flex-wrap items-center justify-between gap-6">
+      <p class="text-center font-semibold text-default-600 lg:text-start">
+        <script>
+          document.write(new Date().getFullYear());
+        </script>
+        Designed & Crafted With 💚 by
+        <a class="text-primary" href="https://coderthemes.com/" target="_blank">Coderthemes</a>
+      </p>
+
+      <div class="flex justify-end gap-6 text-center">
+        <a href="javascript:void(0)" class="font-semibold text-default-500">
+          Terms
+        </a>
+        <a href="javascript:void(0)" class="font-semibold text-default-500">
+          Privacy
+        </a>
+        <a href="javascript:void(0)" class="font-semibold text-default-500">
+          Cookies
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <button class="fixed bottom-18 end-4 z-50 inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/20 text-primary opacity-0 backdrop-blur-xl transition-all duration-500 lg:bottom-4 print:hidden" data-toggle="back-to-top">
+    <i class="ti ti-chevron-up text-xl"></i>
+  </button>
+</div>
+<!-- End Content -->

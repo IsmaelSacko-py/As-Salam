@@ -8,10 +8,8 @@ import com.salam.backend.dto.UtilisateurDTO;
 import com.salam.backend.dto.VendeurDTO;
 import com.salam.backend.filter.JwtFilter;
 import com.salam.backend.mapper.*;
+import com.salam.backend.model.*;
 import com.salam.backend.model.Utilisateur;
-import com.salam.backend.model.Client;
-import com.salam.backend.model.Utilisateur;
-import com.salam.backend.model.Vendeur;
 import com.salam.backend.service.ClientService;
 import com.salam.backend.service.UtilisateurService;
 import com.salam.backend.service.VendeurService;
@@ -29,6 +27,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 @Slf4j
 @RestController
@@ -48,6 +47,7 @@ public class AuthController {
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
     private final JwtUtils jwtUtils;
+    private final PanierServiceImpl panierServiceImpl;
 
     @PostMapping("/register")
     public ResponseEntity<?> register (@RequestBody UtilisateurDTO utilisateurDTO){
@@ -77,7 +77,15 @@ public class AuthController {
 
                 Client user = clientMapper.toEntity(clientDTO);
 
+                Panier panier = new Panier();
+                String numPanier = UUID.randomUUID().toString().replace("-", "").substring(0, 10).toUpperCase();
+                panier.setNumero(numPanier);
+
+                panierServiceImpl.save(panier);
+
+
                 log.info("client before {}", user);
+                user.setPanier(panier);
                 Client client = clientService.save(user);
                 log.info("client after {}", client);
                 yield ResponseEntity.ok(clientMapper.toDto(client));

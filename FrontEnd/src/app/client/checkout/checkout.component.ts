@@ -26,6 +26,7 @@ export class CheckoutComponent implements OnInit{
   }
 
   getUserAddress(){
+    console.log(this.user)
     this.userHomeAddress = this.user.adresses.find((adresse: any) => adresse.type === "DOMICILE")
     this.userShippingAddress = this.user.adresses.find((adresse: any) => adresse.type === "LIVRAISON")
 

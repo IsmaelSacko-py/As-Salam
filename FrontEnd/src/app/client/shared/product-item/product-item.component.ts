@@ -28,20 +28,21 @@ export class ProductItemComponent implements OnInit{
     this.user = this.authService.getUser()
   }
 
-  increment(): void {
-    this.produit.detailsPanier[0].quantite++;
-    this.updateDetailsPanier(this.produit.detailsPanier[0])
+  increment(produit: any): void {
+    const detailsPanier = this.user.panier.detailsPanier.find((detail: any) => detail.produit.id === produit.id)
+    detailsPanier.quantite ++
+    this.updateDetailsPanier(detailsPanier)
   }
 
-  decrement(): void {
-    const details = this.produit.detailsPanier[0]
-    if (details.quantite > 0) {
-      details.quantite--;
-      this.updateDetailsPanier(this.produit.detailsPanier[0])
+  decrement(produit: any): void {
+    const detailsPanier = this.user?.panier.detailsPanier.find((detail: any) => detail.produit.id === produit.id)
+    if (detailsPanier.quantite > 0) {
+      detailsPanier.quantite--;
+      this.updateDetailsPanier(detailsPanier)
       // this.user = this.authService.getUser()
       // console.log(this.user)
-      if(details.quantite <= 0){
-        this.deleteDetailsPanier(details.id)
+      if(detailsPanier.quantite <= 0){
+        this.deleteDetailsPanier(detailsPanier.id)
       }
     }
   }
@@ -85,7 +86,7 @@ export class ProductItemComponent implements OnInit{
   deleteDetailsPanier(id?: number){
     this.detailsPanierService.delete(id).subscribe({
       next: response => {
-        this.produit.detailsPanier = []
+        this.user.panier.detailsPanier = []
         this.user = this.authService.getUser()
       },
       error: err => {
@@ -118,4 +119,9 @@ export class ProductItemComponent implements OnInit{
     window.location.href = `/product-details/${produitId}`
   }
 
+
+  inPanier(produit: any){
+    const detailsPanier = this.user.panier.detailsPanier
+    return detailsPanier.find((detail: any) => detail.produit.id === produit.id)
+  }
 }

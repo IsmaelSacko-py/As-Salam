@@ -3,9 +3,12 @@ package com.salam.backend.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.salam.backend.enumeration.EtatPaiement;
+import com.salam.backend.model.Client;
 import com.salam.backend.model.Commande;
 import com.salam.backend.model.ModePaiement;
 import com.salam.backend.model.Paiement;
+import com.salam.backend.service.impl.ClientServiceImpl;
 import com.salam.backend.service.impl.ModePaiementServiceImpl;
 import com.salam.backend.service.impl.PaiementServiceImpl;
 import com.salam.backend.service.impl.PanierServiceImpl;
@@ -32,6 +35,7 @@ public class PaiementController {
 
 
     private final PanierServiceImpl panierServiceImpl;
+    private final ClientServiceImpl<Client> clientServiceImpl;
     @Value("${spring.paytech.url}")
     private String payTechUrl;
 
@@ -71,9 +75,11 @@ public class PaiementController {
         body.put("cancel_url", "http://localhost:4200/checkout");
         body.put("custom_field", mapper.writerWithDefaultPrettyPrinter().writeValueAsString(commande));
         body.put("env", "test");
-        body.put("ipn_url", "https://238c-2001-4278-80-a60c-1dbe-b09e-3d2b-356d.ngrok-free.app/api/paiement/effectuer-paiement");
+        body.put("ipn_url", "https://5e43-41-214-3-203.ngrok-free.app/api/paiement/effectuer-paiement");
 
         HttpEntity<Map<String, Object>> entity = new HttpEntity<>(body, headers);
+
+
 
         return ResponseEntity.ok(restTemplate.postForObject(payTechUrl, entity, String.class));
     }
@@ -82,8 +88,11 @@ public class PaiementController {
     public ResponseEntity<Paiement> effectuerPaiement(@RequestParam Map<String, Object> response) throws JsonProcessingException {
         mapper.registerModule(new JavaTimeModule());
 
+
         Commande commande = mapper.readValue(response.get("custom_field").toString(), Commande.class);
-        panierServiceImpl.viderPanier(commande.getClient().getPanier());
+
+        Client client = clientServiceImpl.findByTelephone(commande.getClient().getTelephone());
+        panierServiceImpl.viderPanier(client.getPanier());
 
         Optional<ModePaiement> modePaiement = modePaiementService.findOne(1);
         Paiement paiement = new Paiement();
@@ -94,6 +103,7 @@ public class PaiementController {
         paiement.setDate(LocalDateTime.now());
         paiement.setEtat(true);
         paiement.setCommande(commande);
+        paiement.setStatut(EtatPaiement.EN_ATTENTE);
 
         paiement = paiementService.save(paiement);
         log.debug("Payment method: {}", response.get("payment_method"));

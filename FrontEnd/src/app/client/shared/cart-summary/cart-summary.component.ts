@@ -3,6 +3,7 @@ import {PanierService} from "../../../service/panier.service";
 import {AuthService} from "../../../service/auth.service";
 import {Router} from "@angular/router";
 import {PaiementService} from "../../../service/paiement.service";
+import {CommunicationService} from "../../../service/communication.service";
 
 @Component({
   selector: 'app-cart-summary',
@@ -16,7 +17,7 @@ export class CartSummaryComponent implements OnInit{
   total!: number
   @Input() isCartProcess = true
 
-  constructor(private panierService: PanierService, private paiementService: PaiementService, private authService: AuthService, private router: Router) {
+  constructor(private panierService: PanierService, private paiementService: PaiementService, private authService: AuthService, private comService: CommunicationService) {
   }
 
   ngOnInit() {
@@ -56,6 +57,7 @@ export class CartSummaryComponent implements OnInit{
     this.paiementService.effectuerPaiement(commande).subscribe({
       next: response => {
         console.log(response)
+        this.comService.triggerAction()
         window.location.href = response.redirect_url
       },
       error: err => {

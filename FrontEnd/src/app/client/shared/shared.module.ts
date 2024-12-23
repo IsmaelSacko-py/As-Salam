@@ -6,6 +6,8 @@ import {FormsModule} from "@angular/forms";
 import { CartSummaryComponent } from './cart-summary/cart-summary.component';
 import { TableComponent } from './table/table.component';
 import {RouterLink} from "@angular/router";
+import { ChartComponent } from './chart/chart.component';
+import {NgxEchartsDirective} from "ngx-echarts";
 
 
 
@@ -14,18 +16,21 @@ import {RouterLink} from "@angular/router";
     ModalQuickviewComponent,
     ProductItemComponent,
     CartSummaryComponent,
-    TableComponent
+    TableComponent,
+    ChartComponent
   ],
-    exports: [
-        ModalQuickviewComponent,
-        ProductItemComponent,
-        CartSummaryComponent,
-        TableComponent
-    ],
-    imports: [
-        CommonModule,
-        FormsModule,
-        RouterLink
-    ]
+  exports: [
+    ModalQuickviewComponent,
+    ProductItemComponent,
+    CartSummaryComponent,
+    TableComponent,
+    ChartComponent
+  ],
+  imports: [
+    CommonModule,
+    FormsModule,
+    RouterLink,
+    NgxEchartsDirective
+  ]
 })
 export class SharedModule { }

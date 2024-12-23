@@ -13,6 +13,10 @@ export class UserProductComponent {
   products!: any
   // Les produits vendus par un vendeur
   produitsVendus!: any
+  userProductsLinks!: any
+  page!: any
+
+
 
 
 
@@ -27,6 +31,8 @@ export class UserProductComponent {
     this.productService.userProducts(this.user).subscribe({
       next: response => {
         this.products = response._embedded.produitList
+        this.userProductsLinks = response._links
+        this.page = response.page
       },
       error: err => {
         console.log(err)
@@ -35,13 +41,13 @@ export class UserProductComponent {
   }
 
   countVentes(produitId: number){
-    return this.produitsVendus.filter((product: any) => product.id === produitId).length
+    return this.produitsVendus?.filter((product: any) => product.id === produitId).length
   }
 
   vendeurProduitsVendus(){
     this.productService.vendeurProduitsVendus(this.user.id).subscribe({
       next: response => {
-        this.produitsVendus = response._embedded.produitList
+        this.produitsVendus = response._embedded?.produitList ?? []
       },
       error: err => {
         console.log(err)

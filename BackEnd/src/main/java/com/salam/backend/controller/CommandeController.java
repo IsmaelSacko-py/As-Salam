@@ -1,5 +1,7 @@
 package com.salam.backend.controller;
 
+import com.salam.backend.enumeration.EtatCommande;
+import com.salam.backend.enumeration.EtatPaiement;
 import com.salam.backend.model.Commande;
 import com.salam.backend.service.impl.CommandeServiceImpl;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +14,10 @@ import org.springframework.hateoas.PagedModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 
 @Slf4j
@@ -73,6 +78,5 @@ public class CommandeController {
     public void deleteCommande(@PathVariable int id) {
         log.debug("Rest to delete adresse: {}", id);
     }
-
 
 }

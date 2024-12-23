@@ -1,6 +1,7 @@
 package com.salam.backend.service.impl;
 
 import com.salam.backend.enumeration.EtatCommande;
+import com.salam.backend.enumeration.TypeAdresse;
 import com.salam.backend.model.*;
 import com.salam.backend.repository.PanierRepository;
 import com.salam.backend.service.PanierService;
@@ -37,15 +38,23 @@ public class PanierServiceImpl implements PanierService {
         Panier panier = client.getPanier();
         try {
             Commande commande = new Commande();
+            Adresse adresseLivraison = client.getAdresses()
+                                             .stream()
+                                             .filter(adresse -> adresse.getType() == TypeAdresse.LIVRAISON)
+                                             .findFirst() // Retourne un Optional<Adresse>
+                                             .orElse(null);
+
             String numCommande = UUID.randomUUID().toString().replace("-", "").substring(0, 10).toUpperCase();
             commande.setNumero(numCommande);
             commande.setDate(LocalDateTime.now());
-            commande.setStatut(EtatCommande.EN_COURS);
+            commande.setStatut(EtatCommande.EN_ATTENTE);
             commande.setClient(client);
+            commande.setAdresse(adresseLivraison);
             commande = commandeServiceImpl.save(commande);
 
             double montantTotal = 0;
             double prixBrut, prixNet, remise;
+            Vendeur vendeur = new Vendeur();
             for (DetailPanier item : panier.getDetailsPanier()) {
                 DetailCommande detail = new DetailCommande();
 
@@ -61,8 +70,10 @@ public class PanierServiceImpl implements PanierService {
                 detailCommandeServiceImpl.save(detail);
 
                 montantTotal+= prixNet;
+                vendeur = item.getProduit().getVendeur();
             }
             commande.setTotalPrix(montantTotal);
+            commande.setVendeur(vendeur);
             return commandeServiceImpl.update(commande);
         }catch (Exception e) {
             log.error(e.getMessage());
@@ -78,7 +89,8 @@ public class PanierServiceImpl implements PanierService {
 
     @Override
     public Panier save(Panier panier) {
-        return null;
+        log.debug("Request to save panier");
+        return panierRepository.save(panier);
     }
 
     @Override

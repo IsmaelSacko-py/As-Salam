@@ -23,4 +23,14 @@ export class UserService {
   // getUser(){
   //   return this.user
   // }
+
+
+  vendorDashboardStats(vendorId: number): Observable<any>{
+    return this.httpClient.get(`${this.resourceUrl}/vendeurs/stats/${vendorId}`)
+  }
+
+  countProductSalesInCurrentMonth(vendorId: number): Observable<any>{
+    return this.httpClient.get(`${this.resourceUrl}/vendeurs/current-month-sales/${vendorId}`)
+  }
+
 }

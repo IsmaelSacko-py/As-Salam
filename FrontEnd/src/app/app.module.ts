@@ -16,6 +16,7 @@ import {FormsModule} from "@angular/forms";
 import { CheckoutCompletComponent } from './client/checkout/checkout-complet/checkout-complet.component';
 import { SingleSliderComponent } from './client/home/single-slider/single-slider.component';
 import {NgOptimizedImage} from "@angular/common";
+import {NgxEchartsModule} from "ngx-echarts";
 
 @NgModule({
   declarations: [
@@ -29,14 +30,17 @@ import {NgOptimizedImage} from "@angular/common";
     CheckoutCompletComponent,
     SingleSliderComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        CoreModule,
-        SharedModule,
-        FormsModule,
-        NgOptimizedImage
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    CoreModule,
+    SharedModule,
+    FormsModule,
+    NgOptimizedImage,
+    NgxEchartsModule.forRoot({
+      echarts: () => import('echarts'), // Chargement dynamique d'ECharts
+    }),
+  ],
   providers: [
     provideHttpClient()
   ],
