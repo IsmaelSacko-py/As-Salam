@@ -26,7 +26,7 @@ public class VilleServiceImpl implements VilleService {
 
     @Override
     public Ville save(Ville ville) {
-        return null;
+        return villeRepository.save(ville);
     }
 
     @Override
