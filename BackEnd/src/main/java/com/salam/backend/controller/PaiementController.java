@@ -69,11 +69,11 @@ public class PaiementController {
         body.put("currency", "XOF");
         body.put("ref_command", commande.getNumero());
         body.put("command_name", commande.getNumero());
-        body.put("success_url", "http://54.81.40.32:4200/checkout-complete?num="+commande.getNumero());
-        body.put("cancel_url", "http://54.81.40.32:4200/checkout");
+        body.put("success_url", "http://localhost:4200/checkout-complete?num="+commande.getNumero());
+        body.put("cancel_url", "http://localhost:4200/checkout");
         body.put("custom_field", mapper.writerWithDefaultPrettyPrinter().writeValueAsString(commande));
         body.put("env", "test");
-        body.put("ipn_url", "http://54.81.40.32:8080/api/paiement/effectuer-paiement");
+        body.put("ipn_url", "https://49ea-41-214-62-101.ngrok-free.app/api/paiement/effectuer-paiement");
 
         HttpEntity<Map<String, Object>> entity = new HttpEntity<>(body, headers);
 
