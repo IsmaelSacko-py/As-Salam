@@ -8,14 +8,8 @@ services:
     container_name: assalam-backend
     ports:
       - "8080:8080"
-    depends_on:
-      - salam_db
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=passer
-      - SPRING_DATASOURCE_HOST=assalam-db
-      - SPRING_DATASOURCE_PORT=5432
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://assalam-db:5432/AsSalam
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://host.docker.internal:5432/AsSalam
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=passer
     networks:

@@ -1,4 +1,4 @@
-# Étape 1 : Utiliser une image Maven pour construire le projet Spring Boot
+# Étape 1 : Utiliser une image Maven pour construire le projet Spring Boot (créer l'artefact)
 FROM maven:3.9.4-eclipse-temurin-17 AS build
 
 WORKDIR /app
@@ -15,11 +15,14 @@ FROM openjdk:17
 
 WORKDIR /app
 
-# Copier le fichier .war depuis l'étape précédente
-COPY --from=build /app/target/BackEnd-0.0.1-SNAPSHOT.war app.war
+# récupérer le fichier war dans le dossier target
+ARG WAR_FILE=target/*.war
+
+# Copier le fichier .war depuis dans le dossier app en le nommant "AsSalam.war"
+COPY ${WAR_FILE} /app/AsSalam.war
 
 # Exposer le port par défaut de l'application Spring Boot
 EXPOSE 8080
 
 # Lancer l'application Spring Boot
-ENTRYPOINT ["java", "-jar", "/app/app.war"]
+ENTRYPOINT ["java", "-jar", "/app/AsSalam.war"]
