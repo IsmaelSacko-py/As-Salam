@@ -3,7 +3,7 @@ version: '3.8'
 services:
   backend:
     image: ismaelsacko/backend:1.0
-    build: .
+    build: ./BackEnd
     container_name: assalam-backend
     ports:
       - "8080:8080"
@@ -16,7 +16,7 @@ services:
 
   frontend:
     image: ismaelsacko/frontend:1.0
-    build: .
+    build: ./FrontEnd
     container_name: assalam-frontend
     ports:
       - "4200:80"
