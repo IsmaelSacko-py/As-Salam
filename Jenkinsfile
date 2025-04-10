@@ -22,7 +22,7 @@ pipeline {
 
         stage('build'){
             steps {
-                sshagent(['ssh-key']) {
+                sshagent(['ssh-agent']) {
                   sh '''
                       # Créer le répertoire cible si inexistant
                         ssh -o StrictHostKeyChecking=no $SERVER "mkdir -p /home/ubuntu/As-Salam"
