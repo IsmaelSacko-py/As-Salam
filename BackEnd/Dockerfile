@@ -16,10 +16,11 @@ FROM openjdk:17
 WORKDIR /app
 
 # récupérer le fichier war dans le dossier target
-ARG WAR_FILE=target/*.war
+COPY --from=build /app/target/*.war app.war
+# ARG WAR_FILE=target/*.war
 
 # Copier le fichier .war depuis dans le dossier app en le nommant "AsSalam.war"
-COPY ${WAR_FILE} /app/AsSalam.war
+# COPY ${WAR_FILE} /app/AsSalam.war
 
 # Exposer le port par défaut de l'application Spring Boot
 EXPOSE 8080
