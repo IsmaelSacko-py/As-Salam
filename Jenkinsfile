@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        SERVER = 'ubuntu@54.89.127.21'  // Définir la variable ici
+        SERVER = 'ubuntu@100.24.50.153'  // Définir la variable ici
     }
 
     stages {
