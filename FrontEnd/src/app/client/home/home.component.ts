@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit{
   sliders = [
     {
       title: 'Pour Vos Premiers Achats Chez<br /><span>AsSalam</span>',
-      subTitle: 'Jusqu\'à 50% de réduction',
+      subTitle: 'Jusqu\'à 50% de réduction 00000000',
       description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book',
       image: 'app/client/assets/img/product/p15.png'
     },

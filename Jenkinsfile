@@ -24,6 +24,11 @@ pipeline {
             steps {
                 sshagent(['ssh-agent']) {
                   sh '''
+                        ssh -o StrictHostKeyChecking=no $SERVER "docker stop $(docker ps -aq)"
+
+                        ssh -o StrictHostKeyChecking=no $SERVER "docker rm $(docker ps -aq)"
+
+
                       # Créer le répertoire cible si inexistant
                         ssh -o StrictHostKeyChecking=no $SERVER "mkdir -p /home/ubuntu/As-Salam"
 
