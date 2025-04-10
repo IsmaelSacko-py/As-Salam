@@ -2,13 +2,13 @@ pipeline {
     agent any
 
     environment {
-        SERVER = 'ubuntu@13.48.133.88'  // Définir la variable ici
+        SERVER = 'ubuntu@54.89.127.21'  // Définir la variable ici
     }
 
     stages {
         stage('checkout SCM') {
             steps {
-                git branch: 'main', credentialsId: 'Github_Credentials', url: 'https://github.com/IsmaelSacko-py/As-Salam.git'
+                git branch: 'main', credentialsId: 'github-credentials', url: 'https://github.com/IsmaelSacko-py/As-Salam.git'
             }
         }
 
