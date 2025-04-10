@@ -2,9 +2,8 @@ version: '3.8'
 
 services:
   backend:
-    build:
-      context: ./BackEnd
-      dockerfile: Dockerfile
+    image: ismaelsacko/backend:1.0
+    build: .
     container_name: assalam-backend
     ports:
       - "8080:8080"
@@ -16,9 +15,8 @@ services:
       - salam_network
 
   frontend:
-    build:
-      context: ./FrontEnd
-      dockerfile: Dockerfile
+    image: ismaelsacko/frontend:1.0
+    build: .
     container_name: assalam-frontend
     ports:
       - "4200:80"
